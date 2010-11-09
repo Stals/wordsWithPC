@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>256</width>
-    <height>170</height>
+    <height>156</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,19 +18,9 @@
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Состояние/что делать</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Слово компа</string>
+         <string>Слово: арбуз</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -52,9 +42,16 @@
        </layout>
       </item>
       <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Вы сказали N слов</string>
+         <string>Вы ввели n слов</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 9. Nov 20:06:04 2010
+** Created: Tue 9. Nov 20:11:20 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QFrame>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
@@ -35,11 +36,11 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label;
     QLabel *label_2;
     QVBoxLayout *verticalLayout;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
+    QFrame *line;
     QLabel *label_3;
     QMenuBar *menuBar;
     QMenu *menuGkj;
@@ -48,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(256, 170);
+        MainWindow->resize(256, 156);
         action = new QAction(MainWindow);
         action->setObjectName(QString::fromUtf8("action"));
         action_2 = new QAction(MainWindow);
@@ -62,12 +63,6 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_2->addWidget(label);
-
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setAlignment(Qt::AlignCenter);
@@ -89,6 +84,13 @@ public:
 
 
         verticalLayout_2->addLayout(verticalLayout);
+
+        line = new QFrame(centralWidget);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line);
 
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -121,10 +123,9 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         action->setText(QApplication::translate("MainWindow", "\320\241\320\273\321\203\321\207\320\260\320\271\320\275\320\276", 0, QApplication::UnicodeUTF8));
         action_2->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\265\321\201\321\201", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265/\321\207\321\202\320\276 \320\264\320\265\320\273\320\260\321\202\321\214", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276 \320\272\320\276\320\274\320\277\320\260", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276: \320\260\321\200\320\261\321\203\320\267", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \321\201\320\272\320\260\320\267\320\260\320\273\320\270 N \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 n \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
         menuGkj->setTitle(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
