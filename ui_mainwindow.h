@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 9. Nov 20:11:20 2010
+** Created: Tue 9. Nov 22:00:41 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,7 +38,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
     QVBoxLayout *verticalLayout;
-    QLineEdit *lineEdit;
+    QLineEdit *playerWordForm;
     QPushButton *pushButton;
     QFrame *line;
     QLabel *label_3;
@@ -52,8 +52,12 @@ public:
         MainWindow->resize(256, 156);
         action = new QAction(MainWindow);
         action->setObjectName(QString::fromUtf8("action"));
+        action->setCheckable(true);
+        action->setChecked(true);
+        action->setEnabled(true);
         action_2 = new QAction(MainWindow);
         action_2->setObjectName(QString::fromUtf8("action_2"));
+        action_2->setCheckable(true);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -72,10 +76,10 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        playerWordForm = new QLineEdit(centralWidget);
+        playerWordForm->setObjectName(QString::fromUtf8("playerWordForm"));
 
-        verticalLayout->addWidget(lineEdit);
+        verticalLayout->addWidget(playerWordForm);
 
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -125,7 +129,7 @@ public:
         action_2->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\265\321\201\321\201", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276: \320\260\321\200\320\261\321\203\320\267", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 n \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 0 \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
         menuGkj->setTitle(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

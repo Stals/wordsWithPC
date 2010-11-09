@@ -30,7 +30,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="playerWordForm"/>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton">
@@ -51,7 +51,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Вы ввели n слов</string>
+         <string>Вы ввели 0 слов</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -81,11 +81,23 @@
    <addaction name="menuGkj"/>
   </widget>
   <action name="action">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Случайно</string>
    </property>
   </action>
   <action name="action_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Пресс</string>
    </property>

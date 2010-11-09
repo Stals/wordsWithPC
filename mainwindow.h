@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <string>
+#include <iostream>
+#include <list>
 
 namespace Ui {
     class MainWindow;
@@ -18,6 +21,15 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+
+    std::string pcWord;//для хранения и дальнейшего вывода слова компа
+    std::string playerWord;
+
+    int wordsCount;
+
+    void updateLabels();
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H
