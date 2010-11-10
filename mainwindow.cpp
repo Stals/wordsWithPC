@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    pcWord="defias";
+    pcWord="";
     wordsCount=0;
 }
 
@@ -38,15 +38,18 @@ void MainWindow::on_pushButton_clicked()
     //делаем lowercase
     updateLabels();
     if(ui->playerWordForm->text()!=""){
-        playerWord=ui->playerWordForm->text().toStdString();
+        QString test=ui->playerWordForm->text().toLocal8Bit();
+        playerWord=test.toStdString();
 
-        //if(pcWord!=""){//дл€ любого хода кроме первого
+        if(pcWord!=""){//дл€ любого хода кроме первого
             //проверим совпадает ли перва€ буква слова игрока с последней в слове компа
-            if((playerWord[0])==pcWord[pcWord.size()-1]){
-                ui->label_3->setText("lol");
+            if((playerWord[0])!=pcWord[pcWord.size()-1]){
+                ui->label_4->setText("Wrong first symbol");
+            }else{
+                ui->label_4->setText("Good first symbol");
             }
 
-        //}
+        }
 
     }
     //ѕерва€ буква введенного = последней слова компа?
