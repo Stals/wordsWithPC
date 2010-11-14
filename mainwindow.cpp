@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "findword.h"
+findWord fw;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -37,6 +38,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //делаем lowercase
     updateLabels();
+
     if(ui->playerWordForm->text()!=""){
         QString test=ui->playerWordForm->text().toLocal8Bit();
         playerWord=test.toStdString();
@@ -45,15 +47,19 @@ void MainWindow::on_pushButton_clicked()
             //проверим совпадает ли первая буква слова игрока с последней в слове компа
             if((playerWord[0])!=pcWord[pcWord.size()-1]){
                 ui->label_4->setText("Wrong first symbol");
+
             }else{
                 ui->label_4->setText("Good first symbol");
             }
 
         }
 
-    }
-    //Первая буква введенного = последней слова компа?
+        pcWord=fw.findRandomWord(playerWord[playerWord.size()-1]);
 
+
+    }
+updateLabels();
+ui->playerWordForm->clear();
 
 
     //Есть ли слово в скиске уже использованных?
