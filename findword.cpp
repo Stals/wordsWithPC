@@ -8,7 +8,7 @@ std::string findWord::findRandomWord(char firstLetter){
 
     switch (firstLetter){
     case 'а':
-        return "арбуг";
+        return "арбуз";
         break;
     case 'б':
 
