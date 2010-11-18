@@ -36,21 +36,22 @@ void findWord::usedWord(char firstLetter,std::string playerWord){
 
 }
 
-std::string findWord::findRandomWord(char firstLetter,std::string playerWord){
+std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
 
-        usedWord(firstLetter,playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+        //usedWord(firstLetter,playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+        std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
 
-    switch (firstLetter){
-    case 'а':
-        return "арбуз";
-        break;
-    case 'б':
+        for(;mapIter!=dictionary.end();++mapIter){
+            if((*mapIter).first[0]==lastLetter){//нашли тот символ ,на который кончается слово  игрока
+                std::list<std::string>::iterator it = (*mapIter).second.begin();
+                return (*it);
+
+            }
+
+        }
 
 
-        return "банан";
-        break;
 
-    }
-return "нетуслова";
+   //добавить если нету слова
 
 }

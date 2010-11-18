@@ -10,7 +10,7 @@ class findWord
 {
 public:
     findWord();
-    std::string findRandomWord(char firstLetter, std::string playerWord);//ищет случайное слово в словарях
+    std::string findRandomWord(char lastLetter, std::string playerWord);//ищет случайное слово в словарях
 
 private:
     void loadDicts();//загружает словари из файликов  в map - dictionary
@@ -20,5 +20,6 @@ private:
        std::list<std::string> singleDict;//словарб на 1 букву записывается сначала сюда
        std::list<std::string> usedWords;//список уже использованных слов
 };
-
+//*mapIter).first; -это буква на которую в словаре начинаются слова
+// (*mapIter).second; - это список слов, при этом к отдельному нужно обращаться итератором
 #endif // FINDWORD_H
