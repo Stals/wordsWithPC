@@ -15,7 +15,7 @@ public:
 private:
     void loadDicts();//загружает словари из файликов  в map - dictionary
 
-        void usedWord(std::string playerWord);//Добавляет слово в usedWords и убирает его из dictionary ,если оно там есть
+        void usedWord(std::string Word);//Добавляет слово в usedWords и убирает его из dictionary ,если оно там есть
        std::map<std::string,std::list<std::string> > dictionary;//тут хранаятся все возможные варианты ответа компа
        std::list<std::string> singleDict;//словарб на 1 букву записывается сначала сюда
        std::list<std::string> usedWords;//список уже использованных слов

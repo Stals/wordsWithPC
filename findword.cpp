@@ -1,5 +1,5 @@
 #include "findword.h"
-#include <qstring.h>
+
 findWord::findWord()
 {
     loadDicts();
@@ -27,12 +27,23 @@ void findWord::loadDicts(){
       }
 
 }
-void findWord::usedWord(std::string playerWord){
+void findWord::usedWord(std::string Word){
 //добавляем в usedWords
-    usedWords.push_back(playerWord);
+    usedWords.push_back(Word);
      //TODO:
   //убираем из dictionary ,если там оно есть
+     std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
+    for(;mapIter!=dictionary.end();++mapIter){
+        if((*mapIter).first[0]==Word[0]){//если в словаре есть словарь на эту букву
+            //убираем это слово,если есть***
+            (*mapIter).second.remove(Word);
 
+
+
+            break;
+        }
+
+    }
 
 }
 
