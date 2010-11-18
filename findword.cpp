@@ -27,7 +27,7 @@ void findWord::loadDicts(){
       }
 
 }
-void findWord::usedWord(char firstLetter,std::string playerWord){
+void findWord::usedWord(std::string playerWord){
 //добавляем в usedWords
     usedWords.push_back(playerWord);
      //TODO:
@@ -38,12 +38,13 @@ void findWord::usedWord(char firstLetter,std::string playerWord){
 
 std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
 
-        //usedWord(firstLetter,playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+        usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
         std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
 
         for(;mapIter!=dictionary.end();++mapIter){
             if((*mapIter).first[0]==lastLetter){//нашли тот символ ,на который кончается слово  игрока
                 std::list<std::string>::iterator it = (*mapIter).second.begin();
+                usedWord((*it));
                 return (*it);
 
             }
