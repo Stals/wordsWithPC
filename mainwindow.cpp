@@ -56,7 +56,7 @@ void MainWindow::on_pushButton_clicked()
              ui->label_4->setText("Good first word");
         }
 
-        pcWord=fw.findRandomWord(playerWord[playerWord.size()-1]);
+        pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
 
 
     }else{//нажал ок но ничего не ввел
