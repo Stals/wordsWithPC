@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "findword.h"
+#include <windows.h>
 findWord fw;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -70,9 +71,14 @@ void MainWindow::on_pushButton_clicked()
 
     }
     end:
+
+
 updateLabels();
 ui->playerWordForm->clear();
 
-
+if(pcWord=="YOU WIN"){
+    //TODO:
+//сообщаем игроку и при нажатии OK выходим
+}
     //Есть ли слово в скиске уже использованных?
 }

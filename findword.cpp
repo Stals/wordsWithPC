@@ -30,12 +30,12 @@ void findWord::loadDicts(){
 void findWord::usedWord(std::string Word){
 //добавляем в usedWords
     usedWords.push_back(Word);
-     //TODO:
+
   //убираем из dictionary ,если там оно есть
      std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
     for(;mapIter!=dictionary.end();++mapIter){
         if((*mapIter).first[0]==Word[0]){//если в словаре есть словарь на эту букву
-            //убираем это слово,если есть***
+            //убираем это слово,если есть
             (*mapIter).second.remove(Word);
 
 
@@ -55,15 +55,21 @@ std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
         for(;mapIter!=dictionary.end();++mapIter){
             if((*mapIter).first[0]==lastLetter){//нашли тот символ ,на который кончается слово  игрока
                 std::list<std::string>::iterator it = (*mapIter).second.begin();
+                if((*mapIter).second.size()!=0){
+                //TODO: выбор случайного
                 usedWord((*it));
                 return (*it);
+
+            }else{
+                return "YOU WIN";
+            }
 
             }
 
         }
 
 
-
+        //TODO:
    //добавить если нету слова
 
 }
