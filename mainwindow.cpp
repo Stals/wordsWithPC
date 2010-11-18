@@ -39,9 +39,10 @@ void MainWindow::on_pushButton_clicked()
     //делаем lowercase
     updateLabels();
 
-    if(ui->playerWordForm->text()!=""){
+    if(ui->playerWordForm->text()!=""){//если хоть что то ввел то дальше идём
         QString test=ui->playerWordForm->text().toLocal8Bit();
         playerWord=test.toStdString();
+        if(fw.checkUsed(playerWord)){
 
         if(pcWord!=""){//для любого хода кроме первого
             //проверим совпадает ли первая буква слова игрока с последней в слове компа
@@ -60,6 +61,9 @@ void MainWindow::on_pushButton_clicked()
        }else{
             pcWord=fw.findRandomWord(playerWord[playerWord.size()-2],playerWord);
        }
+   }else{//слово уже использовалось
+    ui->label_4->setText("Already used word");
+   }
 
     }else{//нажал ок но ничего не ввел
          ui->label_4->setText("Write somthing first");

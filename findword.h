@@ -11,7 +11,7 @@ class findWord
 public:
     findWord();
     std::string findRandomWord(char lastLetter, std::string playerWord);//ищет случайное слово в словарях
-
+    bool checkUsed(std::string playerWord);//true если такого слова не использовалось
 private:
     void loadDicts();//загружает словари из файликов  в map - dictionary
 

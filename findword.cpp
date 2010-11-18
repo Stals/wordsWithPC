@@ -67,3 +67,17 @@ std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
    //добавить если нету слова
 
 }
+
+bool findWord::checkUsed(std::string playerWord){
+    for(std::list<std::string>::iterator it=usedWords.begin();it!=usedWords.end();++it){
+
+        if((*it)==playerWord){//слово уже было
+            return false;
+        }
+
+    }
+    //если за весь список не встретил такого слово- говорим что оно еще не использовалось
+return true;
+
+
+}
