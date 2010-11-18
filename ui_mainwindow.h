@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 9. Nov 22:30:22 2010
+** Created: Thu 18. Nov 13:32:50 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -50,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(256, 156);
+        MainWindow->resize(256, 158);
         action = new QAction(MainWindow);
         action->setObjectName(QString::fromUtf8("action"));
         action->setCheckable(true);
@@ -133,10 +133,10 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         action->setText(QApplication::translate("MainWindow", "\320\241\320\273\321\203\321\207\320\260\320\271\320\275\320\276", 0, QApplication::UnicodeUTF8));
         action_2->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\265\321\201\321\201", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("MainWindow", "\320\247\321\202\320\276\320\261\321\213 \320\275\320\260\321\207\320\260\321\202\321\214 \320\262\320\262\320\265\320\264\320\270\321\202\320\265 \320\277\320\265\321\200\320\262\320\276\320\265 \321\201\320\273\320\276\320\262\320\276", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276: ", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 0 \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("MainWindow", "TextLabel", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("MainWindow", "\320\247\321\202\320\276\320\261\321\213 \320\275\320\260\321\207\320\260\321\202\321\214 \320\262\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\320\273\320\276\320\262\320\276 \320\270 \320\275\320\260\320\266\320\270\321\202\320\265 \"OK\"", 0, QApplication::UnicodeUTF8));
         menuGkj->setTitle(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

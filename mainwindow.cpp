@@ -52,10 +52,15 @@ void MainWindow::on_pushButton_clicked()
                 ui->label_4->setText("Good first symbol");
             }
 
+        }else{//игрок ввел первое слово
+             ui->label_4->setText("Good first word");
         }
 
         pcWord=fw.findRandomWord(playerWord[playerWord.size()-1]);
 
+
+    }else{//нажал ок но ничего не ввел
+         ui->label_4->setText("Write somthing first");
 
     }
 updateLabels();
