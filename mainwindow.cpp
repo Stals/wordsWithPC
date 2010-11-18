@@ -48,7 +48,7 @@ void MainWindow::on_pushButton_clicked()
             //проверим совпадает ли первая буква слова игрока с последней в слове компа
             if((playerWord[0])!=pcWord[pcWord.size()-1]){
                 ui->label_4->setText("Wrong first symbol");
-
+                goto end;
             }else{
                 ui->label_4->setText("Good first symbol");
             }
@@ -69,6 +69,7 @@ void MainWindow::on_pushButton_clicked()
          ui->label_4->setText("Write somthing first");
 
     }
+    end:
 updateLabels();
 ui->playerWordForm->clear();
 
