@@ -55,9 +55,11 @@ void MainWindow::on_pushButton_clicked()
         }else{//игрок ввел первое слово
              ui->label_4->setText("Good first word");
         }
-
-        pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
-
+        if((playerWord[playerWord.size()-1]!='ы')&&(playerWord[playerWord.size()-1]!='ъ')&&(playerWord[playerWord.size()-1]!='ь')){
+           pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
+       }else{
+            pcWord=fw.findRandomWord(playerWord[playerWord.size()-2],playerWord);
+       }
 
     }else{//нажал ок но ничего не ввел
          ui->label_4->setText("Write somthing first");
