@@ -48,13 +48,6 @@
        </layout>
       </item>
       <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>Вы ввели 0 слов</string>
@@ -65,9 +58,24 @@
        </widget>
       </item>
       <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Yota InterFace</family>
+         </font>
+        </property>
         <property name="text">
          <string>Чтобы начать введите слово и нажите &quot;OK&quot;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>

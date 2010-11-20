@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat 20. Nov 15:11:03 2010
+** Created: Sat 20. Nov 17:57:59 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,8 +40,8 @@ public:
     QVBoxLayout *verticalLayout;
     QLineEdit *playerWordForm;
     QPushButton *pushButton;
-    QFrame *line;
     QLabel *label_3;
+    QFrame *line;
     QLabel *label_4;
     QMenuBar *menuBar;
     QMenu *menuGkj;
@@ -92,6 +92,12 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_3);
+
         line = new QFrame(centralWidget);
         line->setObjectName(QString::fromUtf8("line"));
         line->setFrameShape(QFrame::HLine);
@@ -99,14 +105,12 @@ public:
 
         verticalLayout_2->addWidget(line);
 
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_2->addWidget(label_3);
-
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Yota InterFace"));
+        label_4->setFont(font);
+        label_4->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_4);
 

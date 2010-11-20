@@ -47,6 +47,8 @@ void MainWindow::on_pushButton_clicked()
     if(ui->playerWordForm->text()!=""){//если хоть что то ввел то дальше идём
         QString test=ui->playerWordForm->text().toLocal8Bit();
         playerWord=test.toStdString();
+        //как минимум слово из 2 букв
+        if(playerWord.size()>=2){
        cases c;
        //проверим является ли последняя буква игрок русской
        if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
@@ -63,14 +65,14 @@ void MainWindow::on_pushButton_clicked()
 
              //проверим совпадает ли первая буква слова игрока с последней в слове компа
             if((playerWord[0])!=pcLastLetter){
-                ui->label_4->setText("Wrong first symbol");
+               ui->label_4->setText(QString::fromLocal8Bit("Неправильный первый символ"));
                 goto end;
             }else{
-                ui->label_4->setText("Good first symbol");
+               ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
             }
 
         }else{//игрок ввел первое слово
-             ui->label_4->setText("Good first word");
+             ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
         }
         if((playerWord[playerWord.size()-1]!='ы')&&(playerWord[playerWord.size()-1]!='ъ')&&(playerWord[playerWord.size()-1]!='ь')){
            pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
@@ -79,14 +81,20 @@ void MainWindow::on_pushButton_clicked()
        }
        ++wordsCount;
    }else{//слово уже использовалось
-    ui->label_4->setText("Already used word");
+    ui->label_4->setText(QString::fromLocal8Bit("Это слово уже использовалось"));
    }
 }else{//буква не русская (большая или маленькая)
 
-     ui->label_4->setText("Not russian word");
+    ui->label_4->setText(QString::fromLocal8Bit("Не русское слово"));
 }
+
+}else{
+
+ui->label_4->setText(QString::fromLocal8Bit("Слишком короткое слово"));
+}
+
     }else{//нажал ок но ничего не ввел
-         ui->label_4->setText("Write somthing first");
+        ui->label_4->setText(QString::fromLocal8Bit("Сначала что-нибудь напишите"));
 
     }
     end:
