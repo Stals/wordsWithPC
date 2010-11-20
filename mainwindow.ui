@@ -37,6 +37,12 @@
           <property name="text">
            <string>OK</string>
           </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -112,5 +118,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>playerWordForm</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

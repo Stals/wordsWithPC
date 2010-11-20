@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QEvent>
+#include <QPushButton>
 #include <string>
 #include <iostream>
 #include <list>
@@ -30,6 +32,8 @@ private:
     void updateLabels();
 private slots:
     void on_pushButton_clicked();
+
+
 };
 
 #endif // MAINWINDOW_H

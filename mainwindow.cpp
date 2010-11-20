@@ -28,6 +28,7 @@ void MainWindow::changeEvent(QEvent *e)
         break;
     }
 }
+
 void MainWindow::updateLabels(){
     //обновим слово компа
     ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
@@ -46,8 +47,12 @@ void MainWindow::on_pushButton_clicked()
         if(fw.checkUsed(playerWord)){
 
         if(pcWord!=""){//дл€ любого хода кроме первого
+            char pcLastLetter = pcWord[pcWord.size()-1];
+            if(pcLastLetter=='ы'||pcLastLetter=='ь'||pcLastLetter=='ъ'){
+                pcLastLetter = pcWord[pcWord.size()-2];
+            }
             //проверим совпадает ли перва€ буква слова игрока с последней в слове компа
-            if((playerWord[0])!=pcWord[pcWord.size()-1]){
+            if((playerWord[0])!=pcLastLetter){
                 ui->label_4->setText("Wrong first symbol");
                 goto end;
             }else{
@@ -73,7 +78,7 @@ void MainWindow::on_pushButton_clicked()
     }
     end:
 
-
+ui->playerWordForm->setFocus();
 updateLabels();
 ui->playerWordForm->clear();
 
@@ -83,3 +88,4 @@ if(pcWord=="YOU WIN"){
 }
     //≈сть ли слово в скиске уже использованных?
 }
+//Qt::Key_Enter
