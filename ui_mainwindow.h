@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat 20. Nov 17:57:59 2010
+** Created: Sat 20. Nov 18:43:33 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -20,8 +20,6 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -43,14 +41,12 @@ public:
     QLabel *label_3;
     QFrame *line;
     QLabel *label_4;
-    QMenuBar *menuBar;
-    QMenu *menuGkj;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(256, 158);
+        MainWindow->resize(256, 137);
         action = new QAction(MainWindow);
         action->setObjectName(QString::fromUtf8("action"));
         action->setCheckable(true);
@@ -118,16 +114,6 @@ public:
         gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 256, 21));
-        menuGkj = new QMenu(menuBar);
-        menuGkj->setObjectName(QString::fromUtf8("menuGkj"));
-        MainWindow->setMenuBar(menuBar);
-
-        menuBar->addAction(menuGkj->menuAction());
-        menuGkj->addAction(action);
-        menuGkj->addAction(action_2);
 
         retranslateUi(MainWindow);
         QObject::connect(playerWordForm, SIGNAL(returnPressed()), pushButton, SLOT(click()));
@@ -144,7 +130,6 @@ public:
         pushButton->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 0 \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("MainWindow", "\320\247\321\202\320\276\320\261\321\213 \320\275\320\260\321\207\320\260\321\202\321\214 \320\262\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\320\273\320\276\320\262\320\276 \320\270 \320\275\320\260\320\266\320\270\321\202\320\265 \"OK\"", 0, QApplication::UnicodeUTF8));
-        menuGkj->setTitle(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
