@@ -1,1 +1,4 @@
-This programm will let you play "words" against PC. Now i am planning only about russian but i think English wouldn't be a big problem.
+Игра "Слова"
+Некоторые особенности:
+-Вводить слово можно при нажатии Enter или нажатии кнопки "OK"
+-Если последняя буква слов ъ ь или ы ваше слово должно начинаться на предпоследную букву
