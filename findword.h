@@ -6,6 +6,8 @@
 #include <map>
 #include <fstream>
 #include <vector>
+#include <time.h>//for random
+#include <stdlib.h>
 class findWord
 {
 public:
@@ -20,6 +22,6 @@ private:
        std::list<std::string> singleDict;//словарб на 1 букву записывается сначала сюда
        std::list<std::string> usedWords;//список уже использованных слов
 };
-//*mapIter).first; -это буква на которую в словаре начинаются слова
+//*mapIter).first[0]; -это буква на которую в словаре начинаются слова
 // (*mapIter).second; - это список слов, при этом к отдельному нужно обращаться итератором
 #endif // FINDWORD_H

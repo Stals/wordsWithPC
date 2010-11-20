@@ -62,6 +62,7 @@ void MainWindow::on_pushButton_clicked()
        }else{
             pcWord=fw.findRandomWord(playerWord[playerWord.size()-2],playerWord);
        }
+       ++wordsCount;
    }else{//слово уже использовалось
     ui->label_4->setText("Already used word");
    }
