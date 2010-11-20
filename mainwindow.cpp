@@ -53,9 +53,16 @@ void MainWindow::on_pushButton_clicked()
        //проверим является ли последняя буква игрок русской
        if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
         playerWord=c.lowerCase(playerWord);
+        //делаем из ё -> е
+        if(playerWord[playerWord.size()-1]=='ё'){
+            playerWord[playerWord.size()-1]='е';
+        }
+        //делаем из й -> и
+        if(playerWord[playerWord.size()-1]=='й'){
+            playerWord[playerWord.size()-1]='и';
+        }
 
-
-        if(fw.checkUsed(playerWord)){
+        if(fw.checkUsed(playerWord)){//проверка - не использованлось ли уже слово
 
         if(pcWord!=""){//для любого хода кроме первого
             char pcLastLetter = pcWord[pcWord.size()-1];
@@ -64,11 +71,17 @@ void MainWindow::on_pushButton_clicked()
             }
 
              //проверим совпадает ли первая буква слова игрока с последней в слове компа
-            if((playerWord[0])!=pcLastLetter){
-               ui->label_4->setText(QString::fromLocal8Bit("Неправильный первый символ"));
-                goto end;
+            if((playerWord[0])==pcLastLetter){
+                ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+            }else if((playerWord[0]=='и'&&pcLastLetter=='й')||(playerWord[0]=='й'&&pcLastLetter=='и')){
+                 ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+
+             }else if((playerWord[0]=='е'&&pcLastLetter=='ё')||(playerWord[0]=='ё'&&pcLastLetter=='е')){
+                 ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
             }else{
-               ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+                ui->label_4->setText(QString::fromLocal8Bit("Неправильный первый символ"));
+                 goto end;
+
             }
 
         }else{//игрок ввел первое слово
