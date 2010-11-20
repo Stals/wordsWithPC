@@ -149,6 +149,20 @@ std::string cases::lowerCase(std::string word){
 return word;
 
 }
+std::string cases::upperCase(std::string word){
+
+    for(int i=0;i<word.size();++i){
+           for(std::vector <Case>::iterator it=caseList.begin();it!=caseList.end();++it){
+               if(word[i]==(*it).low){
+                    word[i]=(*it).up;
+               }
+
+           }
+    }
+
+return word;
+
+}
 bool cases::rusLetter(char letter){
     bool check=false;
     for(std::vector <Case>::iterator it=caseList.begin();it!=caseList.end();++it){
@@ -156,11 +170,8 @@ bool cases::rusLetter(char letter){
             return true;
 
         }
-
-
     }
     //если мы сюда дошли значит во всём словаре нет такой буквы
     return false;
-
 
 }
