@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "findword.h"
 #include <windows.h>
+
+
 findWord fw;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,6 +31,7 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
+
 void MainWindow::updateLabels(){
     //обновим слово компа
     ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
@@ -44,6 +47,12 @@ void MainWindow::on_pushButton_clicked()
     if(ui->playerWordForm->text()!=""){//если хоть что то ввел то дальше идём
         QString test=ui->playerWordForm->text().toLocal8Bit();
         playerWord=test.toStdString();
+       cases c;
+       //проверим является ли последняя буква игрок русской
+       if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
+        playerWord=c.lowerCase(playerWord);
+
+
         if(fw.checkUsed(playerWord)){
 
         if(pcWord!=""){//для любого хода кроме первого
@@ -51,7 +60,8 @@ void MainWindow::on_pushButton_clicked()
             if(pcLastLetter=='ы'||pcLastLetter=='ь'||pcLastLetter=='ъ'){
                 pcLastLetter = pcWord[pcWord.size()-2];
             }
-            //проверим совпадает ли первая буква слова игрока с последней в слове компа
+
+             //проверим совпадает ли первая буква слова игрока с последней в слове компа
             if((playerWord[0])!=pcLastLetter){
                 ui->label_4->setText("Wrong first symbol");
                 goto end;
@@ -71,7 +81,10 @@ void MainWindow::on_pushButton_clicked()
    }else{//слово уже использовалось
     ui->label_4->setText("Already used word");
    }
+}else{//буква не русская (большая или маленькая)
 
+     ui->label_4->setText("Not russian word");
+}
     }else{//нажал ок но ничего не ввел
          ui->label_4->setText("Write somthing first");
 

@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 #include <list>
-
+#include "cases.h"
 namespace Ui {
     class MainWindow;
 }
