@@ -17,6 +17,11 @@ public:
     check();
     void playerWord(const std::string&,const std::string&,cases&,charFunc&);
     status statusNum;
+
+private:
+    char playerFirstLetter;
+    char playerLastLetter;
+    char pcLastLetter;
 };
 
 #endif // CHECK_H

@@ -57,27 +57,7 @@ void MainWindow::showCondition(const std::string str){
 
 }
 
-char MainWindow::getLastLetter(const std::string str){
 
-        char last=str[str.size()-1];//последний символ
-        if(last=='ы'||last=='ь'||last=='ъ'){
-                return last=str[str.size()-2];
-        }else return last;
-}
-
-void MainWindow::changeChar(char& letter){
-
-        //делаем из ё -> е
-        if(letter=='ё'){
-                letter='е';
-        }
-        //делаем из й -> и
-        if(letter=='й'){
-                letter='и';
-        }
-
-
-}
 void MainWindow::on_pushButton_clicked()
 
 {
@@ -94,12 +74,12 @@ void MainWindow::on_pushButton_clicked()
 
                         //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
                         playerFirstLetter=c.lowerCase(playerWord[0]);
-                        playerLastLetter=c.lowerCase(getLastLetter(playerWord));
-                        pcLastLetter=c.lowerCase(getLastLetter(pcWord));
+                        playerLastLetter=c.lowerCase(cf.getLastLetter(playerWord));
+                        pcLastLetter=c.lowerCase(cf.getLastLetter(pcWord));
 
                         //ё->е й->и так как они считаются одним и темже
-                        changeChar(playerFirstLetter);
-                        changeChar(playerLastLetter);
+                        cf.changeChar(playerFirstLetter);
+                        cf.changeChar(playerLastLetter);
 
 
                         //проверим является ли последняя буква игрока русской
