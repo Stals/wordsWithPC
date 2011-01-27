@@ -5,6 +5,7 @@
 
 
 findWord fw;
+cases c;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -45,20 +46,24 @@ std::string MainWindow::getPlayerWord(){
     QString test=ui->playerWordForm->text().toLocal8Bit();
     return test.toStdString();
 }
+void MainWindow::showCondition(std::string str){
+
+ ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
+}
 void MainWindow::on_pushButton_clicked()
 {
     //обновляем
     updateLabels();
 
     //Переводим слово в строку
-      playerWord=getPlayerWord();
+    playerWord=getPlayerWord();
 
 
     if(ui->playerWordForm->text()!=""){//если хоть что то ввел то дальше идём
 
-        //как минимум слово из 2 букв
-        if(playerWord.size()>=2){
-       cases c;
+       //как минимум слово из 2 букв
+       if(playerWord.size()>=2){
+
        //проверим является ли последняя буква игрока русской
        if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
            //делаем lowercase
@@ -82,20 +87,20 @@ void MainWindow::on_pushButton_clicked()
 
              //проверим совпадает ли первая буква слова игрока с последней в слове компа
             if((playerWord[0])==pcLastLetter){
-                ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+                showCondition("Правильный ввод");
             }else if((playerWord[0]=='и'&&pcLastLetter=='й')||(playerWord[0]=='й'&&pcLastLetter=='и')){
-                 ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+                 showCondition("Правильный ввод");
 
              }else if((playerWord[0]=='е'&&pcLastLetter=='ё')||(playerWord[0]=='ё'&&pcLastLetter=='е')){
-                 ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+                 showCondition("Правильный ввод");
             }else{
-                ui->label_4->setText(QString::fromLocal8Bit("Неправильный первый символ"));
+                 showCondition("Неправильный первый символ");
                  goto end;
 
             }
 
         }else{//игрок ввел первое слово
-             ui->label_4->setText(QString::fromLocal8Bit("Правильный ввод"));
+             showCondition("Правильный ввод");
         }
         if((playerWord[playerWord.size()-1]!='ы')&&(playerWord[playerWord.size()-1]!='ъ')&&(playerWord[playerWord.size()-1]!='ь')){
            pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
@@ -106,20 +111,20 @@ void MainWindow::on_pushButton_clicked()
        }
        ++wordsCount;
    }else{//слово уже использовалось
-    ui->label_4->setText(QString::fromLocal8Bit("Это слово уже использовалось"));
+     showCondition("Это слово уже использовалось");
    }
 }else{//буква не русская (большая или маленькая)
 
-    ui->label_4->setText(QString::fromLocal8Bit("Не русское слово"));
+     showCondition("Не русское слово");
 }
 
 }else{
 
-ui->label_4->setText(QString::fromLocal8Bit("Слишком короткое слово"));
+ showCondition("Слишком короткое слово");
 }
 
     }else{//нажал ок но ничего не ввел
-        ui->label_4->setText(QString::fromLocal8Bit("Сначала что-нибудь напишите"));
+        showCondition("Сначала что-нибудь напишите");
 
     }
     end:

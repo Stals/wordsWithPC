@@ -30,7 +30,8 @@ private:
     int wordsCount;
 
     void updateLabels();
-    std::string getPlayerWord();
+    std::string getPlayerWord();            //Конвертирует слово из Qstring в std::string
+    void showCondition(std::string str);    //Выводит str в строке состояния
 private slots:
     void on_pushButton_clicked();
 
