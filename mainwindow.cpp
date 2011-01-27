@@ -91,6 +91,7 @@ void MainWindow::on_pushButton_clicked()
         if(pcWord=="YOU WIN"){
                 //TODO:
                 //сообщаем игроку и при нажатии OK выходим
+
         }
         //Есть ли слово в скиске уже использованных?
 }

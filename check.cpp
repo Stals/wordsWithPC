@@ -43,7 +43,7 @@ std::string check::stringStatus(){
          return "Неправильный первый символ";
          break;
     case UsedWord:
-         return "Слово уже было использованно";
+         return "Это слово уже использовалось";
          break;
     case NotRusWord:
          return "Не русское слово";
