@@ -4,17 +4,19 @@
 #include "cases.h"
 #include "charFuncs.h"
 enum status{
-OK,             //Ввод нормальный
-WrongFirstLetter,//Неправильный первый символ
-UsedWord,       //Слово уже исспользовалось
-NotRusWord,     //Не русское слово
-TooShortWord,   //Слишком короткое слово
-NoWord          //Слово 0 длинны
+    OK,             //Ввод нормальный
+    WrongFirstLetter,//Неправильный первый символ
+    UsedWord,       //Слово уже исспользовалось
+    NotRusWord,     //Не русское слово
+    TooShortWord,   //Слишком короткое слово
+    NoWord          //Слово 0 длинны
 };
 class check
 {
 public:
-    void playerWord(std::string,std::string,cases,charFunc);
+    check();
+    void playerWord(const std::string&,const std::string&,cases&,charFunc&);
+    status statusNum;
 };
 
 #endif // CHECK_H

@@ -1,6 +1,9 @@
 #include "check.h"
 
-void check::playerWord(std::string,std::string,cases,charFunc){
+check::check(){
+    statusNum=OK;
+}
+void check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,charFunc& cf){
 
 
 
