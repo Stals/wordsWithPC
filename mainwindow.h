@@ -30,6 +30,7 @@ private:
     int wordsCount;
 
     void updateLabels();
+    std::string getPlayerWord();
 private slots:
     void on_pushButton_clicked();
 

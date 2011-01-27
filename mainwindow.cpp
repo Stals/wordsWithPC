@@ -39,19 +39,29 @@ void MainWindow::updateLabels(){
      //обновим число раз сколько вводили
     ui->label_3->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
        }
+
+
+std::string MainWindow::getPlayerWord(){
+    QString test=ui->playerWordForm->text().toLocal8Bit();
+    return test.toStdString();
+}
 void MainWindow::on_pushButton_clicked()
 {
-    //делаем lowercase
+    //обновляем
     updateLabels();
 
+    //Переводим слово в строку
+      playerWord=getPlayerWord();
+
+
     if(ui->playerWordForm->text()!=""){//если хоть что то ввел то дальше идём
-        QString test=ui->playerWordForm->text().toLocal8Bit();
-        playerWord=test.toStdString();
+
         //как минимум слово из 2 букв
         if(playerWord.size()>=2){
        cases c;
        //проверим является ли последняя буква игрока русской
        if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
+           //делаем lowercase
         playerWord=c.lowerCase(playerWord);
         //делаем из ё -> е
         if(playerWord[playerWord.size()-1]=='ё'){
@@ -89,8 +99,10 @@ void MainWindow::on_pushButton_clicked()
         }
         if((playerWord[playerWord.size()-1]!='ы')&&(playerWord[playerWord.size()-1]!='ъ')&&(playerWord[playerWord.size()-1]!='ь')){
            pcWord=fw.findRandomWord(playerWord[playerWord.size()-1],playerWord);
+           fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
        }else{
             pcWord=fw.findRandomWord(playerWord[playerWord.size()-2],playerWord);
+            fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
        }
        ++wordsCount;
    }else{//слово уже использовалось

@@ -13,11 +13,12 @@ class findWord
 public:
     findWord();
     std::string findRandomWord(char lastLetter, std::string playerWord);//ищет случайное слово в словарях
+    void usedWord(std::string Word);//Добавляет слово в usedWords и убирает его из dictionary ,если оно там есть
     bool checkUsed(std::string playerWord);//true если такого слова не использовалось
 private:
     void loadDicts();//загружает словари из файликов  в map - dictionary
 
-        void usedWord(std::string Word);//Добавляет слово в usedWords и убирает его из dictionary ,если оно там есть
+
        std::map<std::string,std::list<std::string> > dictionary;//тут хранаятся все возможные варианты ответа компа
        std::list<std::string> singleDict;//словарь на 1 букву записывается сначала сюда
        std::list<std::string> usedWords;//список уже использованных слов

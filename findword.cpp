@@ -50,14 +50,14 @@ void findWord::usedWord(std::string Word){
 std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
 srand(time(NULL));
 
-        usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+
         std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
 
         for(;mapIter!=dictionary.end();++mapIter){
             if((*mapIter).first[0]==lastLetter){//нашли тот символ ,на который кончается слово  игрока
                 std::list<std::string>::iterator it = (*mapIter).second.begin();
                 if((*mapIter).second.size()!=0){
-                    for(int i=0;i<rand()%(*mapIter).second.size();++i){
+                    for(unsigned int i=0;i<rand()%(*mapIter).second.size();++i){
                         ++it;
                     }
                 //TODO: выбор случайного
@@ -75,7 +75,7 @@ srand(time(NULL));
 
         //TODO:
    //добавить если нету слова
-
+return "YOU WIN";
 }
 
 bool findWord::checkUsed(std::string playerWord){
