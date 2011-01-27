@@ -149,6 +149,15 @@ std::string cases::lowerCase(std::string word){
 return word;
 
 }
+char cases::lowerCase(char letter){
+    for(std::vector <Case>::iterator it=caseList.begin();it!=caseList.end();++it){
+        if(letter==(*it).up){
+             letter=(*it).low;
+        }
+    }
+return letter;
+}
+
 std::string cases::upperCase(std::string word){
 
     for(int i=0;i<word.size();++i){

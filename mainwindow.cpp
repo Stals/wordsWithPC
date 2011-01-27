@@ -89,12 +89,15 @@ void MainWindow::on_pushButton_clicked()
                 //как минимум слово из 2 букв
                 if(playerWord.size()>=2){
 
-                        //Получим Последую букву Игрока и компа
-                        playerLastLetter=getLastLetter(playerWord);
-                        pcLastLetter=getLastLetter(pcWord);
+                        //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
+                        playerFirstLetter=c.lowerCase(playerWord[0]);
+                        playerLastLetter=c.lowerCase(getLastLetter(playerWord));
+                        pcLastLetter=c.lowerCase(getLastLetter(pcWord));
 
-                        playerWord=c.lowerCase(playerWord); //делаем lowercase
-                        changeChar(playerLastLetter); //ё->е й->и
+                        //ё->е й->и так как они считаются одним и темже
+                        changeChar(playerFirstLetter);
+                        changeChar(playerLastLetter);
+
 
                         //проверим является ли последняя буква игрока русской
                         if(c.rusLetter(playerLastLetter)){
@@ -105,12 +108,12 @@ void MainWindow::on_pushButton_clicked()
 
 
                                                 //проверим совпадает ли первая буква слова игрока с последней в слове компа
-                                                if((playerWord[0])==pcLastLetter){
+                                                if( playerFirstLetter==pcLastLetter){
                                                         showCondition("Правильный ввод");
-                                                }else if((playerWord[0]=='и'&&pcLastLetter=='й')||(playerWord[0]=='й'&&pcLastLetter=='и')){
+                                                }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
                                                         showCondition("Правильный ввод");
 
-                                                }else if((playerWord[0]=='е'&&pcLastLetter=='ё')||(playerWord[0]=='ё'&&pcLastLetter=='е')){
+                                                }else if(( playerFirstLetter=='е'&&pcLastLetter=='ё')){
                                                         showCondition("Правильный ввод");
                                                 }else{
                                                         showCondition("Неправильный первый символ");
@@ -122,9 +125,10 @@ void MainWindow::on_pushButton_clicked()
                                                 showCondition("Правильный ввод");
                                         }
 
-                                        pcWord=fw.findRandomWord(playerLastLetter,playerWord);//Получаем случайное слово в pcWord
+                                        pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
                                         fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
                                         ++wordsCount;
+
                                 }else{//слово уже использовалось
                                         showCondition("Это слово уже использовалось");
                                 }

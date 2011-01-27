@@ -47,7 +47,7 @@ void findWord::usedWord(std::string Word){
 
 }
 
-std::string findWord::findRandomWord(char lastLetter,std::string playerWord){
+std::string findWord::findRandomWord(char lastLetter){
 srand(time(NULL));
 
 

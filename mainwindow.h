@@ -27,6 +27,7 @@ private:
     std::string pcWord;//для хранения и дальнейшего вывода слова компа
     char pcLastLetter;
     std::string playerWord;
+    char playerFirstLetter;
     char playerLastLetter;
 
     int wordsCount;

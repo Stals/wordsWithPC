@@ -12,6 +12,7 @@ class cases
 public:
     cases();
     std::string lowerCase(std::string word);
+    char lowerCase(char);
     std::string upperCase(std::string word);
     bool rusLetter(char letter);//возвращает true если буква русская
 private:
