@@ -164,7 +164,7 @@ return word;
 
 }
 bool cases::rusLetter(char letter){
-    bool check=false;
+
     for(std::vector <Case>::iterator it=caseList.begin();it!=caseList.end();++it){
         if(letter==(*it).up||letter==(*it).low){
             return true;

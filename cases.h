@@ -15,7 +15,7 @@ public:
     std::string upperCase(std::string word);
     bool rusLetter(char letter);//возвращает true если буква русская
 private:
-    std::vector <Case> caseList;
+    std::vector <Case> caseList; //Список всех букв русского языка
 };
 
 #endif // CASES_H

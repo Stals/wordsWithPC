@@ -50,7 +50,7 @@ void MainWindow::on_pushButton_clicked()
         //как минимум слово из 2 букв
         if(playerWord.size()>=2){
        cases c;
-       //проверим является ли последняя буква игрок русской
+       //проверим является ли последняя буква игрока русской
        if((c.rusLetter(playerWord[playerWord.size()-1]))&&(c.rusLetter(playerWord[playerWord.size()-2]))){
         playerWord=c.lowerCase(playerWord);
         //делаем из ё -> е
