@@ -4,11 +4,12 @@
 #include <windows.h>
 #include "charFuncs.h"
 #include "findword.h"
+#include "check.h"
 
 findWord fw;
 cases c;
 charFunc cf;
-
+check check;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -67,69 +68,21 @@ void MainWindow::on_pushButton_clicked()
         //Переводим слово в строку
         playerWord=getPlayerWord();
 
-        if(playerWord!=""){//если хоть что то ввел то дальше идём
+        //Получим Необходимый нам символы, а заодно приведём его к нижнему регистру
+        playerLastLetter=c.lowerCase(cf.getLastLetter(playerWord));
 
-                //как минимум слово из 2 букв
-                if(playerWord.size()>=2){
+        //ё->е й->и так как они считаются одним и темже
+        cf.changeChar(playerLastLetter);
 
-                        //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
-                        playerFirstLetter=c.lowerCase(playerWord[0]);
-                        playerLastLetter=c.lowerCase(cf.getLastLetter(playerWord));
-                        pcLastLetter=c.lowerCase(cf.getLastLetter(pcWord));
+        if(check.playerWord(playerWord,pcWord,c,cf,fw)){//делаем проверку на все условия
 
-                        //ё->е й->и так как они считаются одним и темже
-                        cf.changeChar(playerFirstLetter);
-                        cf.changeChar(playerLastLetter);
-
-
-                        //проверим является ли последняя буква игрока русской
-                        if(c.rusLetter(playerLastLetter)){
-
-                                if(fw.checkUsed(playerWord)){//проверка - не использованлось ли уже слово
-
-                                        if(pcWord!=""){//для любого хода кроме первого
-
-
-                                                //проверим совпадает ли первая буква слова игрока с последней в слове компа
-                                                if( playerFirstLetter==pcLastLetter){
-                                                        showCondition("Правильный ввод");
-                                                }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
-                                                        showCondition("Правильный ввод");
-
-                                                }else if(( playerFirstLetter=='е'&&pcLastLetter=='ё')){
-                                                        showCondition("Правильный ввод");
-                                                }else{
-                                                        showCondition("Неправильный первый символ");
-                                                        goto end;
-
-                                                }
-
-                                        }else{//игрок ввел первое слово (оно не сравнивается так как у нас еще нет слова Компа)
-                                                showCondition("Правильный ввод");
-                                        }
-
-                                        pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
-                                        fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
-                                        ++wordsCount;
-
-                                }else{//слово уже использовалось
-                                        showCondition("Это слово уже использовалось");
-                                }
-                        }else{//буква не русская (большая или маленькая)
-
-                                showCondition("Не русское слово");
-                        }
-
-                }else{
-
-                        showCondition("Слишком короткое слово");
-                }
-
-        }else{//нажал ок но ничего не ввел
-                showCondition("Сначала что-нибудь напишите");
-
+                pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
+                fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+                ++wordsCount;
         }
-end:
+        //выводим статус из check
+        showCondition(check.stringStatus());
+
 
         ui->playerWordForm->setFocus();
         updateLabels();

@@ -3,6 +3,7 @@
 #include <string>
 #include "cases.h"
 #include "charFuncs.h"
+#include "findword.h"
 enum status{
     OK,             //Ввод нормальный
     WrongFirstLetter,//Неправильный первый символ
@@ -15,13 +16,20 @@ class check
 {
 public:
     check();
-    void playerWord(const std::string&,const std::string&,cases&,charFunc&);
-    status statusNum;
-
+    bool playerWord(const std::string&,const std::string&,cases&,charFunc&,findWord&); //провеодит проверки и возвращает true , если слово игрока подходит
+    status statusNum;//хранит текущее состояние
+//TODO функция конвертации статуса в строку об ошибке
+    std::string stringStatus();//врзвращает строку в зависимости от текущего статусв
 private:
     char playerFirstLetter;
     char playerLastLetter;
     char pcLastLetter;
+
+    //true ,если нашлось несоответсвие + меняет statusNum
+    bool checkLength(std::string);
+    bool rusLetter(char,cases&);
+    bool usedWord(std::string,findWord&);
+    bool firstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в словае Компа
 };
 
 #endif // CHECK_H
