@@ -12,5 +12,6 @@ SOURCES += main.cpp \
 HEADERS += mainwindow.h \
     findword.h \
     cases.h \
-    check.h
+    check.h \
+    charFuncs.h
 FORMS += mainwindow.ui

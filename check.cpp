@@ -1,5 +1,7 @@
 #include "check.h"
 
-check::check()
-{
+void check::playerWord(std::string,std::string,cases,charFunc){
+
+
+
 }

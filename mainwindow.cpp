@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "findword.h"
-#include <windows.h>
 
+#include <windows.h>
+#include "charFuncs.h"
+#include "findword.h"
 
 findWord fw;
 cases c;
+charFunc cf;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
