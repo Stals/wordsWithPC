@@ -25,13 +25,17 @@ private:
     Ui::MainWindow *ui;
 
     std::string pcWord;//для хранения и дальнейшего вывода слова компа
+    char pcLastLetter;
     std::string playerWord;
+    char playerLastLetter;
 
     int wordsCount;
 
     void updateLabels();
     std::string getPlayerWord();            //Конвертирует слово из Qstring в std::string
-    void showCondition(std::string str);    //Выводит str в строке состояния
+    void showCondition(const std::string str);    //Выводит str в строке состояния
+    char getLastLetter(const std::string str);    //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы
+    void changeChar(char& letter);//если символ ё меняет на е и если символ й меняет на и
 private slots:
     void on_pushButton_clicked();
 
