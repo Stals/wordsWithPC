@@ -8,7 +8,7 @@
 
 findWord fw;
 cases c;
-charFunc cf;
+
 check check;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -69,12 +69,12 @@ void MainWindow::on_pushButton_clicked()
         playerWord=getPlayerWord();
 
         //Получим Необходимый нам символы, а заодно приведём его к нижнему регистру
-        playerLastLetter=c.lowerCase(cf.getLastLetter(playerWord));
+        playerLastLetter=c.lowerCase(getLastLetter(playerWord));
 
         //ё->е й->и так как они считаются одним и темже
-        cf.changeChar(playerLastLetter);
+        changeChar(playerLastLetter);
 
-        if(check.playerWord(playerWord,pcWord,c,cf,fw)){//делаем проверку на все условия
+        if(check.playerWord(playerWord,pcWord,c,fw)){//делаем проверку на все условия
 
                 pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
                 fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить

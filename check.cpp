@@ -3,15 +3,15 @@
 check::check(){
     statusNum=OK;
 }
-bool check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,charFunc& cf,findWord& fw){
+bool check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
     //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
     playerFirstLetter=c.lowerCase(playerWord[0]);
-    playerLastLetter=c.lowerCase(cf.getLastLetter(playerWord));
-    pcLastLetter=c.lowerCase(cf.getLastLetter(pcWord));
+    playerLastLetter=c.lowerCase(getLastLetter(playerWord));
+    pcLastLetter=c.lowerCase(getLastLetter(pcWord));
 
     //ё->е й->и так как они считаются одним и темже
-    cf.changeChar(playerFirstLetter);
-    cf.changeChar(playerLastLetter);
+    changeChar(playerFirstLetter);
+    changeChar(playerLastLetter);
 
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
@@ -54,6 +54,7 @@ std::string check::stringStatus(){
     case NoWord:
          return "Сначала введите что-нибудь";
     }
+    return "Ошибка";
 }
 bool check::checkLength(std::string playerWord){
     if(playerWord==""){
