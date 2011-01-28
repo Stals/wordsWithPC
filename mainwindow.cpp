@@ -62,6 +62,9 @@ void MainWindow::showCondition(const std::string str){
 void MainWindow::on_pushButton_clicked()
 
 {
+    if(pcWord=="YOU WIN"){
+        exit(0);
+    }
         //обновляем
         updateLabels();
 
@@ -88,10 +91,6 @@ void MainWindow::on_pushButton_clicked()
         updateLabels();
         ui->playerWordForm->clear();
 
-        if(pcWord=="YOU WIN"){
-                //TODO:
-                //сообщаем игроку и при нажатии OK выходим
 
-        }
         //Есть ли слово в скиске уже использованных?
 }

@@ -60,7 +60,7 @@ srand(time(NULL));
                     for(unsigned int i=0;i<rand()%(*mapIter).second.size();++i){
                         ++it;
                     }
-                //TODO: выбор случайного
+
                 usedWord((*it));
                 return (*it);
 
