@@ -19,7 +19,7 @@ private:
     void loadDicts();//загружает словари из файликов  в map - dictionary
 
 
-       std::map<std::string,std::list<std::string> > dictionary;//тут хранаятся все возможные варианты ответа компа
+       std::map<char,std::list<std::string> > dictionary;//тут хранаятся все возможные варианты ответа компа
        std::list<std::string> singleDict;//словарь на 1 букву записывается сначала сюда
        std::list<std::string> usedWords;//список уже использованных слов
 };

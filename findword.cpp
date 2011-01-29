@@ -22,7 +22,7 @@ void findWord::loadDicts(){
                     singleDict.push_back(newWord);
               }
          f.close();
-         dictionary.insert ( std::pair<std::string,std::list<std::string> >(letter,singleDict) );
+         dictionary.insert ( std::pair<char,std::list<std::string> >(letter[0],singleDict) );
          singleDict.clear();
       }
 
@@ -32,9 +32,9 @@ void findWord::usedWord(std::string Word){
     usedWords.push_back(Word);
 
   //убираем из dictionary ,если там оно есть
-     std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
+     std::map <char,std::list<std::string> >::iterator mapIter = dictionary.begin();
     for(;mapIter!=dictionary.end();++mapIter){
-        if((*mapIter).first[0]==Word[0]){//если в словаре есть словарь на эту букву
+        if((*mapIter).first==Word[0]){//если в словаре есть словарь на эту букву
             //убираем это слово,если есть
             (*mapIter).second.remove(Word);
 
@@ -51,13 +51,14 @@ std::string findWord::findRandomWord(char lastLetter){
 srand(time(NULL));
 
 
-        std::map <std::string,std::list<std::string> >::iterator mapIter = dictionary.begin();
+        //std::map <char,std::list<std::string> >::iterator mapIter =  dictionary['а'].begin();
 
-        for(;mapIter!=dictionary.end();++mapIter){
-            if((*mapIter).first[0]==lastLetter){//нашли тот символ ,на который кончается слово  игрока
-                std::list<std::string>::iterator it = (*mapIter).second.begin();
-                if((*mapIter).second.size()!=0){
-                    for(unsigned int i=0;i<rand()%(*mapIter).second.size();++i){
+
+
+
+                std::list<std::string>::iterator it = dictionary[lastLetter].begin();
+                if(dictionary['а'].size()!=0){
+                    for(unsigned int i=0;i<rand()%dictionary['а'].size();++i){
                         ++it;
                     }
 
@@ -68,9 +69,9 @@ srand(time(NULL));
                 return "YOU WIN";
             }
 
-            }
 
-        }
+
+
 
 
         //TODO:
