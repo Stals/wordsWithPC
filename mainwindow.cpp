@@ -80,7 +80,7 @@ void MainWindow::on_pushButton_clicked()
         if(check.playerWord(playerWord,pcWord,c,fw)){//делаем проверку на все условия
 
                 pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
-                fw.usedWord(playerWord);//убрали слово из наших словарей чтобы потом его не повторить
+                fw.usedWord(playerWord,playerLastLetter);//убрали слово из наших словарей чтобы потом его не повторить
                 ++wordsCount;
         }
         //выводим статус из check

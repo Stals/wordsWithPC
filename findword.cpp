@@ -27,11 +27,12 @@ void findWord::loadDicts(){
       }
 
 }
-void findWord::usedWord(std::string Word){
+void findWord::usedWord(std::string Word,char lastLetter){
 //добавляем в usedWords
     usedWords.push_back(Word);
-
-  //убираем из dictionary ,если там оно есть
+ dictionary[lastLetter].remove(Word);
+/*
+ //убираем из dictionary ,если там оно есть
      std::map <char,std::list<std::string> >::iterator mapIter = dictionary.begin();
     for(;mapIter!=dictionary.end();++mapIter){
         if((*mapIter).first==Word[0]){//если в словаре есть словарь на эту букву
@@ -44,19 +45,21 @@ void findWord::usedWord(std::string Word){
         }
 
     }
-
+*/
 }
 
 std::string findWord::findRandomWord(char lastLetter){
         srand(time(NULL));
     //сразу устанавливаем итератор на нужный нам словарь
         std::list<std::string>::iterator it = dictionary[lastLetter].begin();
+
         if(dictionary['а'].size()!=0){
+            //TODO алгоритм поиска
                 for(unsigned int i=0;i<rand()%dictionary[lastLetter].size();++i){
                         ++it;
                 }
 
-                usedWord((*it));
+                usedWord((*it),lastLetter);
                 return (*it);
 
         }else{
