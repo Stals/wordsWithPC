@@ -60,13 +60,15 @@ std::string findWord::findRandomWord(char lastLetter){
 }
 
 bool findWord::checkUsed(std::string playerWord){
-    // алгоритм двоичного поиска
-    if(std::binary_search(usedWords.begin(),usedWords.end(),playerWord,compareStr)){
-        //слово есть в Векторе , значит оно уже использовалось
-        return false;
+    for(std::vector<std::string>::iterator it=usedWords.begin();it!=usedWords.end();++it){
 
-    }else
-        return true;
+           if((*it)==playerWord){//слово уже было
+               return false;
+           }
+
+       }
+       //если за весь список не встретил такого слово- говорим что оно еще не использовалось
+    return true;
 
 }
 bool compareStr(const std::string &str1,const std::string &str2){
