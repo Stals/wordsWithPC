@@ -48,35 +48,22 @@ void findWord::usedWord(std::string Word){
 }
 
 std::string findWord::findRandomWord(char lastLetter){
-srand(time(NULL));
-
-
-        //std::map <char,std::list<std::string> >::iterator mapIter =  dictionary['а'].begin();
-
-
-
-
-                std::list<std::string>::iterator it = dictionary[lastLetter].begin();
-                if(dictionary['а'].size()!=0){
-                    for(unsigned int i=0;i<rand()%dictionary['а'].size();++i){
+        srand(time(NULL));
+    //сразу устанавливаем итератор на нужный нам словарь
+        std::list<std::string>::iterator it = dictionary[lastLetter].begin();
+        if(dictionary['а'].size()!=0){
+                for(unsigned int i=0;i<rand()%dictionary[lastLetter].size();++i){
                         ++it;
-                    }
+                }
 
                 usedWord((*it));
                 return (*it);
 
-            }else{
+        }else{
                 return "YOU WIN";
-            }
+        }
 
-
-
-
-
-
-        //TODO:
-   //добавить если нету слова
-return "YOU WIN";
+        return "YOU WIN";
 }
 
 bool findWord::checkUsed(std::string playerWord){
