@@ -3,7 +3,7 @@
 check::check(){
     statusNum=OK;
 }
-bool check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
+bool check::playerWord(std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
     //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
     playerFirstLetter=c.lowerCase(playerWord[0]);
     playerLastLetter=c.lowerCase(getLastLetter(playerWord));
@@ -12,6 +12,8 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,c
     //ё->е й->и так как они считаются одним и темже
     changeChar(playerFirstLetter);
     changeChar(playerLastLetter);
+
+   // playerWord[0]=playerFirstLetter;//чтобы слова с большой и мальнекой бувы были одинаковы
 
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне

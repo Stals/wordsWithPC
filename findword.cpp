@@ -1,5 +1,7 @@
 #include "findword.h"
-
+#include <algorithm>
+#include <cstdlib>
+#include <string.h>
 findWord::findWord()
 {
     loadDicts();
@@ -28,24 +30,12 @@ void findWord::loadDicts(){
 
 }
 void findWord::usedWord(std::string Word,char lastLetter){
-//добавляем в usedWords
-    usedWords.push_back(Word);
- dictionary[lastLetter].remove(Word);
-/*
+
+ //добавляем в usedWords
+ usedWords.push_back(Word);
  //убираем из dictionary ,если там оно есть
-     std::map <char,std::list<std::string> >::iterator mapIter = dictionary.begin();
-    for(;mapIter!=dictionary.end();++mapIter){
-        if((*mapIter).first==Word[0]){//если в словаре есть словарь на эту букву
-            //убираем это слово,если есть
-            (*mapIter).second.remove(Word);
+ dictionary[lastLetter].remove(Word);
 
-
-
-            break;
-        }
-
-    }
-*/
 }
 
 std::string findWord::findRandomWord(char lastLetter){
@@ -54,7 +44,7 @@ std::string findWord::findRandomWord(char lastLetter){
         std::list<std::string>::iterator it = dictionary[lastLetter].begin();
 
         if(dictionary['а'].size()!=0){
-            //TODO алгоритм поиска
+
                 for(unsigned int i=0;i<rand()%dictionary[lastLetter].size();++i){
                         ++it;
                 }
@@ -70,15 +60,18 @@ std::string findWord::findRandomWord(char lastLetter){
 }
 
 bool findWord::checkUsed(std::string playerWord){
-    for(std::list<std::string>::iterator it=usedWords.begin();it!=usedWords.end();++it){
+    // алгоритм двоичного поиска
+    if(std::binary_search(usedWords.begin(),usedWords.end(),playerWord,compareStr)){
+        //слово есть в Векторе , значит оно уже использовалось
+        return false;
 
-        if((*it)==playerWord){//слово уже было
-            return false;
-        }
+    }else
+        return true;
 
-    }
-    //если за весь список не встретил такого слово- говорим что оно еще не использовалось
-return true;
-
-
+}
+bool compareStr(const std::string &str1,const std::string &str2){
+    if(strcmp(str1.c_str(),str2.c_str())){//Если первая строка больще чем вторая
+        return true;
+    }else
+        return false;
 }

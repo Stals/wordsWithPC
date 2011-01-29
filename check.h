@@ -16,7 +16,7 @@ class check
 {
 public:
     check();
-    bool playerWord(const std::string&,const std::string&,cases&,findWord&); //провеодит проверки и возвращает true , если слово игрока подходит
+    bool playerWord(std::string&,const std::string&,cases&,findWord&); //провеодит проверки и возвращает true , если слово игрока подходит
     status statusNum;//хранит текущее состояние
 //TODO функция конвертации статуса в строку об ошибке
     std::string stringStatus();//врзвращает строку в зависимости от текущего статусв
