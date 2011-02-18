@@ -3,7 +3,7 @@
 check::check(){
     statusNum=OK;
 }
-bool check::playerWord(std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
+bool check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
     //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
     playerFirstLetter=c.lowerCase(playerWord[0]);
     playerLastLetter=c.lowerCase(getLastLetter(playerWord));
@@ -24,7 +24,7 @@ bool check::playerWord(std::string& playerWord,const std::string& pcWord,cases& 
         return false;
 
     else if(pcWord!=""){//для любого хода кроме первого
-           //проверим совпадает ли первая буква слова игрока с последней в слове компа
+           //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
           if(firstLast(playerFirstLetter,pcLastLetter))
               return false;
     }
