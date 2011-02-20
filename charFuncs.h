@@ -2,13 +2,13 @@
 #ifndef CHARFUNCS
 #define CHARFUNCS
 #include <string>
-
+#include <string.h>
 
 //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы или пробел
    inline char getLastLetter(const std::string str){
 
             char last=str[str.size()-1];//последний символ
-            if(last=='ы'||last=='ь'||last=='ъ'||last==' '){
+            if(strchr("ъыь ", last)){
                     return last=str[str.size()-2];
             }else return last;
     }
