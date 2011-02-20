@@ -57,8 +57,10 @@ std::string check::stringStatus(){
          break;
     case NoWord:
          return "Сначала введите что-нибудь";
-    case wrongEnd:
+         break;
+    case WrongEnd:
          return "Неправильное окончание";
+         break;
     }
     return "Ошибка";
 }
@@ -111,7 +113,7 @@ bool check::firstLast(char playerFirstLetter,char pcLastLetter){
 bool check::lastLetters(std::string playerWord){
 const int len=playerWord.length();
     if(strchr("ъыь ", playerWord[len-1])&&strchr("ъыь ", playerWord[len-2])){
-        statusNum=wrongEnd;
+        statusNum=WrongEnd;
         return true;
     }else{
         statusNum=OK;

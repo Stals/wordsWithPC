@@ -11,7 +11,7 @@ enum status{
     NotRusWord,     //Не русское слово
     TooShortWord,   //Слишком короткое слово
     NoWord,          //Слово 0 длинны
-    wrongEnd        //Неправильное окончание
+    WrongEnd        //Неправильное окончание
 };
 class check
 {
