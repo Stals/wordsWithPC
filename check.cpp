@@ -1,4 +1,5 @@
 #include "check.h"
+#include <string.h> //strcmp
 
 check::check(){
     statusNum=OK;
@@ -18,11 +19,12 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,c
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
         return false;
+    else if(lastLetters(playerWord))
+        return false;
     else if(rusLetter(playerLastLetter,c))
         return false;
     else if(usedWord(playerWord,fw))
         return false;
-
     else if(pcWord!=""){//для любого хода кроме первого
            //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
           if(firstLast(playerFirstLetter,pcLastLetter))
@@ -55,6 +57,8 @@ std::string check::stringStatus(){
          break;
     case NoWord:
          return "Сначала введите что-нибудь";
+    case wrongEnd:
+         return "Неправильное окончание";
     }
     return "Ошибка";
 }
@@ -102,4 +106,15 @@ bool check::firstLast(char playerFirstLetter,char pcLastLetter){
 
     }
 
+}
+
+bool check::lastLetters(std::string playerWord){
+const int len=playerWord.length();
+    if(strchr("ъыь ", playerWord[len-1])&&strchr("ъыь ", playerWord[len-2])){
+        statusNum=wrongEnd;
+        return true;
+    }else{
+        statusNum=OK;
+        return false;
+    }
 }
