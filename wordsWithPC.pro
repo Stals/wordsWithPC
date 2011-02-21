@@ -7,7 +7,6 @@ TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
     findword.cpp \
-    cases.cpp \
     check.cpp
 HEADERS += mainwindow.h \
     findword.h \
