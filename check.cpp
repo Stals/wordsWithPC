@@ -4,15 +4,15 @@
 check::check(){
     statusNum=OK;
 }
-bool check::playerWord(const std::string& playerWord,const std::string& pcWord,cases& c,findWord& fw){
-    //Получим Необходимые нам символы, а заодно приведём их к нижнему регистру
-    playerFirstLetter=c.lowerCase(playerWord[0]);
-    playerLastLetter=c.lowerCase(getLastLetter(playerWord));
-    pcLastLetter=c.lowerCase(getLastLetter(pcWord));
+bool check::playerWord(const std::string& playerWord,const std::string& pcWord,findWord& fw){
+    //Получим Необходимые нам символы
+    playerFirstLetter=playerWord[0];
+    playerLastLetter=charFuncs::getLastLetter(playerWord);
+    pcLastLetter=charFuncs::getLastLetter(pcWord);
 
     //ё->е й->и так как они считаются одним и темже
-    changeChar(playerFirstLetter);
-    changeChar(playerLastLetter);
+    charFuncs::changeChar(playerFirstLetter);
+    charFuncs::changeChar(playerLastLetter);
 
    // playerWord[0]=playerFirstLetter;//чтобы слова с большой и мальнекой бувы были одинаковы
 
@@ -21,7 +21,7 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,c
         return false;
     else if(lastLetters(playerWord))
         return false;
-    else if(rusLetter(playerLastLetter,c))
+    else if(rusLetter(playerLastLetter))
         return false;
     else if(usedWord(playerWord,fw))
         return false;
@@ -76,8 +76,8 @@ bool check::checkLength(std::string playerWord){
        return false;
 
 }
-bool check::rusLetter(char letter,cases& c){
-    if(!c.rusLetter(letter)){
+bool check::rusLetter(char letter){
+    if(!charFuncs::rusLetter(letter)){
         statusNum=NotRusWord;
         return true;
     }else

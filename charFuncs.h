@@ -3,7 +3,7 @@
 #define CHARFUNCS
 #include <string>
 #include <string.h>
-
+namespace charFuncs{
 //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы или пробел
    inline char getLastLetter(const std::string str){
 
@@ -27,7 +27,14 @@
 
         }
 
+   inline bool rusLetter(char letter){//return true ,если буква русская
+       if(strchr("абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ",letter))
+           return true;
+       else
+           return false;
 
 
+   }
+}
 
 #endif //

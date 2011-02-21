@@ -2,12 +2,13 @@
 #include "ui_mainwindow.h"
 
 #include <windows.h>
+#include "cases.h"
 #include "charFuncs.h"
 #include "findword.h"
 #include "check.h"
 
 findWord fw;
-cases c;
+
 
 check check;
 MainWindow::MainWindow(QWidget *parent) :
@@ -71,13 +72,16 @@ void MainWindow::on_pushButton_clicked()
         //Переводим слово в строку
         playerWord=getPlayerWord();
 
-        //Получим Необходимый нам символы, а заодно приведём его к нижнему регистру
-        playerLastLetter=c.lowerCase(getLastLetter(playerWord));
+        //Приводим слово к нижнему регистру
+        cases::toLowerCase(playerWord);
+
+        //Получим Необходимый нам символ
+        playerLastLetter=charFuncs::getLastLetter(playerWord);
 
         //ё->е й->и так как они считаются одним и темже
-        changeChar(playerLastLetter);
+        charFuncs::changeChar(playerLastLetter);
 
-        if(check.playerWord(playerWord,pcWord,c,fw)){//делаем проверку на все условия
+        if(check.playerWord(playerWord,pcWord,fw)){//делаем проверку на все условия
 
                 pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
                 fw.usedWord(playerWord,playerLastLetter);//убрали слово из наших словарей чтобы потом его не повторить
@@ -92,5 +96,5 @@ void MainWindow::on_pushButton_clicked()
         ui->playerWordForm->clear();
 
 
-        //Есть ли слово в скиске уже использованных?
+
 }
