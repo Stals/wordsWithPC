@@ -63,6 +63,7 @@ void MainWindow::showCondition(const std::string str){
 void MainWindow::on_pushButton_clicked()
 
 {
+
     if(pcWord=="YOU WIN"){
         exit(0);
     }

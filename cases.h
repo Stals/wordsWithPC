@@ -55,21 +55,21 @@ namespace cases{
         case '×':
         return '÷';
         case 'Ø':
-        return 'a';
+        return 'ø';
         case 'Ù':
-        return 'a';
+        return 'ù';
         case 'Ü':
-        return 'a';
+        return 'ü';
         case 'Û':
         return 'a';
         case 'Ú':
-        return 'a';
+        return 'ú';
         case 'İ':
-        return 'a';
+        return 'ı';
         case 'Ş':
-        return 'a';
+        return 'ş';
         case 'ß':
-        return 'a';
+        return 'ÿ';
 
         }
     return ch;
