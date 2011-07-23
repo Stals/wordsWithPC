@@ -1,37 +1,37 @@
-#ifndef CHECK_H
+п»ї#ifndef CHECK_H
 #define CHECK_H
 #include <string>
 #include "cases.h"
 #include "charFuncs.h"
 #include "findword.h"
 enum status{
-    OK,             //Ввод нормальный
-    WrongFirstLetter,//Неправильный первый символ
-    UsedWord,       //Слово уже исспользовалось
-    NotRusWord,     //Не русское слово
-    TooShortWord,   //Слишком короткое слово
-    NoWord,          //Слово 0 длинны
-    WrongEnd        //Неправильное окончание
+    OK,             //Р’РІРѕРґ РЅРѕСЂРјР°Р»СЊРЅС‹Р№
+    WrongFirstLetter,//РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїРµСЂРІС‹Р№ СЃРёРјРІРѕР»
+    UsedWord,       //РЎР»РѕРІРѕ СѓР¶Рµ РёСЃСЃРїРѕР»СЊР·РѕРІР°Р»РѕСЃСЊ
+    NotRusWord,     //РќРµ СЂСѓСЃСЃРєРѕРµ СЃР»РѕРІРѕ
+    TooShortWord,   //РЎР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ СЃР»РѕРІРѕ
+    NoWord,          //РЎР»РѕРІРѕ 0 РґР»РёРЅРЅС‹
+    WrongEnd        //РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РѕРєРѕРЅС‡Р°РЅРёРµ
 };
 class check
 {
 public:
     check();
-    bool playerWord(const std::string&,const std::string&,findWord&); //провеодит проверки и возвращает true , если слово игрока подходит
-    status statusNum;//хранит текущее состояние
+    bool playerWord(const std::string&,const std::string&,findWord&); //РїСЂРѕРІРµРѕРґРёС‚ РїСЂРѕРІРµСЂРєРё Рё РІРѕР·РІСЂР°С‰Р°РµС‚ true , РµСЃР»Рё СЃР»РѕРІРѕ РёРіСЂРѕРєР° РїРѕРґС…РѕРґРёС‚
+    status statusNum;//С…СЂР°РЅРёС‚ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
 
-    std::string stringStatus();//врзвращает строку в зависимости от текущего статусв
+    std::string stringStatus();//РІСЂР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РµРєСѓС‰РµРіРѕ СЃС‚Р°С‚СѓСЃРІ
 private:
     char playerFirstLetter;
     char playerLastLetter;
     char pcLastLetter;
 
-    //true ,если нашлось несоответсвие + меняет statusNum
+    //true ,РµСЃР»Рё РЅР°С€Р»РѕСЃСЊ РЅРµСЃРѕРѕС‚РІРµС‚СЃРІРёРµ + РјРµРЅСЏРµС‚ statusNum
     bool checkLength(std::string);
     bool rusLetter(char);
     bool usedWord(std::string,findWord&);
-    bool firstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в словае Компа
-    bool lastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
+    bool firstLast(char,char);//РџСЂРѕРІРµСЂСЏРµС‚ СЌРєРІРёРІР°Р»РµРЅС‚РµРЅ Р»Рё РїРµСЂРІС‹Р№ СЃРёРјРІРѕР» СЃР»РѕРІР° РёРіСЂРѕРєР° РїРѕСЃР»РµРґРЅРµРјСѓ РІ СЃР»РѕРІР°Рµ РљРѕРјРїР°
+    bool lastLetters(std::string);//РџСЂРѕРІРµСЂСЏРµС‚ С‡С‚РѕР±С‹ РѕР±Р° РїРѕСЃР»РµРґРЅРёС… СЃРёРјРІРѕР»Р° РЅРµР±С‹Р»Рё СЉ СЊ С‹ РёР»Рё РїСЂРѕР±РµР»РѕРј (Р°Р±РІСЉС‹)
 };
 
 #endif // CHECK_H
