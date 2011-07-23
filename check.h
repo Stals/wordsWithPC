@@ -1,4 +1,4 @@
-﻿#ifndef CHECK_H
+#ifndef CHECK_H
 #define CHECK_H
 #include <string>
 #include "cases.h"
