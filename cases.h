@@ -75,6 +75,7 @@ inline char toLowerCase(char ch){
     }
     return ch;
 }
+//ѕриводит все русские буквы в слове к нижнему регистру
 inline std::string toLowerCase(std::string& word){
     for(size_t i=0;i<word.length();++i){
         // вызывает перегруженный toLowerCase
