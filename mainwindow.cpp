@@ -46,7 +46,7 @@ std::string MainWindow::getPlayerWord(){
     return test.toStdString();
 }
 
-void MainWindow::showCheckStatus(const std::string str){
+void MainWindow::showValidationStatus(const std::string str){
     ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
 }
 
@@ -81,7 +81,7 @@ void MainWindow::on_pushButton_clicked()
         ++wordsCount;
     }
     //выводим статус из check
-    showCheckStatus(validator.stringStatus());
+    showValidationStatus(validator.stringStatus());
 
 
     ui->playerWordForm->setFocus();

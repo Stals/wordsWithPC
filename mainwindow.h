@@ -42,7 +42,7 @@ private:
     //Читает слово с формы и возвращает его в виде std::string
     std::string getPlayerWord();
     //Выводит str в строке состояния
-    void showCheckStatus(const std::string str);
+    void showValidationStatus(const std::string str);
 
 private slots:
     void on_pushButton_clicked();
