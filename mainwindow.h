@@ -9,7 +9,7 @@
 #include <list>
 #include "cases.h"
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow {
@@ -30,10 +30,10 @@ private:
     char playerFirstLetter;
     char playerLastLetter;
 
-    int wordsCount;
+    int wordsCount; //Счётчик слов введённых пользователем
 
     void updateLabels();
-    std::string getPlayerWord();            //Конвертирует слово из Qstring в std::string
+    std::string getPlayerWord();                  //Читает слово с формы и конвертирует его из Qstring в std::string
     void showCondition(const std::string str);    //Выводит str в строке состояния
 
 private slots:

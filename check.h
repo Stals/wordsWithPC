@@ -5,33 +5,37 @@
 #include "charFuncs.h"
 #include "findword.h"
 enum status{
-    OK,             //Р’РІРѕРґ РЅРѕСЂРјР°Р»СЊРЅС‹Р№
-    WrongFirstLetter,//РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїРµСЂРІС‹Р№ СЃРёРјРІРѕР»
-    UsedWord,       //РЎР»РѕРІРѕ СѓР¶Рµ РёСЃСЃРїРѕР»СЊР·РѕРІР°Р»РѕСЃСЊ
-    NotRusWord,     //РќРµ СЂСѓСЃСЃРєРѕРµ СЃР»РѕРІРѕ
-    TooShortWord,   //РЎР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ СЃР»РѕРІРѕ
-    NoWord,          //РЎР»РѕРІРѕ 0 РґР»РёРЅРЅС‹
-    WrongEnd        //РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РѕРєРѕРЅС‡Р°РЅРёРµ
+    OK,              //Ввод нормальный
+    WrongFirstLetter,//Неправильный первый символ
+    UsedWord,        //Слово уже исспользовалось
+    NotRusWord,      //Не русское слово
+    TooShortWord,    //Слишком короткое слово
+    NoWord,          //Слово 0 длинны
+    WrongEnd         //Неправильное окончание
 };
 class check
 {
 public:
     check();
-    bool playerWord(const std::string&,const std::string&,findWord&); //РїСЂРѕРІРµРѕРґРёС‚ РїСЂРѕРІРµСЂРєРё Рё РІРѕР·РІСЂР°С‰Р°РµС‚ true , РµСЃР»Рё СЃР»РѕРІРѕ РёРіСЂРѕРєР° РїРѕРґС…РѕРґРёС‚
-    status statusNum;//С…СЂР°РЅРёС‚ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
+    //проводит проверки и возвращает true , если слово игрока подходит
+    bool playerWord(const std::string& playerWord,const std::string& pcWord,FindWord& findWords);
 
-    std::string stringStatus();//РІСЂР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РµРєСѓС‰РµРіРѕ СЃС‚Р°С‚СѓСЃРІ
+    //хранит текущее состояние
+    status statusNum;
+
+    //возвращает std::string в зависимости от текущего статуса
+    std::string stringStatus();
 private:
     char playerFirstLetter;
     char playerLastLetter;
     char pcLastLetter;
 
-    //true ,РµСЃР»Рё РЅР°С€Р»РѕСЃСЊ РЅРµСЃРѕРѕС‚РІРµС‚СЃРІРёРµ + РјРµРЅСЏРµС‚ statusNum
-    bool checkLength(std::string);
-    bool rusLetter(char);
-    bool usedWord(std::string,findWord&);
-    bool firstLast(char,char);//РџСЂРѕРІРµСЂСЏРµС‚ СЌРєРІРёРІР°Р»РµРЅС‚РµРЅ Р»Рё РїРµСЂРІС‹Р№ СЃРёРјРІРѕР» СЃР»РѕРІР° РёРіСЂРѕРєР° РїРѕСЃР»РµРґРЅРµРјСѓ РІ СЃР»РѕРІР°Рµ РљРѕРјРїР°
-    bool lastLetters(std::string);//РџСЂРѕРІРµСЂСЏРµС‚ С‡С‚РѕР±С‹ РѕР±Р° РїРѕСЃР»РµРґРЅРёС… СЃРёРјРІРѕР»Р° РЅРµР±С‹Р»Рё СЉ СЊ С‹ РёР»Рё РїСЂРѕР±РµР»РѕРј (Р°Р±РІСЉС‹)
+    //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет statusNum
+    bool checkLength(std::string); //Проверят длинну слова
+    bool rusLetter(char); //Провреряет является ли слово Русским
+    bool usedWord(std::string,FindWord&); //Проверяет было ли использованно слово
+    bool firstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
+    bool lastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
 };
 
 #endif // CHECK_H

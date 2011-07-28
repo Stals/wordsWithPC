@@ -2,84 +2,86 @@
 #define CASES_H
 #include <string>
 namespace cases{
-   inline char toLowerCase(char ch){//меняет Русский большие на маленьки, остальные не меняет
-        switch (ch){
-        case 'А':
+// Меняет Русский большие на маленьки, остальные не меняет
+inline char toLowerCase(char ch){
+    switch (ch){
+    case 'А':
         return 'а';
-        case 'Б':
+    case 'Б':
         return 'б';
-        case 'В':
+    case 'В':
         return 'в';
-        case 'Г':
+    case 'Г':
         return 'г';
-        case 'Д':
+    case 'Д':
         return 'д';
-        case 'Е':
+    case 'Е':
         return 'е';
-        case 'Ё':
+    case 'Ё':
         return 'ё';
-        case 'Ж':
+    case 'Ж':
         return 'ж';
-        case 'З':
+    case 'З':
         return 'з';
-        case 'И':
+    case 'И':
         return 'и';
-        case 'Й':
+    case 'Й':
         return 'й';
-        case 'К':
+    case 'К':
         return 'к';
-        case 'Л':
+    case 'Л':
         return 'л';
-        case 'М':
+    case 'М':
         return 'м';
-        case 'Н':
+    case 'Н':
         return 'н';
-        case 'О':
+    case 'О':
         return 'о';
-        case 'П':
+    case 'П':
         return 'п';
-        case 'Р':
+    case 'Р':
         return 'р';
-        case 'С':
+    case 'С':
         return 'с';
-        case 'Т':
+    case 'Т':
         return 'т';
-        case 'У':
+    case 'У':
         return 'у';
-        case 'Ф':
+    case 'Ф':
         return 'ф';
-        case 'Х':
+    case 'Х':
         return 'х';
-        case 'Ц':
+    case 'Ц':
         return 'ц';
-        case 'Ч':
+    case 'Ч':
         return 'ч';
-        case 'Ш':
+    case 'Ш':
         return 'ш';
-        case 'Щ':
+    case 'Щ':
         return 'щ';
-        case 'Ь':
+    case 'Ь':
         return 'ь';
-        case 'Ы':
+    case 'Ы':
         return 'a';
-        case 'Ъ':
+    case 'Ъ':
         return 'ъ';
-        case 'Э':
+    case 'Э':
         return 'э';
-        case 'Ю':
+    case 'Ю':
         return 'ю';
-        case 'Я':
+    case 'Я':
         return 'я';
 
-        }
+    }
     return ch;
+}
+inline std::string toLowerCase(std::string& word){
+    for(size_t i=0;i<word.length();++i){
+        // вызывает перегруженный toLowerCase
+        word[i]=toLowerCase(word[i]);
     }
-   inline std::string toLowerCase(std::string& word){
-        for(size_t i=0;i<word.length();++i){
-            word[i]=toLowerCase(word[i]); // вызывает перегруженный toLowerCase
-        }
-        return word;
-    }
+    return word;
+}
 }
 
 #endif // CASES_H

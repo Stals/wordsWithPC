@@ -40,22 +40,22 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::updateLabels(){
 
-        //обновим слово компа
-        ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
+    //обновим слово компа
+    ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
 
-        //обновим число раз сколько вводили
-        ui->label_3->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
+    //обновим число раз сколько вводили
+    ui->label_3->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
 }
 
 std::string MainWindow::getPlayerWord(){
 
-        QString test=ui->playerWordForm->text().toLocal8Bit();
-        return test.toStdString();
+    QString test=ui->playerWordForm->text().toLocal8Bit();
+    return test.toStdString();
 }
 
 void MainWindow::showCondition(const std::string str){
 
-        ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
+    ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
 
 }
 
@@ -67,34 +67,35 @@ void MainWindow::on_pushButton_clicked()
     if(pcWord=="YOU WIN"){
         exit(0);
     }
-        //обновляем
-        updateLabels();
+    //обновляем
+    updateLabels();
 
-        //Переводим слово в строку
-        playerWord=getPlayerWord();
+    //Переводим слово в строку
+    playerWord=getPlayerWord();
 
-        //Приводим слово к нижнему регистру
-        cases::toLowerCase(playerWord);
+    //Приводим слово к нижнему регистру
+    cases::toLowerCase(playerWord);
 
-        //Получим Необходимый нам символ
-        playerLastLetter=charFuncs::getLastLetter(playerWord);
+    //Получим Необходимый нам символ
+    playerLastLetter=charFuncs::getLastLetter(playerWord);
 
-        //ё->е й->и так как они считаются одним и темже
-        charFuncs::changeChar(playerLastLetter);
+    //ё->е й->и так как они считаются одним и темже
+    charFuncs::changeChar(playerLastLetter);
 
-        if(check.playerWord(playerWord,pcWord,fw)){//делаем проверку на все условия
+    if(check.playerWord(playerWord,pcWord,fw)){//делаем проверку на все условия
+        //Получаем случайное слово в pcWord
+        pcWord=fw.findRandomWord(playerLastLetter);
+        //убирем слово из наших словарей чтобы потом его не повторить
+        fw.usedWord(playerWord,playerLastLetter);
+        ++wordsCount;
+    }
+    //выводим статус из check
+    showCondition(check.stringStatus());
 
-                pcWord=fw.findRandomWord(playerLastLetter);//Получаем случайное слово в pcWord
-                fw.usedWord(playerWord,playerLastLetter);//убрали слово из наших словарей чтобы потом его не повторить
-                ++wordsCount;
-        }
-        //выводим статус из check
-        showCondition(check.stringStatus());
 
-
-        ui->playerWordForm->setFocus();
-        updateLabels();
-        ui->playerWordForm->clear();
+    ui->playerWordForm->setFocus();
+    updateLabels();
+    ui->playerWordForm->clear();
 
 
 

@@ -14,7 +14,7 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,f
     charFuncs::changeChar(playerFirstLetter);
     charFuncs::changeChar(playerLastLetter);
 
-   // playerWord[0]=playerFirstLetter;//чтобы слова с большой и мальнекой бувы были одинаковы
+    // playerWord[0]=playerFirstLetter;//чтобы слова с большой и мальнекой бувы были одинаковы
 
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
@@ -26,41 +26,41 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,f
     else if(usedWord(playerWord,fw))
         return false;
     else if(pcWord!=""){//для любого хода кроме первого
-           //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
-          if(firstLast(playerFirstLetter,pcLastLetter))
-              return false;
+        //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
+        if(firstLast(playerFirstLetter,pcLastLetter))
+            return false;
     }
 
-     //playerWord удовлетворяет всем условиям
+    //playerWord удовлетворяет всем условиям
 
-     statusNum=OK;
-     return true;
+    statusNum=OK;
+    return true;
 
 }
 
 std::string check::stringStatus(){
     switch (statusNum){
     case OK:
-         return "Правильный ввод";
-         break;
+        return "Правильный ввод";
+        break;
     case WrongFirstLetter:
-         return "Неправильный первый символ";
-         break;
+        return "Неправильный первый символ";
+        break;
     case UsedWord:
-         return "Это слово уже использовалось";
-         break;
+        return "Это слово уже использовалось";
+        break;
     case NotRusWord:
-         return "Не русское слово";
-         break;
+        return "Не русское слово";
+        break;
     case TooShortWord:
-         return "Слишком короткое слово";
-         break;
+        return "Слишком короткое слово";
+        break;
     case NoWord:
-         return "Сначала введите что-нибудь";
-         break;
+        return "Сначала введите что-нибудь";
+        break;
     case WrongEnd:
-         return "Неправильное окончание";
-         break;
+        return "Неправильное окончание";
+        break;
     }
     return "Ошибка";
 }
@@ -69,11 +69,11 @@ bool check::checkLength(std::string playerWord){
         statusNum=NoWord;
         return true;
     }
-   if(playerWord.size()<2){
-       statusNum=TooShortWord;
-       return true;
-   }else
-       return false;
+    if(playerWord.size()<2){
+        statusNum=TooShortWord;
+        return true;
+    }else
+        return false;
 
 }
 bool check::rusLetter(char letter){
@@ -85,33 +85,33 @@ bool check::rusLetter(char letter){
 
 }
 bool check::usedWord(std::string playerWord,findWord& fw){
- if(!fw.checkUsed(playerWord)){
-     statusNum=UsedWord;
-     return true;
- }else
-     return false;
+    if(!fw.checkUsed(playerWord)){
+        statusNum=UsedWord;
+        return true;
+    }else
+        return false;
 }
 bool check::firstLast(char playerFirstLetter,char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
-            statusNum=OK;
-            return false;
+        statusNum=OK;
+        return false;
     }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
-            statusNum=OK;
-            return false;
+        statusNum=OK;
+        return false;
 
     }else if(( playerFirstLetter=='е'&&pcLastLetter=='ё')){
-            statusNum=OK;
-            return false;
+        statusNum=OK;
+        return false;
     }else{
-            statusNum=WrongFirstLetter;
-            return true;
+        statusNum=WrongFirstLetter;
+        return true;
 
     }
 
 }
 
 bool check::lastLetters(std::string playerWord){
-const int len=playerWord.length();
+    const int len=playerWord.length();
     if(strchr("ъыь ", playerWord[len-1])&&strchr("ъыь ", playerWord[len-2])){
         statusNum=WrongEnd;
         return true;
