@@ -3,14 +3,12 @@
 #include <cstdlib>
 #include <string.h>
 #include <windows.h>
-findWord::findWord()
+Dictionary::Dictionary()
 {
     loadDicts();
 }
-void findWord::loadDicts(){
+void Dictionary::loadDicts(){
 
-    //std::string filesArray[] =  { "dict//1","dict//2","dict//3","dict//4","dict//5","dict//6","dict//7","dict//8","dict//9","dict//10","dict//11","dict//12","dict//13","dict//14","dict//15","dict//16","dict//17","dict//18","dict//19","dict//20","dict//21","dict//22","dict//23","dict//24","dict//25","dict//26","dict//27","dict//28","dict//29","dict//30","dict//31","dict//32","dict//33" };
-    //std::vector<std::string> files (filesArray, filesArray + sizeof(filesArray) / sizeof(std::string) );
     std::vector<std::string> files;
     char buf[3];
     for(int i=1 ; i<34 ; ++i){
@@ -22,7 +20,7 @@ void findWord::loadDicts(){
 
     for( std::vector<std::string>::iterator it=files.begin();it!=files.end();++it){
         std::ifstream f((*it).c_str());
-        int num;//number of words
+        int num; //number of words
         std::string letter;
         std::string newWord;
         f>>letter;
@@ -40,7 +38,7 @@ void findWord::loadDicts(){
 
 
 }
-void findWord::usedWord(std::string Word,char lastLetter){
+void Dictionary::usedWord(std::string Word,char lastLetter){
 
     //добавляем в usedWords
     usedWords.push_back(Word);
@@ -49,7 +47,7 @@ void findWord::usedWord(std::string Word,char lastLetter){
 
 }
 
-std::string findWord::findRandomWord(char lastLetter){
+std::string Dictionary::findRandomWord(char lastLetter){
     srand(time(NULL));
     //сразу устанавливаем итератор на нужный нам словарь
     std::list<std::string>::iterator it = dictionary[lastLetter].begin();
@@ -70,7 +68,7 @@ std::string findWord::findRandomWord(char lastLetter){
     return "YOU WIN";
 }
 
-bool findWord::checkUsed(std::string playerWord){
+bool Dictionary::checkUsed(std::string playerWord){
     for(std::vector<std::string>::iterator it=usedWords.begin();it!=usedWords.end();++it){
 
         if((*it)==playerWord){//слово уже было

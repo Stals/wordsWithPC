@@ -7,10 +7,11 @@
 #include "findword.h"
 #include "check.h"
 
-findWord fw;
-
-
 check check;
+Dictionary dictionary;
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -82,11 +83,11 @@ void MainWindow::on_pushButton_clicked()
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar(playerLastLetter);
 
-    if(check.playerWord(playerWord,pcWord,fw)){//делаем проверку на все условия
+    if(check.playerWord(playerWord,pcWord,dictionary)){//делаем проверку на все условия
         //Получаем случайное слово в pcWord
-        pcWord=fw.findRandomWord(playerLastLetter);
+        pcWord=dictionary.findRandomWord(playerLastLetter);
         //убирем слово из наших словарей чтобы потом его не повторить
-        fw.usedWord(playerWord,playerLastLetter);
+        dictionary.usedWord(playerWord,playerLastLetter);
         ++wordsCount;
     }
     //выводим статус из check

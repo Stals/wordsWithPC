@@ -9,11 +9,11 @@
 #include <time.h>//for random
 #include <stdlib.h>
 
-//TODO Сделать описание классов + переименовать имя класса (сделать существительным в зависимосьти от описания)
-class FindWord
+//Класс хранит словарь которым пользвется компьютер а текже предоставляет набор функций для работы со словарём
+class Dictionary
 {
 public:
-    FindWord();
+    Dictionary();
 
     //ищет случайное слово в словарях
     std::string findRandomWord(char lastLetter);

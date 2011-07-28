@@ -4,7 +4,7 @@
 check::check(){
     statusNum=OK;
 }
-bool check::playerWord(const std::string& playerWord,const std::string& pcWord,findWord& fw){
+bool check::playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
     //Получим Необходимые нам символы
     playerFirstLetter=playerWord[0];
     playerLastLetter=charFuncs::getLastLetter(playerWord);
@@ -23,7 +23,7 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,f
         return false;
     else if(rusLetter(playerLastLetter))
         return false;
-    else if(usedWord(playerWord,fw))
+    else if(usedWord(playerWord,dictionary))
         return false;
     else if(pcWord!=""){//для любого хода кроме первого
         //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
@@ -84,8 +84,8 @@ bool check::rusLetter(char letter){
         return false;
 
 }
-bool check::usedWord(std::string playerWord,findWord& fw){
-    if(!fw.checkUsed(playerWord)){
+bool check::usedWord(std::string playerWord,Dictionary& dictionary){
+    if(!dictionary.checkUsed(playerWord)){
         statusNum=UsedWord;
         return true;
     }else

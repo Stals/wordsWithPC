@@ -18,7 +18,7 @@ class check
 public:
     check();
     //проводит проверки и возвращает true , если слово игрока подходит
-    bool playerWord(const std::string& playerWord,const std::string& pcWord,FindWord& findWords);
+    bool playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary);
 
     //хранит текущее состояние
     status statusNum;
@@ -33,7 +33,7 @@ private:
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет statusNum
     bool checkLength(std::string); //Проверят длинну слова
     bool rusLetter(char); //Провреряет является ли слово Русским
-    bool usedWord(std::string,FindWord&); //Проверяет было ли использованно слово
+    bool usedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
     bool firstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
     bool lastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
 };
