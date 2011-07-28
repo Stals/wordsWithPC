@@ -7,7 +7,7 @@
 #include "findword.h"
 #include "check.h"
 
-check check;
+Check check;
 Dictionary dictionary;
 
 

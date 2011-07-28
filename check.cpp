@@ -1,10 +1,10 @@
 #include "check.h"
 #include <string.h> //strcmp
 
-check::check(){
+Check::Check(){
     statusNum=OK;
 }
-bool check::playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
+bool Check::playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
     //Получим Необходимые нам символы
     playerFirstLetter=playerWord[0];
     playerLastLetter=charFuncs::getLastLetter(playerWord);
@@ -38,7 +38,7 @@ bool check::playerWord(const std::string& playerWord,const std::string& pcWord,D
 
 }
 
-std::string check::stringStatus(){
+std::string Check::stringStatus(){
     switch (statusNum){
     case OK:
         return "Правильный ввод";
@@ -64,7 +64,7 @@ std::string check::stringStatus(){
     }
     return "Ошибка";
 }
-bool check::checkLength(std::string playerWord){
+bool Check::checkLength(std::string playerWord){
     if(playerWord==""){
         statusNum=NoWord;
         return true;
@@ -76,7 +76,7 @@ bool check::checkLength(std::string playerWord){
         return false;
 
 }
-bool check::rusLetter(char letter){
+bool Check::rusLetter(char letter){
     if(!charFuncs::rusLetter(letter)){
         statusNum=NotRusWord;
         return true;
@@ -84,14 +84,14 @@ bool check::rusLetter(char letter){
         return false;
 
 }
-bool check::usedWord(std::string playerWord,Dictionary& dictionary){
+bool Check::usedWord(std::string playerWord,Dictionary& dictionary){
     if(!dictionary.checkUsed(playerWord)){
         statusNum=UsedWord;
         return true;
     }else
         return false;
 }
-bool check::firstLast(char playerFirstLetter,char pcLastLetter){
+bool Check::firstLast(char playerFirstLetter,char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
         statusNum=OK;
         return false;
@@ -110,7 +110,7 @@ bool check::firstLast(char playerFirstLetter,char pcLastLetter){
 
 }
 
-bool check::lastLetters(std::string playerWord){
+bool Check::lastLetters(std::string playerWord){
     const int len=playerWord.length();
     if(strchr("ъыь ", playerWord[len-1])&&strchr("ъыь ", playerWord[len-2])){
         statusNum=WrongEnd;

@@ -13,10 +13,10 @@ enum status{
     NoWord,          //Слово 0 длинны
     WrongEnd         //Неправильное окончание
 };
-class check
+class Check
 {
 public:
-    check();
+    Check();
     //проводит проверки и возвращает true , если слово игрока подходит
     bool playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary);
 
