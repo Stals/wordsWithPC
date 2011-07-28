@@ -25,21 +25,24 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    Check check; //Класс проверок
+    Validator validator;
     Dictionary dictionary;
 
 
-    std::string pcWord;//для хранения и дальнейшего вывода слова компа
-    char pcLastLetter;
-    std::string playerWord;
+    std::string pcWord;//Слово компьютера
+    char pcLastLetter; //Последний символ слова компьютера
+    std::string playerWord;//Слово игрока
     char playerFirstLetter;
     char playerLastLetter;
 
     int wordsCount; //Счётчик слов введённых пользователем
 
+    //Обновляет Лейблы на форме
     void updateLabels();
-    std::string getPlayerWord();                  //Читает слово с формы и конвертирует его из Qstring в std::string
-    void showCondition(const std::string str);    //Выводит str в строке состояния
+    //Читает слово с формы и возвращает его в виде std::string
+    std::string getPlayerWord();
+    //Выводит str в строке состояния
+    void showCheckStatus(const std::string str);
 
 private slots:
     void on_pushButton_clicked();

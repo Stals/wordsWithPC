@@ -17,12 +17,12 @@ enum status{
 };
 
 //Этот класс занимается проверкой слова введенной пользователем на праильность
-class Check
+class Validator
 {
 public:
-    Check();
+    Validator();
     //проводит проверки и возвращает true , если слово игрока подходит
-    bool playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary);
+    bool checkPlayerWord(const std::string& checkPlayerWord,const std::string& pcWord,Dictionary& dictionary);
 
     //возвращает статус слова в виде строки
     std::string stringStatus();
@@ -38,10 +38,10 @@ private:
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет statusNum
     bool checkLength(std::string); //Проверят длинну слова
-    bool rusLetter(char); //Провреряет является ли слово Русским
-    bool usedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
-    bool firstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
-    bool lastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
+    bool checkRusLetter(char); //Провреряет является ли слово Русским
+    bool checkUsedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
+    bool checkFirstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
+    bool checkLastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
 };
 
 #endif // CHECK_H

@@ -1,10 +1,10 @@
 #include "check.h"
 #include <string.h> //strcmp
 
-Check::Check(){
+Validator::Validator(){
     statusNum=OK;
 }
-bool Check::playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
+bool Validator::checkPlayerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
     //Получим Необходимые нам символы
     playerFirstLetter=playerWord[0];
     playerLastLetter=charFuncs::getLastLetter(playerWord);
@@ -19,15 +19,15 @@ bool Check::playerWord(const std::string& playerWord,const std::string& pcWord,D
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
         return false;
-    else if(lastLetters(playerWord))
+    else if(checkLastLetters(playerWord))
         return false;
-    else if(rusLetter(playerLastLetter))
+    else if(checkRusLetter(playerLastLetter))
         return false;
-    else if(usedWord(playerWord,dictionary))
+    else if(checkUsedWord(playerWord,dictionary))
         return false;
     else if(pcWord!=""){//для любого хода кроме первого
         //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
-        if(firstLast(playerFirstLetter,pcLastLetter))
+        if(checkFirstLast(playerFirstLetter,pcLastLetter))
             return false;
     }
 
@@ -38,7 +38,7 @@ bool Check::playerWord(const std::string& playerWord,const std::string& pcWord,D
 
 }
 
-std::string Check::stringStatus(){
+std::string Validator::stringStatus(){
     switch (statusNum){
     case OK:
         return "Правильный ввод";
@@ -64,7 +64,7 @@ std::string Check::stringStatus(){
     }
     return "Ошибка";
 }
-bool Check::checkLength(std::string playerWord){
+bool Validator::checkLength(std::string playerWord){
     if(playerWord==""){
         statusNum=NoWord;
         return true;
@@ -76,7 +76,7 @@ bool Check::checkLength(std::string playerWord){
         return false;
 
 }
-bool Check::rusLetter(char letter){
+bool Validator::checkRusLetter(char letter){
     if(!charFuncs::rusLetter(letter)){
         statusNum=NotRusWord;
         return true;
@@ -84,14 +84,14 @@ bool Check::rusLetter(char letter){
         return false;
 
 }
-bool Check::usedWord(std::string playerWord,Dictionary& dictionary){
+bool Validator::checkUsedWord(std::string playerWord,Dictionary& dictionary){
     if(!dictionary.checkUsed(playerWord)){
         statusNum=UsedWord;
         return true;
     }else
         return false;
 }
-bool Check::firstLast(char playerFirstLetter,char pcLastLetter){
+bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
         statusNum=OK;
         return false;
@@ -110,7 +110,7 @@ bool Check::firstLast(char playerFirstLetter,char pcLastLetter){
 
 }
 
-bool Check::lastLetters(std::string playerWord){
+bool Validator::checkLastLetters(std::string playerWord){
     const int len=playerWord.length();
     if(strchr("ъыь ", playerWord[len-1])&&strchr("ъыь ", playerWord[len-2])){
         statusNum=WrongEnd;

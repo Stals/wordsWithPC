@@ -46,7 +46,7 @@ std::string MainWindow::getPlayerWord(){
     return test.toStdString();
 }
 
-void MainWindow::showCondition(const std::string str){
+void MainWindow::showCheckStatus(const std::string str){
     ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
 }
 
@@ -60,7 +60,7 @@ void MainWindow::on_pushButton_clicked()
     //обновляем
     updateLabels();
 
-    //Переводим слово в строку
+    //Получаем слово пользователя
     playerWord=getPlayerWord();
 
     //Приводим слово к нижнему регистру
@@ -69,10 +69,11 @@ void MainWindow::on_pushButton_clicked()
     //Получим Необходимый нам символ
     playerLastLetter=charFuncs::getLastLetter(playerWord);
 
+    //TODO может поставить до получаения последнего символа?
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar(playerLastLetter);
 
-    if(check.playerWord(playerWord,pcWord,dictionary)){//делаем проверку на все условия
+    if(validator.checkPlayerWord(playerWord,pcWord,dictionary)){//делаем проверку на все условия
         //Получаем случайное слово в pcWord
         pcWord=dictionary.findRandomWord(playerLastLetter);
         //убирем слово из наших словарей чтобы потом его не повторить
@@ -80,7 +81,7 @@ void MainWindow::on_pushButton_clicked()
         ++wordsCount;
     }
     //выводим статус из check
-    showCondition(check.stringStatus());
+    showCheckStatus(validator.stringStatus());
 
 
     ui->playerWordForm->setFocus();
