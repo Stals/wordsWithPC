@@ -4,6 +4,8 @@
 #include "cases.h"
 #include "charFuncs.h"
 #include "findword.h"
+
+//—татус введонного слова
 enum status{
     OK,              //¬вод нормальный
     WrongFirstLetter,//Ќеправильный первый символ
@@ -13,6 +15,8 @@ enum status{
     NoWord,          //—лово 0 длинны
     WrongEnd         //Ќеправильное окончание
 };
+
+//Ётот класс занимаетс€ проверкой слова введенной пользователем на праильность
 class Check
 {
 public:
@@ -20,11 +24,13 @@ public:
     //проводит проверки и возвращает true , если слово игрока подходит
     bool playerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary);
 
+    //возвращает статус слова в виде строки
+    std::string stringStatus();
+
     //хранит текущее состо€ние
     status statusNum;
 
-    //возвращает std::string в зависимости от текущего статуса
-    std::string stringStatus();
+
 private:
     char playerFirstLetter;
     char playerLastLetter;
