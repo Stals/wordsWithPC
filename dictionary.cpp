@@ -1,4 +1,4 @@
-#include "findword.h"
+#include "dictionary.h"
 #include <algorithm>
 #include <cstdlib>
 #include <string.h>

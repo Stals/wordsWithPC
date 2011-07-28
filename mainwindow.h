@@ -8,7 +8,7 @@
 #include <iostream>
 #include <list>
 #include "cases.h"
-#include "findword.h"
+#include "dictionary.h"
 #include "check.h"
 namespace Ui {
 class MainWindow;

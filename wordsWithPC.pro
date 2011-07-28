@@ -6,11 +6,11 @@ TARGET = wordsWithPC
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    findword.cpp \
-    check.cpp
+    check.cpp \
+    dictionary.cpp
 HEADERS += mainwindow.h \
-    findword.h \
     cases.h \
     check.h \
-    charFuncs.h
+    charFuncs.h \
+    dictionary.h
 FORMS += mainwindow.ui

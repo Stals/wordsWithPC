@@ -3,7 +3,7 @@
 #include <string>
 #include "cases.h"
 #include "charFuncs.h"
-#include "findword.h"
+#include "dictionary.h"
 
 //Статус введонного слова
 enum status{
