@@ -4,12 +4,6 @@
 #include <windows.h>
 #include "cases.h"
 #include "charFuncs.h"
-#include "findword.h"
-#include "check.h"
-
-Check check;
-Dictionary dictionary;
-
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -39,9 +33,7 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
-
 void MainWindow::updateLabels(){
-
     //обновим слово компа
     ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
 
@@ -50,17 +42,13 @@ void MainWindow::updateLabels(){
 }
 
 std::string MainWindow::getPlayerWord(){
-
     QString test=ui->playerWordForm->text().toLocal8Bit();
     return test.toStdString();
 }
 
 void MainWindow::showCondition(const std::string str){
-
     ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
-
 }
-
 
 void MainWindow::on_pushButton_clicked()
 

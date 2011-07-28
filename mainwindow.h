@@ -8,6 +8,8 @@
 #include <iostream>
 #include <list>
 #include "cases.h"
+#include "findword.h"
+#include "check.h"
 namespace Ui {
 class MainWindow;
 }
@@ -23,6 +25,9 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    Check check; //Класс проверок
+    Dictionary dictionary;
+
 
     std::string pcWord;//для хранения и дальнейшего вывода слова компа
     char pcLastLetter;
