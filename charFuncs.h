@@ -7,10 +7,10 @@ namespace charFuncs{
 //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы или пробел
 inline char getLastLetter(const std::string str){
 
-    char last=str[str.size()-1];//последний символ
-    if(strchr("ъыь ", last)){
-        return last=str[str.size()-2];
-    }else return last;
+    char lastChar=str[str.size()-1];//последний символ
+    if(strchr("ъыь ", lastChar)){
+        return lastChar=str[str.size()-2];
+    }else return lastChar;
 }
 
 //если символ ё меняет на е и если символ й меняет на и
