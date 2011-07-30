@@ -13,7 +13,8 @@ enum status{
     NotRusWord,      //Не русское слово
     TooShortWord,    //Слишком короткое слово
     NoWord,          //Слово 0 длинны
-    WrongEnd         //Неправильное окончание
+    WrongEnd,        //Неправильное окончание
+    NotSingleWord    //Несколько слов а не одно
 };
 
 //Этот класс занимается проверкой слова введенной пользователем на праильность
@@ -42,6 +43,7 @@ private:
     bool checkUsedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
     bool checkFirstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
     bool checkLastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
+    bool checkSingleWord(std::string);//Проверяет чтобы в строке было только одно слово
 };
 
 #endif // CHECK_H

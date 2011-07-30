@@ -19,6 +19,8 @@ bool Validator::checkPlayerWord(const std::string& playerWord,const std::string&
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
         return false;
+    else if(checkSingleWord(playerWord))
+        return false;
     else if(checkLastLetters(playerWord))
         return false;
     else if(checkRusLetter(playerLastLetter))
@@ -60,6 +62,9 @@ std::string Validator::stringStatus(){
         break;
     case WrongEnd:
         return "Неправильное окончание";
+        break;
+    case NotSingleWord:
+        return "Введите только одно слово";
         break;
     }
     return "Ошибка";
@@ -119,4 +124,17 @@ bool Validator::checkLastLetters(std::string playerWord){
         statusNum=OK;
         return false;
     }
+}
+
+bool Validator::checkSingleWord(std::string playerWord){
+
+    for(int i = 0; i<playerWord.length();++i){
+        if(playerWord[i]==' '){//Если в строке есть пробелы - это несколько слов
+            statusNum=NotSingleWord;
+            return true;
+        }
+    }
+    return false; //Если пробелов в слове небыло найдено
+
+
 }
