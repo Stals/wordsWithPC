@@ -128,7 +128,7 @@ bool Validator::checkLastLetters(std::string playerWord){
 
 bool Validator::checkSingleWord(std::string playerWord){
 
-    for(int i = 0; i<playerWord.length()-1;++i){
+    for(int i = 0; i<playerWord.length();++i){
         if(playerWord[i]==' '){//≈сли в строке есть пробелы - это несколько слов
             statusNum=NotSingleWord;
             return true;
