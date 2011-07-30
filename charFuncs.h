@@ -4,11 +4,11 @@
 #include <string>
 #include <string.h>
 namespace charFuncs{
-//Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы или пробел
+//Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы
 inline char getLastLetter(const std::string str){
 
     char lastChar=str[str.size()-1];//последний символ
-    if(strchr("ъыь ", lastChar)){
+    if(strchr("ъыь", lastChar)){
         return lastChar=str[str.size()-2];
     }else return lastChar;
 }

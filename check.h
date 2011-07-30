@@ -42,7 +42,7 @@ private:
     bool checkRusLetter(char); //Провреряет является ли слово Русским
     bool checkUsedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
     bool checkFirstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
-    bool checkLastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы или пробелом (абвъы)
+    bool checkLastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы (абвъы)
     bool checkSingleWord(std::string);//Проверяет чтобы в строке было только одно слово
 };
 
