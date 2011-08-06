@@ -6,11 +6,11 @@ TARGET = wordsWithPC
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    check.cpp \
-    dictionary.cpp
+    dictionary.cpp \
+    validator.cpp
 HEADERS += mainwindow.h \
     cases.h \
-    check.h \
     charFuncs.h \
-    dictionary.h
+    dictionary.h \
+    validator.h
 FORMS += mainwindow.ui
