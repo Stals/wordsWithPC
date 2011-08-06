@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+// TODO Убрать... К чемубы этот кусок вообше?
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
