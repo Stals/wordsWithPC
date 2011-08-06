@@ -26,7 +26,7 @@ public:
     status checkPlayerWord(const std::string& checkPlayerWord,const std::string& pcWord,Dictionary& dictionary);
 
     //возвращает статус слова в виде строки
-    std::string stringStatus();
+    std::string getStatus();
 
     //хранит текущее состояние
     status currentStatus;

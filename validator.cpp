@@ -37,7 +37,7 @@ status Validator::checkPlayerWord(const std::string& playerWord,const std::strin
 
 }
 
-std::string Validator::stringStatus(){
+std::string Validator::getStatus(){
     switch (currentStatus){
     case OK:
         return "Правильный ввод";
