@@ -23,13 +23,13 @@ class Validator
 public:
     Validator();
     //проводит проверки и возвращает true , если слово игрока подходит
-    bool checkPlayerWord(const std::string& checkPlayerWord,const std::string& pcWord,Dictionary& dictionary);
+    status checkPlayerWord(const std::string& checkPlayerWord,const std::string& pcWord,Dictionary& dictionary);
 
     //возвращает статус слова в виде строки
     std::string stringStatus();
 
     //хранит текущее состояние
-    status statusNum;
+    status currentStatus;
 
 
 private:

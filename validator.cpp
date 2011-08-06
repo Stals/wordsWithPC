@@ -2,9 +2,9 @@
 #include <string.h> //strcmp
 
 Validator::Validator(){
-    statusNum=OK;
+    currentStatus=OK;
 }
-bool Validator::checkPlayerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
+status Validator::checkPlayerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
     //Получим Необходимые нам символы
     playerFirstLetter=playerWord[0];
     playerLastLetter=charFuncs::getLastLetter(playerWord);
@@ -14,34 +14,31 @@ bool Validator::checkPlayerWord(const std::string& playerWord,const std::string&
     charFuncs::changeChar(playerFirstLetter);
     charFuncs::changeChar(playerLastLetter);
 
-    // playerWord[0]=playerFirstLetter;//чтобы слова с большой и мальнекой бувы были одинаковы
-
     //функции внутри меняют statusNum,если произошла ошибка
     if(checkLength(playerWord))//если ошибка в длинне
-        return false;
+        return currentStatus;
     else if(checkLastLetters(playerWord))
-        return false;
+         return currentStatus;
     else if(checkSingleWord(playerWord))
-        return false;
+         return currentStatus;
     else if(checkRusLetter(playerLastLetter))
-        return false;
+         return currentStatus;
     else if(checkUsedWord(playerWord,dictionary))
-        return false;
+         return currentStatus;
     else if(pcWord!=""){//для любого хода кроме первого
         //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
         if(checkFirstLast(playerFirstLetter,pcLastLetter))
-            return false;
+             return currentStatus;
+    }else{
+        //playerWord удовлетворяет всем условиям
+        currentStatus=OK;
     }
-
-    //playerWord удовлетворяет всем условиям
-
-    statusNum=OK;
-    return true;
+    return currentStatus;
 
 }
 
 std::string Validator::stringStatus(){
-    switch (statusNum){
+    switch (currentStatus){
     case OK:
         return "Правильный ввод";
         break;
@@ -71,11 +68,11 @@ std::string Validator::stringStatus(){
 }
 bool Validator::checkLength(std::string playerWord){
     if(playerWord==""){
-        statusNum=NoWord;
+        currentStatus=NoWord;
         return true;
     }
     if(playerWord.size()<2){
-        statusNum=TooShortWord;
+        currentStatus=TooShortWord;
         return true;
     }else
         return false;
@@ -83,7 +80,7 @@ bool Validator::checkLength(std::string playerWord){
 }
 bool Validator::checkRusLetter(char letter){
     if(!charFuncs::rusLetter(letter)){
-        statusNum=NotRusWord;
+        currentStatus=NotRusWord;
         return true;
     }else
         return false;
@@ -91,24 +88,24 @@ bool Validator::checkRusLetter(char letter){
 }
 bool Validator::checkUsedWord(std::string playerWord,Dictionary& dictionary){
     if(!dictionary.checkUsed(playerWord)){
-        statusNum=UsedWord;
+        currentStatus=UsedWord;
         return true;
     }else
         return false;
 }
 bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
-        statusNum=OK;
+        currentStatus=OK;
         return false;
     }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
-        statusNum=OK;
+        currentStatus=OK;
         return false;
 
     }else if(( playerFirstLetter=='е'&&pcLastLetter=='ё')){
-        statusNum=OK;
+        currentStatus=OK;
         return false;
     }else{
-        statusNum=WrongFirstLetter;
+        currentStatus=WrongFirstLetter;
         return true;
 
     }
@@ -118,10 +115,10 @@ bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
 bool Validator::checkLastLetters(std::string playerWord){
     const int len=playerWord.length();
     if(strchr("ъыь", playerWord[len-1])&&strchr("ъыь", playerWord[len-2])){
-        statusNum=WrongEnd;
+        currentStatus=WrongEnd;
         return true;
     }else{
-        statusNum=OK;
+        currentStatus=OK;
         return false;
     }
 }
@@ -130,7 +127,7 @@ bool Validator::checkSingleWord(std::string playerWord){
 
     for(int i = 0; i<playerWord.length();++i){
         if(playerWord[i]==' '){//Если в строке есть пробелы - это несколько слов
-            statusNum=NotSingleWord;
+            currentStatus=NotSingleWord;
             return true;
         }
     }
