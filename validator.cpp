@@ -60,8 +60,8 @@ std::string Validator::getStatus(){
     case WrongEnd:
         return "Неправильное окончание";
         break;
-    case NotSingleWord:
-        return "Введите только одно слово";
+    case SpaceInWord:
+        return "В слове не должно быть пробелов";
         break;
     }
     return "Ошибка";
@@ -127,7 +127,7 @@ bool Validator::checkSingleWord(std::string playerWord){
 
     for(unsigned int i = 0; i<playerWord.length();++i){
         if(playerWord[i]==' '){//Если в строке есть пробелы - это несколько слов
-            currentStatus=NotSingleWord;
+            currentStatus=SpaceInWord;
             return true;
         }
     }
