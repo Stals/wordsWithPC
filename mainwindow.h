@@ -9,7 +9,8 @@
 #include <list>
 #include "cases.h"
 #include "dictionary.h"
-#include "check.h"
+#include "validator.h"
+
 namespace Ui {
 class MainWindow;
 }

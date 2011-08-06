@@ -5,7 +5,6 @@
 #include "cases.h"
 #include "charFuncs.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -53,7 +52,7 @@ void MainWindow::showValidationStatus(const std::string str){
 void MainWindow::on_pushButton_clicked()
 
 {
-
+    //Если компьютер не смог найти слова - вы выйграли
     if(pcWord=="YOU WIN"){
         exit(0);
     }
@@ -73,7 +72,7 @@ void MainWindow::on_pushButton_clicked()
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar(playerLastLetter);
 
-    if(validator.checkPlayerWord(playerWord,pcWord,dictionary)){//делаем проверку на все условия
+    if(validator.checkPlayerWord(playerWord,pcWord,dictionary)==OK){//делаем проверку на все условия
         //Получаем случайное слово в pcWord
         pcWord=dictionary.findRandomWord(playerLastLetter);
         //убирем слово из наших словарей чтобы потом его не повторить
@@ -81,7 +80,7 @@ void MainWindow::on_pushButton_clicked()
         ++wordsCount;
     }
     //выводим статус из check
-    showValidationStatus(validator.stringStatus());
+    showValidationStatus(validator.getStatus());
 
 
     ui->playerWordForm->setFocus();
