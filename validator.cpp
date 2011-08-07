@@ -19,7 +19,7 @@ status Validator::checkPlayerWord(const std::string& playerWord,const std::strin
         return currentStatus;
     else if(checkLastLetters(playerWord))
          return currentStatus;
-    else if(checkSingleWord(playerWord))
+    else if(checkSpaces(playerWord))
          return currentStatus;
     else if(checkRusLetter(playerLastLetter))
          return currentStatus;
@@ -123,7 +123,7 @@ bool Validator::checkLastLetters(std::string playerWord){
     }
 }
 
-bool Validator::checkSingleWord(std::string playerWord){
+bool Validator::checkSpaces(std::string playerWord){
 
     for(unsigned int i = 0; i<playerWord.length();++i){
         if(playerWord[i]==' '){//≈сли в строке есть пробелы - это несколько слов
