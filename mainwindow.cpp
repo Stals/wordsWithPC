@@ -71,7 +71,6 @@ void MainWindow::on_pushButton_clicked()
 
     //TODO может поставить до получаения последнего символа?
     //ё->е й->и так как они считаются одним и темже
-    //TODO оно тут нада?
     charFuncs::changeChar(playerLastLetter);
 
     //делаем проверку на все условия

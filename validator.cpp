@@ -11,6 +11,7 @@ status Validator::checkPlayerWord(const std::string& playerWord,const std::strin
     pcLastLetter=charFuncs::getLastLetter(pcWord);
 
     //Є->е й->и так как они считаютс€ одним и темже
+    //TODO попробывать убрать в mainwindow , так как не логично что класс который провер€ет что-то начинает мен€ть данные
     charFuncs::changeChar(playerFirstLetter);
     charFuncs::changeChar(playerLastLetter);
 
@@ -137,7 +138,8 @@ bool Validator::checkSpaces(std::string playerWord){
             return true;
         }
     }
-    return false; //≈сли пробелов в слове небыло найдено
+    //≈сли пробелов в слове небыло найдено
+    return false;
 
 
 }
