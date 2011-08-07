@@ -15,20 +15,20 @@ status Validator::checkPlayerWord(const std::string& playerWord,const std::strin
     charFuncs::changeChar(playerLastLetter);
 
     //функции внутри меняют statusNum,если произошла ошибка
-    if(checkLength(playerWord))//если ошибка в длинне
+    if(checkLength(playerWord))
         return currentStatus;
     else if(checkLastLetters(playerWord))
-         return currentStatus;
+        return currentStatus;
     else if(checkSpaces(playerWord))
-         return currentStatus;
+        return currentStatus;
     else if(checkRusLetter(playerLastLetter))
-         return currentStatus;
+        return currentStatus;
     else if(checkUsedWord(playerWord,dictionary))
-         return currentStatus;
+        return currentStatus;
     else if(pcWord!=""){//для любого хода кроме первого
         //проверим совпадает ли первая буква слова игрока с последней в слове компьютера
         if(checkFirstLast(playerFirstLetter,pcLastLetter))
-             return currentStatus;
+            return currentStatus;
     }else{
         //playerWord удовлетворяет всем условиям
         currentStatus=OK;
@@ -98,7 +98,7 @@ bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
         currentStatus=OK;
         return false;
 
-    //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
+        //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
     }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
         currentStatus=OK;
         return false;
