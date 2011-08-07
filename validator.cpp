@@ -17,16 +17,20 @@ status Validator::checkPlayerWord(const std::string& playerWord,const std::strin
     //функции внутри мен€ют statusNum,если произошла ошибка
     if(checkLength(playerWord))
         return currentStatus;
+
     else if(checkLastLetters(playerWord))
         return currentStatus;
+
     else if(checkSpaces(playerWord))
         return currentStatus;
+
     else if(checkRusLetter(playerLastLetter))
         return currentStatus;
+
     else if(checkUsedWord(playerWord,dictionary))
         return currentStatus;
+
     else if(pcWord!=""){//дл€ любого хода кроме первого
-        //проверим совпадает ли перва€ буква слова игрока с последней в слове компьютера
         if(checkFirstLast(playerFirstLetter,pcLastLetter))
             return currentStatus;
     }else{
