@@ -97,6 +97,8 @@ bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
         currentStatus=OK;
         return false;
+
+    //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
     }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
         currentStatus=OK;
         return false;
