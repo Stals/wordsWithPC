@@ -68,8 +68,9 @@ std::string Validator::getStatus(){
     case SpaceInWord:
         return "В слове не должно быть пробелов";
         break;
+    default:
+        return "Ошибка";
     }
-    return "Ошибка";
 }
 bool Validator::checkLength(std::string playerWord){
     if(playerWord==""){
