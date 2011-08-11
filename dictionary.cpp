@@ -52,13 +52,15 @@ std::string Dictionary::findRandomWord(char lastLetter){
     //сразу устанавливаем итератор на нужный нам словарь
     std::list<std::string>::iterator it = dictionary[lastLetter].begin();
 
-    if(dictionary['а'].size()!=0){
-
-        for(unsigned int i=0;i<rand()%dictionary[lastLetter].size();++i){
+    if(dictionary[lastLetter].size()!=0){
+        unsigned int randomWordIndex = rand()%dictionary[lastLetter].size();
+        //Находим это слово перебором
+        for(unsigned int i = 0; i < randomWordIndex; ++i){
             ++it;
         }
-
+        //Добавляем только что найденное слово в использованные
         usedWord((*it),lastLetter);
+
         return (*it);
 
     }else{
