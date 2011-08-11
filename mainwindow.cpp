@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setFixedSize(this->width(),this->height());
-    pcWord="";
-    wordsCount=0;
+    pcWord = "";
+    wordsCount = 0;
 }
 
 MainWindow::~MainWindow(){
@@ -21,10 +21,12 @@ MainWindow::~MainWindow(){
 
 void MainWindow::updateLabels(){
     //обновим слово компьютера
-    ui->pcWordLabel->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
+    ui->pcWordLabel->setText(QString::fromLocal8Bit("Cлово: ") +
+                             QString::fromLocal8Bit(pcWord.c_str()));
 
-    //обновим число раз сколько вводили
-    ui->wordsCountLabel->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
+    //обновим число удачно введенных слов
+    ui->wordsCountLabel->setText(QString::fromLocal8Bit("Вы ввели ") +
+                                 QString::number(wordsCount) + QString::fromLocal8Bit(" слов") );
 }
 
 //Получим слово введенное пользователем на форме
@@ -41,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
 
 {
     //Если компьютер не смог найти слова - вы выйграли
-    if(pcWord=="YOU WIN"){
+    if(pcWord == "YOU WIN"){
         exit(0);
     }
 
