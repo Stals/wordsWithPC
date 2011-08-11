@@ -16,21 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     wordsCount=0;
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
-}
-// TODO Убрать... К чемубы этот кусок вообше?
-void MainWindow::changeEvent(QEvent *e)
-{
-    QMainWindow::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
 }
 
 void MainWindow::updateLabels(){
@@ -88,7 +75,5 @@ void MainWindow::on_pushButton_clicked()
     ui->playerWordForm->setFocus();
     updateLabels();
     ui->playerWordForm->clear();
-
-
 
 }
