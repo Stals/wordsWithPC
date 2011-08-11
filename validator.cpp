@@ -2,36 +2,38 @@
 #include <string.h> //strcmp
 
 Validator::Validator(){
-    currentStatus=OK;
+    currentStatus = OK;
 }
-status Validator::checkPlayerWord(const std::string& playerWord,const std::string& pcWord,Dictionary& dictionary){
+status Validator::checkPlayerWord( const std::string &playerWord,
+    const std::string &pcWord, Dictionary &dictionary ){
+
     //Получим Необходимые нам символы
     playerFirstLetter=playerWord[0];
-    playerLastLetter=charFuncs::getLastLetter(playerWord);
-    pcLastLetter=charFuncs::getLastLetter(pcWord);
+    playerLastLetter=charFuncs::getLastLetter( playerWord );
+    pcLastLetter=charFuncs::getLastLetter( pcWord );
 
     //ё->е й->и так как они считаются одним и темже
     //TODO попробывать убрать в mainwindow , так как не логично что класс который проверяет что-то начинает менять данные
-    charFuncs::changeChar(playerFirstLetter);
-    charFuncs::changeChar(playerLastLetter);
+    charFuncs::changeChar( playerFirstLetter );
+    charFuncs::changeChar( playerLastLetter );
 
     //функции внутри меняют statusNum,если произошла ошибка
-    if(checkLength(playerWord))
+    if(checkLength( playerWord ))
         return currentStatus;
 
-    else if(checkLastLetters(playerWord))
+    else if(checkLastLetters( playerWord ))
         return currentStatus;
 
-    else if(checkSpaces(playerWord))
+    else if(checkSpaces( playerWord ))
         return currentStatus;
 
-    else if(checkRusLetter(playerLastLetter))
+    else if(checkRusLetter( playerLastLetter ))
         return currentStatus;
 
-    else if(checkUsedWord(playerWord,dictionary))
+    else if(checkUsedWord( playerWord, dictionary ))
         return currentStatus;
 
-    else if(pcWord!=""){//для любого хода кроме первого
+    else if(pcWord != ""){//для любого хода кроме первого
         if(checkFirstLast(playerFirstLetter,pcLastLetter))
             return currentStatus;
     }else{
@@ -73,11 +75,11 @@ std::string Validator::getStatus(){
     }
 }
 bool Validator::checkLength(std::string playerWord){
-    if(playerWord==""){
+    if(playerWord == ""){
         currentStatus=NoWord;
         return true;
     }
-    if(playerWord.size()<2){
+    if(playerWord.size() < 2){
         currentStatus=TooShortWord;
         return true;
     }else
@@ -85,31 +87,28 @@ bool Validator::checkLength(std::string playerWord){
 
 }
 bool Validator::checkRusLetter(char letter){
-    if(!charFuncs::rusLetter(letter)){
+    if(!charFuncs::rusLetter( letter )){
         currentStatus=NotRusWord;
         return true;
     }else
         return false;
 
 }
-bool Validator::checkUsedWord(std::string playerWord,Dictionary& dictionary){
-    if(!dictionary.checkUsed(playerWord)){
+bool Validator::checkUsedWord(std::string playerWord, Dictionary &dictionary){
+    if(!dictionary.checkUsed( playerWord )){
         currentStatus=UsedWord;
         return true;
     }else
         return false;
 }
-bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
+bool Validator::checkFirstLast(char playerFirstLetter, char pcLastLetter){
     if( playerFirstLetter==pcLastLetter){
         currentStatus=OK;
         return false;
 
         //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
-    }else if( (playerFirstLetter=='и'&&pcLastLetter=='й')){
-        currentStatus=OK;
-        return false;
-
-    }else if(( playerFirstLetter=='е'&&pcLastLetter=='ё')){
+    }else if(( playerFirstLetter == 'и' && pcLastLetter == 'й' )||
+             ( playerFirstLetter == 'е' && pcLastLetter == 'ё' )){
         currentStatus=OK;
         return false;
     }else{
@@ -122,7 +121,7 @@ bool Validator::checkFirstLast(char playerFirstLetter,char pcLastLetter){
 
 bool Validator::checkLastLetters(std::string playerWord){
     const int len=playerWord.length();
-    if(strchr("ъыь", playerWord[len-1])&&strchr("ъыь", playerWord[len-2])){
+    if(strchr("ъыь", playerWord[ len-1 ]) && strchr("ъыь", playerWord[ len-2 ])){
         currentStatus=WrongEnd;
         return true;
     }else{
@@ -133,8 +132,8 @@ bool Validator::checkLastLetters(std::string playerWord){
 
 bool Validator::checkSpaces(std::string playerWord){
 
-    for(unsigned int i = 0; i<playerWord.length();++i){
-        if(playerWord[i]==' '){//Если в строке есть пробелы - это несколько слов
+    for(unsigned int i = 0; i < playerWord.length(); ++i){
+        if(playerWord[i] == ' '){//Если в строке есть пробелы - это несколько слов
             currentStatus=SpaceInWord;
             return true;
         }

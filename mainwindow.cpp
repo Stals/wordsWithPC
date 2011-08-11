@@ -26,7 +26,7 @@ void MainWindow::updateLabels(){
 
     //обновим число удачно введенных слов
     ui->wordsCountLabel->setText(QString::fromLocal8Bit("Вы ввели ") +
-                                 QString::number(wordsCount) + QString::fromLocal8Bit(" слов") );
+                                 QString::number(wordsCount) + QString::fromLocal8Bit(" слов"));
 }
 
 //Получим слово введенное пользователем на форме
@@ -50,29 +50,29 @@ void MainWindow::on_pushButton_clicked()
     updateLabels();
 
     //Получаем слово пользователя
-    playerWord=getPlayerWord();
+    playerWord = getPlayerWord();
 
     //Приводим слово к нижнему регистру
-    cases::toLowerCase(playerWord);
+    cases::toLowerCase( playerWord );
 
     //Получим символ на который компьютер будет искать слово
-    playerLastLetter=charFuncs::getLastLetter(playerWord);
+    playerLastLetter=charFuncs::getLastLetter( playerWord );
 
     //TODO может поставить до получаения последнего символа?
     //ё->е й->и так как они считаются одним и темже
-    charFuncs::changeChar(playerLastLetter);
+    charFuncs::changeChar( playerLastLetter );
 
     //Делаем проверку на все условия
-    if( validator.checkPlayerWord(playerWord, pcWord, dictionary) == OK ){
+    if( validator.checkPlayerWord( playerWord, pcWord, dictionary ) == OK ){
         //Получаем случайное слово компьютера
-        pcWord=dictionary.findRandomWord(playerLastLetter);
+        pcWord = dictionary.findRandomWord( playerLastLetter );
         //убирем слово введенное пользователем из словаря чтобы потом его не повторить
         dictionary.usedWord(playerWord, playerLastLetter);
         //Увеличиваем количество удачно введенных пользователем слов
         ++wordsCount;
     }
     //выводим статус проверки пользователю
-    showValidationStatus(validator.getStatus());
+    showValidationStatus( validator.getStatus() );
 
     ui->playerWordForm->setFocus();
     updateLabels();

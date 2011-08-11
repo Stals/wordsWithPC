@@ -83,7 +83,7 @@ bool Dictionary::checkUsed(std::string playerWord){
     return true;
 }
 
-bool compareStr(const std::string &str1 ,const std::string &str2){
+bool compareStr(const std::string &str1, const std::string &str2){
     if(strcmp(str1.c_str(), str2.c_str())){//Если первая строка больще чем вторая
         return true;
     }else

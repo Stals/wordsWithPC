@@ -31,7 +31,6 @@ public:
     //хранит текущее состояние
     status currentStatus;
 
-
 private:
     char playerFirstLetter;
     char playerLastLetter;

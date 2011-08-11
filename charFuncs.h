@@ -7,24 +7,23 @@ namespace charFuncs{
 //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы
 inline char getLastLetter(const std::string str){
 
-    char lastChar=str[str.size()-1];//последний символ
+    char lastChar = str[ str.size()-1 ];//последний символ
     if(strchr("ъыь", lastChar)){
-        return lastChar=str[str.size()-2];
+        return lastChar=str[ str.size()-2 ];
     }else return lastChar;
 }
 
 //если символ ё меняет на е и если символ й меняет на и
-inline void changeChar(char& letter){
+inline void changeChar(char &letter){
 
     //делаем из ё -> е
-    if(letter=='ё'){
-        letter='е';
+    if(letter == 'ё'){
+        letter = 'е';
     }
     //делаем из й -> и
-    if(letter=='й'){
-        letter='и';
+    if(letter == 'й'){
+        letter = 'и';
     }
-
 }
 //return true ,если буква русская
 inline bool rusLetter(char letter){
