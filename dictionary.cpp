@@ -11,6 +11,7 @@ void Dictionary::loadDicts(){
     // Создаём вектор файлов словарей для каждой буквы
     std::vector< std::string > files;
     char buf[3];
+
     for( int i=1; i<34; ++i ){
         std::string str="dict//";
         itoa( i, buf, 10 );
@@ -25,7 +26,7 @@ void Dictionary::loadDicts(){
         int num; //number of words
         std::string letter;
         std::string newWord;
-        //слова на 1 букву записывается сначала сюда
+        //хранит список слов начинающихся на одну букву
         std::list<std::string> singleDict;
 
         f >> letter;
@@ -68,8 +69,8 @@ std::string Dictionary::findRandomWord(char lastLetter){
     }else{
         return "YOU WIN";
     }
-
-    return "YOU WIN";
+    //TODO до сюда программа длйти не может ведь да?
+    //return "YOU WIN";
 }
 
 bool Dictionary::checkUsed(std::string playerWord){

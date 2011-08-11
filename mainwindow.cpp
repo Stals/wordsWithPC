@@ -44,7 +44,7 @@ void MainWindow::on_pushButton_clicked()
     if(pcWord=="YOU WIN"){
         exit(0);
     }
-    //обновляем
+
     updateLabels();
 
     //Получаем слово пользователя
@@ -53,24 +53,24 @@ void MainWindow::on_pushButton_clicked()
     //Приводим слово к нижнему регистру
     cases::toLowerCase(playerWord);
 
-    //Получим Необходимый нам символ
+    //Получим символ на который компьютер будет искать слово
     playerLastLetter=charFuncs::getLastLetter(playerWord);
 
     //TODO может поставить до получаения последнего символа?
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar(playerLastLetter);
 
-    //делаем проверку на все условия
-    if(validator.checkPlayerWord(playerWord,pcWord,dictionary)==OK){
-        //Получаем случайное слово в pcWord
+    //Делаем проверку на все условия
+    if( validator.checkPlayerWord(playerWord, pcWord, dictionary) == OK ){
+        //Получаем случайное слово компьютера
         pcWord=dictionary.findRandomWord(playerLastLetter);
-        //убирем слово из наших словарей чтобы потом его не повторить
-        dictionary.usedWord(playerWord,playerLastLetter);
+        //убирем слово введенное пользователем из словаря чтобы потом его не повторить
+        dictionary.usedWord(playerWord, playerLastLetter);
+        //Увеличиваем количество удачно введенных пользователем слов
         ++wordsCount;
     }
-    //выводим статус из check
+    //выводим статус проверки пользователю
     showValidationStatus(validator.getStatus());
-
 
     ui->playerWordForm->setFocus();
     updateLabels();
