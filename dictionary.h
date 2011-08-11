@@ -23,13 +23,17 @@ public:
 
     //Возвращает true если такого слова не использовалось
     bool checkUsed(std::string playerWord);
+
 private:
     //загружает словари из файликов  в map - dictionary
     void loadDicts();
 
-    std::map<char,std::list<std::string> > dictionary;//тут хранаятся все возможные варианты ответа компа
-    std::list<std::string> singleDict;//словарь на 1 букву записывается сначала сюда
-    std::vector<std::string> usedWords;//вектор уже использованных слов (удалять не нужно, а скорость поиска увеличиться)
+    //хранит все возможные варианты ответа компьютера
+    std::map<char,std::list<std::string> > dictionary;
+    //словарь на 1 букву записывается сначала сюда
+    std::list<std::string> singleDict;
+    //вектор уже использованных слов
+    std::vector<std::string> usedWords;
 };
 //(*mapIter).first; -это буква на которую в словаре начинаются слова
 //(*mapIter).second; - это список слов, при этом к отдельному нужно обращаться итератором

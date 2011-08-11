@@ -17,7 +17,7 @@ enum status{
     SpaceInWord      //В слове есть пробел
 };
 
-//Этот класс занимается проверкой слова введенной пользователем на праильность
+//Этот класс занимается проверкой слова введенной пользователем на правильность
 class Validator
 {
 public:
@@ -37,13 +37,13 @@ private:
     char playerLastLetter;
     char pcLastLetter;
 
-    //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет statusNum
-    bool checkLength(std::string); //Проверят длинну слова
-    bool checkRusLetter(char); //Провреряет является ли слово Русским
-    bool checkUsedWord(std::string,Dictionary&); //Проверяет было ли использованно слово
-    bool checkFirstLast(char,char);//Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
-    bool checkLastLetters(std::string);//Проверяет чтобы оба последних символа небыли ъ ь ы (абвъы)
-    bool checkSpaces(std::string);//Проверяет чтобы в строке не было пробела
+    //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
+    bool checkLength(std::string);                //Проверят длинну слова
+    bool checkRusLetter(char);                    //Провреряет является ли слово Русским
+    bool checkUsedWord(std::string,Dictionary&);  //Проверяет было ли использованно слово
+    bool checkFirstLast(char,char);               //Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
+    bool checkLastLetters(std::string);           //Проверяет чтобы оба последних символа небыли ъ ь ы (абвъы)
+    bool checkSpaces(std::string);                //Проверяет чтобы в строке не было пробела
 };
 
 #endif // CHECK_H
