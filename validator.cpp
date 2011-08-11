@@ -38,7 +38,7 @@ status Validator::checkPlayerWord( const std::string &playerWord,
             return currentStatus;
     }else{
         //playerWord удовлетворяет всем условиям
-        currentStatus=OK;
+        currentStatus = OK;
     }
     return currentStatus;
 
