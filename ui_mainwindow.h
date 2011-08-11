@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu 28. Jul 19:14:13 2011
+** Created: Thu 11. Aug 17:07:31 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -34,13 +34,13 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label_2;
+    QLabel *pcWordLabel;
     QVBoxLayout *verticalLayout;
     QLineEdit *playerWordForm;
     QPushButton *pushButton;
-    QLabel *label_3;
+    QLabel *wordsCountLabel;
     QFrame *line;
-    QLabel *label_4;
+    QLabel *statusLabel;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -64,11 +64,11 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
+        pcWordLabel = new QLabel(centralWidget);
+        pcWordLabel->setObjectName(QString::fromUtf8("pcWordLabel"));
+        pcWordLabel->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label_2);
+        verticalLayout_2->addWidget(pcWordLabel);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -88,11 +88,11 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setAlignment(Qt::AlignCenter);
+        wordsCountLabel = new QLabel(centralWidget);
+        wordsCountLabel->setObjectName(QString::fromUtf8("wordsCountLabel"));
+        wordsCountLabel->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label_3);
+        verticalLayout_2->addWidget(wordsCountLabel);
 
         line = new QFrame(centralWidget);
         line->setObjectName(QString::fromUtf8("line"));
@@ -101,14 +101,14 @@ public:
 
         verticalLayout_2->addWidget(line);
 
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        statusLabel = new QLabel(centralWidget);
+        statusLabel->setObjectName(QString::fromUtf8("statusLabel"));
         QFont font;
         font.setFamily(QString::fromUtf8("Yota InterFace"));
-        label_4->setFont(font);
-        label_4->setAlignment(Qt::AlignCenter);
+        statusLabel->setFont(font);
+        statusLabel->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label_4);
+        verticalLayout_2->addWidget(statusLabel);
 
 
         gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
@@ -126,10 +126,10 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\230\320\263\321\200\320\260 \"\320\241\320\273\320\276\320\262\320\260\"", 0, QApplication::UnicodeUTF8));
         action->setText(QApplication::translate("MainWindow", "\320\241\320\273\321\203\321\207\320\260\320\271\320\275\320\276", 0, QApplication::UnicodeUTF8));
         action_2->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\265\321\201\321\201", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276: ", 0, QApplication::UnicodeUTF8));
+        pcWordLabel->setText(QApplication::translate("MainWindow", "\320\241\320\273\320\276\320\262\320\276: ", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 0 \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("MainWindow", "\320\247\321\202\320\276\320\261\321\213 \320\275\320\260\321\207\320\260\321\202\321\214 \320\262\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\320\273\320\276\320\262\320\276 \320\270 \320\275\320\260\320\266\320\270\321\202\320\265 \"OK\"", 0, QApplication::UnicodeUTF8));
+        wordsCountLabel->setText(QApplication::translate("MainWindow", "\320\222\321\213 \320\262\320\262\320\265\320\273\320\270 0 \321\201\320\273\320\276\320\262", 0, QApplication::UnicodeUTF8));
+        statusLabel->setText(QApplication::translate("MainWindow", "\320\247\321\202\320\276\320\261\321\213 \320\275\320\260\321\207\320\260\321\202\321\214 \320\262\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\320\273\320\276\320\262\320\276 \320\270 \320\275\320\260\320\266\320\270\321\202\320\265 \"OK\"", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

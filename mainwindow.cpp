@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 #include <windows.h>
 #include "cases.h"
 #include "charFuncs.h"
@@ -21,20 +20,21 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::updateLabels(){
-    //обновим слово компа
-    ui->label_2->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
+    //обновим слово компьютера
+    ui->pcWordLabel->setText(QString::fromLocal8Bit("Cлово: ")+QString::fromLocal8Bit(pcWord.c_str()));
 
     //обновим число раз сколько вводили
-    ui->label_3->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
+    ui->wordsCountLabel->setText(QString::fromLocal8Bit("Вы ввели ")+QString::number(wordsCount)+QString::fromLocal8Bit(" слов") );
 }
 
+//Получим слово введенное пользователем на форме
 std::string MainWindow::getPlayerWord(){
     QString test=ui->playerWordForm->text().toLocal8Bit();
     return test.toStdString();
 }
 
 void MainWindow::showValidationStatus(const std::string str){
-    ui->label_4->setText(QString::fromLocal8Bit(str.c_str()));
+    ui->statusLabel->setText(QString::fromLocal8Bit(str.c_str()));
 }
 
 void MainWindow::on_pushButton_clicked()
