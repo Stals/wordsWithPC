@@ -64,11 +64,11 @@ std::string Validator::getStatus(){
     }
 }
 bool Validator::hasWrongLength(std::string playerWord){
-    if(playerWord == ""){
+    if(playerWord.length() == 0){
         currentStatus=NoWord;
         return true;
     }
-    if(playerWord.size() < 2){
+    if(playerWord.length() < 2){
         currentStatus=TooShortWord;
         return true;
     }else{
@@ -77,7 +77,7 @@ bool Validator::hasWrongLength(std::string playerWord){
 
 }
 bool Validator::isNotRusLetter(char letter){
-    if(!charFuncs::rusLetter( letter )){
+    if(!charFuncs::isRusLetter( letter )){
         currentStatus=NotRusWord;
         return true;
     }else{
