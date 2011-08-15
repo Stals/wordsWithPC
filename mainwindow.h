@@ -29,10 +29,9 @@ private:
 
 
     std::string pcWord;//Слово компьютера
-    char pcLastLetter; //Последний символ слова компьютера
+
     std::string playerWord;//Слово игрока
-    char playerFirstLetter;
-    char playerLastLetter;
+
 
     int wordsCount; //Счётчик слов введённых пользователем
 

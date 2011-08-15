@@ -56,14 +56,17 @@ void MainWindow::on_pushButton_clicked()
     cases::toLowerCase( playerWord );
 
     //Получим символ на который компьютер будет искать слово
-    playerLastLetter=charFuncs::getLastLetter( playerWord );
+    char playerLastLetter = charFuncs::getLastLetter( playerWord );
+
+    //Получим необходимые сиволы для Validator'a
+    char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
     //TODO может поставить до получаения последнего символа?
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar( playerLastLetter );
 
     //Делаем проверку на все условия
-    if( validator.checkPlayerWord( playerWord, pcWord, dictionary ) == OK ){
+    if( validator.isWordValid( playerWord, pcLastLetter, dictionary ) == true ){
         //Получаем случайное слово компьютера
         pcWord = dictionary.findRandomWord( playerLastLetter );
         //убирем слово введенное пользователем из словаря чтобы потом его не повторить

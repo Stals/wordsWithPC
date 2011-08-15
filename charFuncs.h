@@ -6,6 +6,7 @@
 namespace charFuncs{
 //Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы
 inline char getLastLetter(const std::string str){
+    if(str == "") return ' ';
 
     char lastChar = str[ str.size()-1 ];//последний символ
     if(strchr("ъыь", lastChar)){
