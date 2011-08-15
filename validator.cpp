@@ -109,7 +109,9 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
              ( playerFirstLetter == 'й' && pcLastLetter == 'и' )||
              ( playerFirstLetter == 'ё' && pcLastLetter == 'е' )){
         return false;
-    }else if( pcLastLetter == ' ' ){//Если это первый ход
+
+    //Если это первый ход
+    }else if( pcLastLetter == ' ' ){
         return false;
     }else{
         currentStatus = WrongFirstLetter;
