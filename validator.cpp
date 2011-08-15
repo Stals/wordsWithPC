@@ -94,16 +94,13 @@ bool Validator::isUsedWord(std::string playerWord, Dictionary &dictionary){
 }
 bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     if( playerFirstLetter == pcLastLetter){
-        currentStatus=OK;
         return false;
 
     //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
     }else if(( playerFirstLetter == 'и' && pcLastLetter == 'й' )||
              ( playerFirstLetter == 'е' && pcLastLetter == 'ё' )){
-        currentStatus=OK;
         return false;
     }else if( pcLastLetter == ' ' ){//Если это первый ход
-        currentStatus=OK;
         return false;
     }else{
         currentStatus=WrongFirstLetter;
@@ -118,7 +115,6 @@ bool Validator::hasWrongLastLetters(std::string playerWord){
         currentStatus=WrongEnd;
         return true;
     }else{
-        currentStatus=OK;
         return false;
     }
 }
