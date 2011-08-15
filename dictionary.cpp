@@ -4,10 +4,11 @@
 #include <string.h>
 #include <windows.h>
 #include "charFuncs.h"
-Dictionary::Dictionary()
-{
+Dictionary::Dictionary(){
     loadDicts();
 }
+
+
 void Dictionary::loadDicts(){
     // Создаём вектор файлов словарей для каждой буквы
     std::vector< std::string > files;
@@ -44,12 +45,14 @@ void Dictionary::loadDicts(){
     }
 }
 
+
 void Dictionary::usedWord(std::string Word, char lastLetter){
     //Добавляем Word в usedWords
     usedWords.push_back( Word );
     //убираем Word из dictionary ,если там оно есть
     dictionary[lastLetter].remove( Word );
 }
+
 
 std::string Dictionary::findRandomWord(char lastLetter){
      srand(time(NULL));
@@ -76,6 +79,7 @@ std::string Dictionary::findRandomWord(char lastLetter){
     }
 }
 
+
 bool Dictionary::isUsedWord(std::string playerWord){
     for(std::vector< std::string >::iterator it = usedWords.begin(); it != usedWords.end(); ++it){
         if((*it) == playerWord){//слово уже было
@@ -85,6 +89,7 @@ bool Dictionary::isUsedWord(std::string playerWord){
     //если за весь список не встретил такого слово - значит оно еще не использовалось
     return false;
 }
+
 
 bool compareStr(const std::string &str1, const std::string &str2){
     if(strcmp(str1.c_str(), str2.c_str())){//Если первая строка больще чем вторая

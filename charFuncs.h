@@ -14,6 +14,7 @@ inline char getLastLetter(const std::string str){
     }else return lastChar;
 }
 
+
 //если символ ё меняет на е и если символ й меняет на и
 inline void changeChar(char &letter){
 
@@ -26,8 +27,10 @@ inline void changeChar(char &letter){
         letter = 'и';
     }
 }
+
+
 //return true ,если буква русская
-inline bool rusLetter(char letter){
+inline bool isRusLetter(char letter){
     if(strchr("абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ",letter))
         return true;
     else

@@ -16,9 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setFixedSize(this->width(),this->height());
 }
 
+
 MainWindow::~MainWindow(){
     delete ui;
 }
+
 
 void MainWindow::updateLabels(){
     //обновим слово компьютера
@@ -30,19 +32,21 @@ void MainWindow::updateLabels(){
                                  QString::number(wordsCount) + QString::fromLocal8Bit(" слов"));
 }
 
+
 //Получим слово введенное пользователем на форме
 std::string MainWindow::getPlayerWord(){
     QString test=ui->playerWordForm->text().toLocal8Bit();
     return test.toStdString();
 }
 
+
 void MainWindow::showValidationStatus(const std::string str){
     ui->statusLabel->setText(QString::fromLocal8Bit(str.c_str()));
 }
 
-void MainWindow::on_pushButton_clicked()
 
-{
+void MainWindow::on_pushButton_clicked(){
+
     //Если компьютер не смог найти слова - вы выйграли
     if(pcWord == "YOU WIN"){
         exit(0);

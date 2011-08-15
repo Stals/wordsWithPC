@@ -4,6 +4,8 @@
 Validator::Validator(){
     currentStatus = OK;
 }
+
+
 bool Validator::isWordValid( const std::string &playerWord,
                              const char &pcLastLetter, Dictionary &dictionary ){
 
@@ -27,6 +29,7 @@ bool Validator::isWordValid( const std::string &playerWord,
         return true;
     }
 }
+
 
 std::string Validator::getStatus(){
     switch (currentStatus){
@@ -58,6 +61,8 @@ std::string Validator::getStatus(){
         return "Îרטבךא";
     }
 }
+
+
 bool Validator::hasWrongLength(std::string playerWord){
     if(playerWord.length() == 0){
         currentStatus = NoWord;
@@ -71,6 +76,8 @@ bool Validator::hasWrongLength(std::string playerWord){
     }
 
 }
+
+
 bool Validator::isNotRusLetter(char letter){
     if(!charFuncs::isRusLetter( letter )){
         currentStatus = NotRusWord;
@@ -79,6 +86,8 @@ bool Validator::isNotRusLetter(char letter){
         return false;
     }
 }
+
+
 bool Validator::isUsedWord(std::string playerWord, Dictionary &dictionary){
     if(dictionary.isUsedWord( playerWord )){
         currentStatus = UsedWord;
@@ -87,6 +96,8 @@ bool Validator::isUsedWord(std::string playerWord, Dictionary &dictionary){
         return false;
     }
 }
+
+
 bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     if( playerFirstLetter == pcLastLetter){
         return false;
@@ -107,6 +118,7 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
 
 }
 
+
 bool Validator::hasWrongLastLetters(std::string playerWord){
     const int len=playerWord.length();
     if(strchr("תûü", playerWord[ len-1 ]) && strchr("תûü", playerWord[ len-2 ])){
@@ -116,6 +128,7 @@ bool Validator::hasWrongLastLetters(std::string playerWord){
         return false;
     }
 }
+
 
 bool Validator::hasSpaces(std::string playerWord){
 
