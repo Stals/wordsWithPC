@@ -11,11 +11,6 @@ bool Validator::isWordValid( const std::string &playerWord,
     playerFirstLetter = playerWord[0];
     playerLastLetter = charFuncs::getLastLetter( playerWord );
 
-    //ё->е й->и так как они считаются одним и темже
-    //TODO попробывать убрать в mainwindow , так как не логично что класс который проверяет что-то начинает менять данные
-    charFuncs::changeChar( playerFirstLetter );
-    charFuncs::changeChar( playerLastLetter );
-
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     // Если хоть одно из условий вернёт true - значит в слово не прошло проверку
     if( hasWrongFirstLast( playerFirstLetter, pcLastLetter )||
@@ -96,9 +91,12 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     if( playerFirstLetter == pcLastLetter){
         return false;
 
-    //NOTE: Так как в слове игрока уже преобразовано й в и , ё в е , а в словах компьютера нет, нужны эти проверки
+    //NOTE: Так как эти символы равнозначны ничего страшного если слово компьютера кончается на 'и' ,
+    // а слово игрока будет начинаться на 'й' и наоборот
     }else if(( playerFirstLetter == 'и' && pcLastLetter == 'й' )||
-             ( playerFirstLetter == 'е' && pcLastLetter == 'ё' )){
+             ( playerFirstLetter == 'е' && pcLastLetter == 'ё' )||
+             ( playerFirstLetter == 'й' && pcLastLetter == 'и' )||
+             ( playerFirstLetter == 'ё' && pcLastLetter == 'е' )){
         return false;
     }else if( pcLastLetter == ' ' ){//Если это первый ход
         return false;

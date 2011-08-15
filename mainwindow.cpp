@@ -7,12 +7,13 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    pcWord(""),
+    wordsCount(0)
 {
     ui->setupUi(this);
+    // Делаем так чтобы форму нельзя было растягивать
     this->setFixedSize(this->width(),this->height());
-    pcWord = "";
-    wordsCount = 0;
 }
 
 MainWindow::~MainWindow(){
@@ -61,9 +62,6 @@ void MainWindow::on_pushButton_clicked()
     //Получим необходимые сиволы для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
-    //TODO может поставить до получаения последнего символа?
-    //ё->е й->и так как они считаются одним и темже
-    charFuncs::changeChar( playerLastLetter );
 
     //Делаем проверку на все условия
     if( validator.isWordValid( playerWord, pcLastLetter, dictionary ) == true ){

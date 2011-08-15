@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <windows.h>
+#include "charFuncs.h"
 Dictionary::Dictionary()
 {
     loadDicts();
@@ -51,7 +52,11 @@ void Dictionary::usedWord(std::string Word, char lastLetter){
 }
 
 std::string Dictionary::findRandomWord(char lastLetter){
-    srand(time(NULL));
+     srand(time(NULL));
+
+    //ё->е й->и так как они считаются одним и темже
+    charFuncs::changeChar( lastLetter );
+
     //сразу устанавливаем итератор на нужный нам словарь
     std::list<std::string>::iterator it = dictionary[lastLetter].begin();
 
@@ -69,8 +74,6 @@ std::string Dictionary::findRandomWord(char lastLetter){
     }else{
         return "YOU WIN";
     }
-    //TODO до сюда программа длйти не может ведь да?
-    //return "YOU WIN";
 }
 
 bool Dictionary::isUsedWord(std::string playerWord){
