@@ -73,14 +73,14 @@ std::string Dictionary::findRandomWord(char lastLetter){
     //return "YOU WIN";
 }
 
-bool Dictionary::checkUsed(std::string playerWord){
+bool Dictionary::isUsedWord(std::string playerWord){
     for(std::vector< std::string >::iterator it = usedWords.begin(); it != usedWords.end(); ++it){
         if((*it) == playerWord){//слово уже было
-            return false;
+            return true;
         }
     }
     //если за весь список не встретил такого слово - значит оно еще не использовалось
-    return true;
+    return false;
 }
 
 bool compareStr(const std::string &str1, const std::string &str2){

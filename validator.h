@@ -37,7 +37,7 @@ private:
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     bool hasWrongLength(std::string);                //Проверят длинну слова
-    bool isNotRusWord(char);                         //Провреряет является ли слово Русским
+    bool isNotRusLetter(char);                         //Провреряет является ли слово Русским
     bool isUsedWord(std::string, Dictionary&);       //Проверяет было ли использованно слово
     bool hasWrongFirstLast(char,char);               //Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
     bool hasWrongLastLetters(std::string);           //Проверяет чтобы оба последних символа небыли ъ ь ы (абвъы)

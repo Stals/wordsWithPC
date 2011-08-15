@@ -18,12 +18,12 @@ bool Validator::isWordValid( const std::string &playerWord,
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     // Если хоть одно из условий вернёт true - значит в слово не прошло проверку
-    if( hasWrongLength( playerWord )||
+    if( hasWrongFirstLast( playerFirstLetter, pcLastLetter )||
+        hasWrongLength( playerWord )||
         hasWrongLastLetters( playerWord )||
         hasSpaces( playerWord )||
-        isNotRusWord( playerLastLetter )||
-        isUsedWord( playerWord, dictionary )||
-        hasWrongFirstLast( playerFirstLetter, pcLastLetter )
+        isNotRusLetter( playerLastLetter )||
+        isUsedWord( playerWord, dictionary )
         ){
             return false;
     }else{
@@ -71,24 +71,26 @@ bool Validator::hasWrongLength(std::string playerWord){
     if(playerWord.size() < 2){
         currentStatus=TooShortWord;
         return true;
-    }else
+    }else{
         return false;
+    }
 
 }
-bool Validator::isNotRusWord(char letter){
+bool Validator::isNotRusLetter(char letter){
     if(!charFuncs::rusLetter( letter )){
         currentStatus=NotRusWord;
         return true;
-    }else
+    }else{
         return false;
-
+    }
 }
 bool Validator::isUsedWord(std::string playerWord, Dictionary &dictionary){
-    if(!dictionary.checkUsed( playerWord )){
-        currentStatus=UsedWord;
+    if(dictionary.isUsedWord( playerWord )){
+        currentStatus = UsedWord;
         return true;
-    }else
+    }else{
         return false;
+    }
 }
 bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     if( playerFirstLetter == pcLastLetter){
@@ -106,7 +108,6 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     }else{
         currentStatus=WrongFirstLetter;
         return true;
-
     }
 
 }
@@ -132,6 +133,5 @@ bool Validator::hasSpaces(std::string playerWord){
     }
     //Если пробелов в слове небыло найдено
     return false;
-
 
 }

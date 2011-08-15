@@ -21,8 +21,8 @@ public:
     //ƒобавл€ет слово в usedWords и убирает его из dictionary ,если оно там есть
     void usedWord(std::string Word, char lastLetter);
 
-    //¬озвращает true если такого слова не использовалось
-    bool checkUsed(std::string playerWord);
+    //¬озвращает false если такого слова не использовалось
+    bool isUsedWord(std::string playerWord);
 
 private:
     //загружает словари из файликов  в map - dictionary
