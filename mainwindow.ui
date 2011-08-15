@@ -20,7 +20,7 @@
       <item>
        <widget class="QLabel" name="pcWordLabel">
         <property name="text">
-         <string>Слово: </string>
+         <string>Введите слово</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
