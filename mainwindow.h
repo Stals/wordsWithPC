@@ -29,16 +29,16 @@ private:
 
 
     std::string pcWord;//Слово компьютера
-
     std::string playerWord;//Слово игрока
-
 
     int wordsCount; //Счётчик слов введённых пользователем
 
     //Обновляет Лейблы на форме
     void updateLabels();
+
     //Читает слово с формы и возвращает его в виде std::string
     std::string getPlayerWord();
+
     //Выводит str в строке состояния
     void showValidationStatus(const std::string str);
 
