@@ -2,7 +2,7 @@
 #include <string.h> //strcmp
 
 Validator::Validator(){
-    currentStatus = OK;
+    currentStatus = Status::OK;
 }
 
 
@@ -25,7 +25,7 @@ bool Validator::isWordValid( const std::string &playerWord,
             return false;
     }else{
         //иначе слово удовлетворяет всем уcловиям
-        currentStatus = OK;
+        currentStatus = Status::OK;
         return true;
     }
 }
@@ -33,28 +33,28 @@ bool Validator::isWordValid( const std::string &playerWord,
 
 std::string Validator::getStatus(){
     switch (currentStatus){
-    case OK:
+    case Status::OK:
         return "Правильный ввод";
         break;
-    case WrongFirstLetter:
+    case Status::WrongFirstLetter:
         return "Неправильный первый символ";
         break;
-    case UsedWord:
+    case Status::UsedWord:
         return "Это слово уже использовалось";
         break;
-    case NotRusWord:
+    case Status::NotRusWord:
         return "Не русское слово";
         break;
-    case TooShortWord:
+    case Status::TooShortWord:
         return "Слишком короткое слово";
         break;
-    case NoWord:
+    case Status::NoWord:
         return "Сначала введите что-нибудь";
         break;
-    case WrongEnd:
+    case Status::WrongEnd:
         return "Неправильное окончание";
         break;
-    case SpaceInWord:
+    case Status::SpaceInWord:
         return "В слове не должно быть пробелов";
         break;
     default:
@@ -65,11 +65,11 @@ std::string Validator::getStatus(){
 
 bool Validator::hasWrongLength(std::string playerWord){
     if(playerWord.length() == 0){
-        currentStatus = NoWord;
+        currentStatus = Status::NoWord;
         return true;
     }
     if(playerWord.length() < 2){
-        currentStatus = TooShortWord;
+        currentStatus = Status::TooShortWord;
         return true;
     }else{
         return false;
@@ -80,7 +80,7 @@ bool Validator::hasWrongLength(std::string playerWord){
 
 bool Validator::isNotRusLetter(char letter){
     if(!charFuncs::isRusLetter( letter )){
-        currentStatus = NotRusWord;
+        currentStatus = Status::NotRusWord;
         return true;
     }else{
         return false;
@@ -90,7 +90,7 @@ bool Validator::isNotRusLetter(char letter){
 
 bool Validator::isUsedWord(std::string playerWord, Dictionary &dictionary){
     if(dictionary.isUsedWord( playerWord )){
-        currentStatus = UsedWord;
+        currentStatus = Status::UsedWord;
         return true;
     }else{
         return false;
@@ -114,7 +114,7 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
     }else if( pcLastLetter == ' ' ){
         return false;
     }else{
-        currentStatus = WrongFirstLetter;
+        currentStatus = Status::WrongFirstLetter;
         return true;
     }
 
@@ -124,7 +124,7 @@ bool Validator::hasWrongFirstLast(char playerFirstLetter, char pcLastLetter){
 bool Validator::hasWrongLastLetters(std::string playerWord){
     const int len=playerWord.length();
     if(strchr("ъыь", playerWord[ len-1 ]) && strchr("ъыь", playerWord[ len-2 ])){
-        currentStatus = WrongEnd;
+        currentStatus = Status::WrongEnd;
         return true;
     }else{
         return false;
@@ -136,7 +136,7 @@ bool Validator::hasSpaces(std::string playerWord){
 
     for(unsigned int i = 0; i < playerWord.length(); ++i){
         if(playerWord[i] == ' '){//Если в строке есть пробелы - это несколько слов
-            currentStatus = SpaceInWord;
+            currentStatus = Status::SpaceInWord;
             return true;
         }
     }

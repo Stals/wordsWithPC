@@ -5,17 +5,7 @@
 #include "charFuncs.h"
 #include "dictionary.h"
 
-//Статус введонного слова
-enum status{
-    OK,              //Ввод нормальный
-    WrongFirstLetter,//Неправильный первый символ
-    UsedWord,        //Слово уже исспользовалось
-    NotRusWord,      //Не русское слово
-    TooShortWord,    //Слишком короткое слово
-    NoWord,          //Слово 0 длинны
-    WrongEnd,        //Неправильное окончание
-    SpaceInWord      //В слове есть пробел
-};
+
 
 //Этот класс занимается проверкой слова введенной пользователем на правильность
 class Validator
@@ -28,10 +18,25 @@ public:
     //возвращает статус слова в виде строки
     std::string getStatus();
 
-    //хранит текущее состояние
-    status currentStatus;
-
 private:
+
+    struct Status{
+    //Статус введонного слова
+        enum value{
+            OK,              //Ввод нормальный
+            WrongFirstLetter,//Неправильный первый символ
+            UsedWord,        //Слово уже исспользовалось
+            NotRusWord,      //Не русское слово
+            TooShortWord,    //Слишком короткое слово
+            NoWord,          //Слово 0 длинны
+            WrongEnd,        //Неправильное окончание
+            SpaceInWord      //В слове есть пробел
+        };
+    };
+
+    //хранит текущее состояние
+    Status::value currentStatus;
+
     char playerFirstLetter;
     char playerLastLetter;
 
