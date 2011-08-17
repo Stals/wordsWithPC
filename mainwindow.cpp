@@ -24,8 +24,12 @@ MainWindow::~MainWindow(){
 
 void MainWindow::updateLabels(){
     //обновим слово компьютера
-    ui->pcWordLabel->setText(QString::fromLocal8Bit("Cлово: ") +
-                             QString::fromLocal8Bit(pcWord.c_str()));
+    if(pcWord.length() != 0){
+        ui->pcWordLabel->setText(QString::fromLocal8Bit("Cлово: ") +
+                                 QString::fromLocal8Bit(pcWord.c_str()));
+    }else{
+        ui->pcWordLabel->setText(QString::fromLocal8Bit("Введите слово"));
+    }
 
     //обновим число удачно введенных слов
     ui->wordsCountLabel->setText(QString::fromLocal8Bit("Вы ввели ") +
