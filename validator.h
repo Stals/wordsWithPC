@@ -22,7 +22,7 @@ private:
 
     struct Status{
     //Статус введонного слова
-        enum value{
+        enum Value{
             OK,              //Ввод нормальный
             WrongFirstLetter,//Неправильный первый символ
             UsedWord,        //Слово уже исспользовалось
@@ -34,8 +34,8 @@ private:
         };
     };
 
-    //хранит текущее состояние
-    Status::value currentStatus;
+    //текущее состояние
+    Status::Value currentStatus;
 
     char playerFirstLetter;
     char playerLastLetter;
