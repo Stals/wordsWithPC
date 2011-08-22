@@ -42,6 +42,9 @@ private:
     //Выводит str в строке состояния
     void showValidationStatus(const std::string str);
 
+    //Спрашивает нужно ли добавить новое слово и если нужно добавляет его и возвращает true, иначе false
+    bool addNewWord(std::string playerWord);
+
 private slots:
     void on_pushButton_clicked();
 

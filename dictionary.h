@@ -15,24 +15,42 @@ class Dictionary
 public:
     Dictionary();
 
+    //добавл€ет новые слова из newWords в словари
+    ~Dictionary();
+
     //ищет случайное слово в словар€х
     std::string findRandomWord(char lastLetter);
 
     //ƒобавл€ет слово в usedWords и убирает его из dictionary ,если оно там есть
-    void usedWord(std::string Word, char lastLetter);
+    void addUsedWord(std::string word);
 
-    //¬озвращает false если такого слова не использовалось
+    //”бирает слово из словар€ если оно там есть
+    void removeWord(std::string word);
+
+    //¬озвращает true если это слово уже использовалось (компьютером или пользователем)
     bool isUsedWord(std::string playerWord);
+
+    //¬озвращает true если этого слова нет в словар€х
+    bool isNewWord(std::string playerWord);
+
+    //ƒобавл€ет новое слово в словар newWords , а
+    bool addNewWord(std::string playerWord);
 
 private:
     //загружает словари из файликов  в map - dictionary
     void loadDicts();
+
+    //¬озвращает true если слово есть в словаре
+    bool isInDictionary(std::string playerWord);
 
     //хранит все возможные варианты ответа компьютера
     std::map<char, std::list<std::string> > dictionary;
 
     //вектор уже использованных слов
     std::vector<std::string> usedWords;
+
+    //вектор новых слов ,которые при завершении программы дабав€тс€ в словари компьютера
+    std::vector<std::string> newWords;
 };
 //(*mapIter).first; -это буква на которую в словаре начинаютс€ слова
 //(*mapIter).second; - это список слов, при этом к отдельному нужно обращатьс€ итератором

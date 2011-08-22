@@ -57,6 +57,8 @@ std::string Validator::getStatus(){
     case Status::SpaceInWord:
         return "В слове не должно быть пробелов";
         break;
+    case Status::NotNewWord:
+        return "Введите другое слово";
     default:
         return "Ошибка";
     }
@@ -142,4 +144,8 @@ bool Validator::hasSpaces(std::string playerWord){
     }
     //Если пробелов в слове небыло найдено
     return false;
+}
+
+void Validator::notNewWord(){
+    currentStatus = Status::NotNewWord;
 }

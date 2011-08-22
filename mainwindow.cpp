@@ -4,7 +4,7 @@
 #include <windows.h>
 #include "cases.h"
 #include "charFuncs.h"
-
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -49,6 +49,31 @@ void MainWindow::showValidationStatus(const std::string str){
 }
 
 
+bool MainWindow::addNewWord(std::string playerWord){
+
+    QMessageBox msgBox;
+    msgBox.setText (QString::fromLocal8Bit("Это новое слово."));//TODO какое слово
+    msgBox.setInformativeText (QString::fromLocal8Bit("Вы хотите добавить его в словарь?"));
+    msgBox.setStandardButtons (QMessageBox::Yes | QMessageBox::No );
+    msgBox.setDefaultButton (QMessageBox::Yes);
+    int result = msgBox.exec ();
+
+    switch  (result)  {
+    case QMessageBox::Yes:
+        dictionary.addNewWord(playerWord);
+        return true;
+        break;
+    case QMessageBox::No:
+        validator.notNewWord();
+        return false;
+        break;
+    default:
+        return false;
+        break;
+    }
+    return false; //чтобы узбавиться от warning'a
+
+}
 void MainWindow::on_pushButton_clicked(){
 
     //Если компьютер не смог найти слова - вы выйграли
@@ -70,15 +95,22 @@ void MainWindow::on_pushButton_clicked(){
     //Получим необходимые сиволы для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
+    //Если слово проходит проверку И
+    //( (это не новое слово) ИЛИ (если является новым словом И мы добавляем его в словарь) )
+    if( validator.isWordValid( playerWord, pcLastLetter, dictionary ) == true &&
+      ( !dictionary.isNewWord(playerWord) || (dictionary.isNewWord(playerWord) && addNewWord(playerWord)) )){
 
-    //Делаем проверку на все условия
-    if( validator.isWordValid( playerWord, pcLastLetter, dictionary ) == true ){
-        //Получаем случайное слово компьютера
-        pcWord = dictionary.findRandomWord( playerLastLetter );
-        //убирем слово введенное пользователем из словаря чтобы потом его не повторить
-        dictionary.usedWord(playerWord, playerLastLetter);
+        //добавим слово в список использованных чтобы потом его не мог повторить игрок
+        dictionary.addUsedWord(playerWord);
+
+        //убирем слово введенное пользователем из словаря чтобы потом его не повторить компьютер
+        dictionary.removeWord(playerWord);
+
         //Увеличиваем количество удачно введенных пользователем слов
         ++wordsCount;
+
+        //Получаем случайное слово компьютера
+        pcWord = dictionary.findRandomWord( playerLastLetter );
     }
     //выводим статус проверки пользователю
     showValidationStatus( validator.getStatus() );

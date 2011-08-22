@@ -7,7 +7,10 @@
 Dictionary::Dictionary(){
     loadDicts();
 }
+Dictionary::~Dictionary(){
+//TODO добавление слов из newWords в словари компьютера
 
+}
 
 void Dictionary::loadDicts(){
     // —оздаЄм вектор файлов словарей дл€ каждой буквы
@@ -46,13 +49,14 @@ void Dictionary::loadDicts(){
 }
 
 
-void Dictionary::usedWord(std::string Word, char lastLetter){
+void Dictionary::addUsedWord(std::string word){
     //ƒобавл€ем Word в usedWords
-    usedWords.push_back( Word );
-    //убираем Word из dictionary ,если там оно есть
-    dictionary[lastLetter].remove( Word );
+    usedWords.push_back( word );
 }
 
+void Dictionary::removeWord(std::string word){
+    dictionary[word[0]].remove( word );
+}
 
 std::string Dictionary::findRandomWord(char lastLetter){
      srand(time(NULL));
@@ -70,7 +74,9 @@ std::string Dictionary::findRandomWord(char lastLetter){
             ++it;
         }
         //ƒобавл€ем только что найденное слово в использованные
-        usedWord((*it), lastLetter);
+        addUsedWord(*it);
+        //» уберем его из словарей
+        removeWord(*it);
 
         return (*it);
 
@@ -88,6 +94,27 @@ bool Dictionary::isUsedWord(std::string playerWord){
     }
     //если за весь список не встретил такого слово - значит оно еще не использовалось
     return false;
+}
+
+bool Dictionary::isNewWord(std::string playerWord){
+    if(isInDictionary(playerWord)){
+        return false;
+    }else{
+        return true;
+    }
+
+}
+
+
+bool Dictionary::isInDictionary(std::string playerWord){ //TODO проверка слова на нахождение в словаре
+    //for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
+    //    (*it).second.find(playerWord)
+    //}
+return false;
+}
+
+bool Dictionary::addNewWord(std::string playerWord){//TODO добавка слова в вектор newWords
+
 }
 
 
