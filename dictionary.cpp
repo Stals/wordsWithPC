@@ -115,8 +115,8 @@ bool Dictionary::isInDictionary(std::string playerWord){ //TODO проверка слова н
 return false;
 }
 
-bool Dictionary::addNewWord(std::string playerWord){//TODO добавка слова в вектор newWords
-
+bool Dictionary::addNewWord(std::string playerWord){
+    newWords.pop_back(playerWord);
 }
 
 
