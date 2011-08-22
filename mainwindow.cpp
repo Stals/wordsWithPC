@@ -92,7 +92,7 @@ void MainWindow::on_pushButton_clicked(){
     //Получим символ на который компьютер будет искать слово
     char playerLastLetter = charFuncs::getLastLetter( playerWord );
 
-    //Получим необходимые сиволы для Validator'a
+    //Получим необходимые символы для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
     //Если слово проходит проверку И

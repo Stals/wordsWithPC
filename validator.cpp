@@ -9,6 +9,7 @@ Validator::Validator(){
 bool Validator::isWordValid( const std::string &playerWord,
                              const char &pcLastLetter, Dictionary &dictionary ){
 
+    //TODO возможно заменить классом который будет передаваться вместо playerWord и будет в себе хранить Само слово, его первый и последний символ
     //Получим Необходимые нам символы
     playerFirstLetter = playerWord[0];
     playerLastLetter = charFuncs::getLastLetter( playerWord );
