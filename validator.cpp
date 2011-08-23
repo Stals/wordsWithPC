@@ -11,7 +11,7 @@ bool Validator::isWordValid( const std::string &playerWord,
 
     //TODO возможно заменить классом который будет передаваться вместо playerWord и будет в себе хранить Само слово, его первый и последний символ
     //Получим Необходимые нам символы
-    playerFirstLetter = playerWord[0];
+    const char playerFirstLetter = playerWord[0];
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     // Если хоть одно из условий вернёт true - значит в слово не прошло проверку

@@ -39,10 +39,7 @@ private:
     };
 
     //текущее состояние
-    Status::Value currentStatus;
-
-    char playerFirstLetter;
-    char playerLastLetter;
+    Status::Value currentStatus; 
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     bool hasWrongLength(std::string);                //Проверят длинну слова
