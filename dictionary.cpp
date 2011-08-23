@@ -116,7 +116,7 @@ return false;
 }
 
 bool Dictionary::addNewWord(std::string playerWord){
-    newWords.pop_back(playerWord);
+    newWords.push_back(playerWord);
 }
 
 
