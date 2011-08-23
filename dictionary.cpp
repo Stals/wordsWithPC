@@ -4,16 +4,16 @@
 #include <string.h>
 #include <windows.h>
 #include "charFuncs.h"
+
+#include <iterator>
 Dictionary::Dictionary(){
     loadDicts();
 }
 Dictionary::~Dictionary(){
-//TODO добавление слов из newWords в словари компьютера
-
+    //TODO добавление слов из newWords в словари компьютера
 }
 
 void Dictionary::loadDicts(){ //TODO составить список сопоставлений а -1 б -2 c с помощью map, чтобы потом можно было обратиться по мэпу и понять что для буквы 'в' нужно число 3
-    //TODO сделать чтение без кол-ва строк (чтобы при добавлении слова с словарь не нужно было менять число )
 
     // Создаём вектор файлов словарей для каждой буквы
     std::vector< std::string > files;
@@ -27,26 +27,21 @@ void Dictionary::loadDicts(){ //TODO составить список сопоставлений а -1 б -2 c 
     }
 
     // Добавляем содержимое каждого из файлов в dictionary
-    for( std::vector< std::string >::iterator it = files.begin(); it != files.end(); ++it){
-        std::ifstream f( (*it).c_str() );
+    for( std::vector< std::string >::iterator fileNameIter = files.begin(); fileNameIter != files.end(); ++fileNameIter){
 
-        int num; //number of words
-        std::string letter;
-        std::string newWord;
         //хранит список слов начинающихся на одну букву
         std::list<std::string> singleDict;
 
-        f >> letter;
-        f >> num;
+        //читаем и копируем слова из файла
+        std::ifstream file((*fileNameIter).c_str());
+        std::istream_iterator<std::string> beg(file), end;
+        std::copy(beg, end, std::back_inserter(singleDict));
 
-        for(int i = 0; i < num; ++i){
-            f >> newWord;
-            singleDict.push_back( newWord );
-        }
-        dictionary.insert (std::pair<char,std::list<std::string> >(letter[0],singleDict));
+        //Добавляем получившийся словарь на одну букву - в общий словарь
+        std::list<std::string>::iterator firstWord = singleDict.begin();
+        char firstLetter = (*firstWord)[0];
+        dictionary.insert (std::pair<char,std::list<std::string> >(firstLetter,singleDict));
         singleDict.clear();
-
-        f.close();
     }
 }
 
@@ -61,7 +56,7 @@ void Dictionary::removeWord(std::string word){
 }
 
 std::string Dictionary::findRandomWord(char lastLetter){
-     srand(time(NULL));
+    srand(time(NULL));
 
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar( lastLetter );
@@ -112,7 +107,7 @@ bool Dictionary::isInDictionary(std::string playerWord){ //TODO проверка слова н
     //for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
     //    (*it).second.find(playerWord)
     //}
-return false;
+    return false;
 }
 
 bool Dictionary::addNewWord(std::string playerWord){
