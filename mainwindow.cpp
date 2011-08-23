@@ -52,7 +52,8 @@ void MainWindow::showValidationStatus(const std::string str){
 bool MainWindow::addNewWord(std::string playerWord){
 
     QMessageBox msgBox;
-    msgBox.setText (QString::fromLocal8Bit("Это новое слово."));//TODO какое слово
+    msgBox.setText ("\""+QString::fromLocal8Bit(playerWord.c_str()) +
+                    QString::fromLocal8Bit("\" - новое слово."));
     msgBox.setInformativeText (QString::fromLocal8Bit("Вы хотите добавить его в словарь?"));
     msgBox.setStandardButtons (QMessageBox::Yes | QMessageBox::No );
     msgBox.setDefaultButton (QMessageBox::Yes);
