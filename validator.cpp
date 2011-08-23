@@ -81,7 +81,7 @@ bool Validator::hasWrongLength(std::string playerWord){
 
 
 bool Validator::isNotRusWord(std::string playerWord){
-    for(unsigned int i = 0; i<playerWord.length()-1; ++i){
+    for(unsigned int i = 0; i<playerWord.length(); ++i){
         if(!charFuncs::isRusLetter( playerWord[i] )){
             currentStatus = Status::NotRusWord;
             return true;
