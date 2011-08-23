@@ -81,13 +81,16 @@ bool Validator::hasWrongLength(std::string playerWord){
 }
 
 
-bool Validator::isNotRusLetter(char letter){
-    if(!charFuncs::isRusLetter( letter )){
-        currentStatus = Status::NotRusWord;
-        return true;
-    }else{
-        return false;
+bool Validator::isNotRusWord(std::string playerWord){
+    for(unsigned int i = 0; i<playerWord.length()-1; ++i){
+        if(!charFuncs::isRusLetter( playerWord[i] )){
+            currentStatus = Status::NotRusWord;
+            return true;
+        }
     }
+    //Если все буквы в слове были русские то вернём false
+    return false;
+
 }
 
 
