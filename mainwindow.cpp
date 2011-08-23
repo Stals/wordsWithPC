@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     wordsCount(0)
 {
     ui->setupUi(this);
-    // ƒелаем так чтобы форму нельз€ было раст€гивать
-    this->setFixedSize(this->width(),this->height());
 }
 
 
