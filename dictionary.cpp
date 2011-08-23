@@ -11,6 +11,7 @@ Dictionary::Dictionary(){
 }
 Dictionary::~Dictionary(){
     //TODO добавление слов из newWords в словари компьютера
+    //слово на ё й добавлем в словари е и  и при этом не меням букву
 }
 
 void Dictionary::loadDicts(){ //TODO составить список сопоставлений а -1 б -2 c с помощью map, чтобы потом можно было обратиться по мэпу и понять что для буквы 'в' нужно число 3
@@ -103,10 +104,12 @@ bool Dictionary::isNewWord(std::string playerWord){
 }
 
 
-bool Dictionary::isInDictionary(std::string playerWord){ //TODO проверка слова на нахождение в словаре
-    //for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
-    //    (*it).second.find(playerWord)
-    //}
+bool Dictionary::isInDictionary(std::string playerWord){
+    for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
+        if(std::find((*it).second.begin(), (*it).second.end(), playerWord)!=(*it).second.end()){ //Если слово было найдено в словаре
+            return true;
+        }
+    }
     return false;
 }
 
