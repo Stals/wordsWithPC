@@ -42,7 +42,7 @@ std::string Validator::getStatus(){
     case Status::UsedWord:
         return "Это слово уже использовалось";
         break;
-    case Status::NotRusWord:
+    case Status::NotRusWord://TODO может переписать на "В слове должны быть только русские буквы"
         return "Не русское слово";
         break;
     case Status::TooShortWord:
