@@ -1,8 +1,8 @@
 #include "validator.h"
 #include <string.h> //strcmp
 
-Validator::Validator(){
-    currentStatus = Status::OK;
+Validator::Validator():
+    currentStatus(Status::OK){
 }
 
 
