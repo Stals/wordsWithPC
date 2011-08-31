@@ -115,7 +115,7 @@ bool Dictionary::isNewWord(std::string playerWord){
 
 }
 
-bool Dictionary::addNewWord(std::string playerWord){
+void Dictionary::addNewWord(std::string playerWord){
     newWords.push_back(playerWord);
 }
 

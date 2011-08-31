@@ -34,7 +34,7 @@ public:
     bool isNewWord(std::string playerWord);
 
     //Добавляет новое слово в словар newWords , а
-    bool addNewWord(std::string playerWord);
+    void addNewWord(std::string playerWord);
 
 private:
     //загружает словари из файликов  в map - dictionary
