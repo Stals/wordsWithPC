@@ -60,9 +60,9 @@ Dictionary::~Dictionary(){
     }
 
     //DEBUG
-    std::ofstream file("newWords.txt");
-    std::ostream_iterator<std::string> beg(file, "\n");
-    std::copy(newWords.begin(), newWords.end(), beg);
+    //std::ofstream file("newWords.txt");
+    //std::ostream_iterator<std::string> beg(file, "\n");
+    //std::copy(newWords.begin(), newWords.end(), beg);
     //END OF DEBUG
 }
 
