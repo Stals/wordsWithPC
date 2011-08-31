@@ -23,7 +23,7 @@ Dictionary::~Dictionary(){
 }
 
 
-void Dictionary::loadDicts(){ //TODO составить список сопоставлений а -1 б -2 c с помощью map, чтобы потом можно было обратиться по мэпу и понять что для буквы 'в' нужно число 3
+void Dictionary::loadDicts(){
 
     // Создаём вектор файлов словарей для каждой буквы
     std::vector< std::string > files;
