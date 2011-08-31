@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 23. Aug 19:39:03 2011
+** Created: Wed 31. Aug 13:44:07 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -46,7 +46,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(245, 137);
+        MainWindow->resize(250, 137);
         action = new QAction(MainWindow);
         action->setObjectName(QString::fromUtf8("action"));
         action->setCheckable(true);
