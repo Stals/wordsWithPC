@@ -9,10 +9,9 @@
 Dictionary::Dictionary(){
     //Загружаем словари
     loadDicts();
-
-
-
 }
+
+
 Dictionary::~Dictionary(){
     //При завершении программы - добавим слова игрока в словарь на диске
     saveNewWords();
@@ -22,6 +21,7 @@ Dictionary::~Dictionary(){
     //std::copy(newWords.begin(), newWords.end(), beg);
     //END OF DEBUG
 }
+
 
 void Dictionary::loadDicts(){ //TODO составить список сопоставлений а -1 б -2 c с помощью map, чтобы потом можно было обратиться по мэпу и понять что для буквы 'в' нужно число 3
 
@@ -61,9 +61,11 @@ void Dictionary::addUsedWord(std::string word){
     usedWords.push_back( word );
 }
 
+
 void Dictionary::removeWord(std::string word){
     dictionary[word[0]].remove( word );
 }
+
 
 std::string Dictionary::findRandomWord(char lastLetter){
     srand(time(NULL));
@@ -103,6 +105,7 @@ bool Dictionary::isUsedWord(std::string playerWord){
     return false;
 }
 
+
 bool Dictionary::isNewWord(std::string playerWord){
     if(isInDictionary(playerWord)){
         return false;
@@ -115,6 +118,7 @@ bool Dictionary::isNewWord(std::string playerWord){
 bool Dictionary::addNewWord(std::string playerWord){
     newWords.push_back(playerWord);
 }
+
 
 bool Dictionary::isInDictionary(std::string playerWord){
     for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
