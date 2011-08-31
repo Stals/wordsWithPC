@@ -50,12 +50,14 @@ void MainWindow::showValidationStatus(const std::string str){
 bool MainWindow::addNewWord(std::string playerWord){
 
     QMessageBox msgBox;
+    msgBox.setWindowTitle(QString::fromLocal8Bit("Игра \"Слова\""));
     msgBox.setText (QString::fromLocal8Bit("Слова \"") +
                     QString::fromLocal8Bit(playerWord.c_str()) +
                     QString::fromLocal8Bit("\" нет в словаре.\nХотите добавить его?"));
 
     msgBox.setStandardButtons (QMessageBox::Yes | QMessageBox::No );
     msgBox.setDefaultButton (QMessageBox::Yes);
+
     int result = msgBox.exec ();
 
     switch  (result)  {
