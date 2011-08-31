@@ -10,55 +10,12 @@ Dictionary::Dictionary(){
     //Загружаем словари
     loadDicts();
 
-    //заполняем map charToNum значениями
-    charToNum['а'] = "1";
-    charToNum['б'] = "2";
-    charToNum['в'] = "3";
-    charToNum['г'] = "4";
-    charToNum['д'] = "5";
-    charToNum['е'] = "6";
-    charToNum['ё'] = "6";//Слова на ё сохраняем в словарь е
-    charToNum['ж'] = "8";
-    charToNum['з'] = "9";
-    charToNum['и'] = "10";
-    charToNum['й'] = "10";//Слова на й сохраняем в словарь и
-    charToNum['к'] = "12";
-    charToNum['л'] = "13";
-    charToNum['м'] = "14";
-    charToNum['н'] = "15";
-    charToNum['о'] = "16";
-    charToNum['п'] = "17";
-    charToNum['р'] = "18";
-    charToNum['с'] = "19";
-    charToNum['т'] = "20";
-    charToNum['у'] = "21";
-    charToNum['ф'] = "22";
-    charToNum['х'] = "23";
-    charToNum['ц'] = "24";
-    charToNum['ч'] = "25";
-    charToNum['ш'] = "26";
-    charToNum['щ'] = "27";
-    charToNum['ъ'] = "28";
-    charToNum['ы'] = "29";
-    charToNum['ь'] = "30";
-    charToNum['э'] = "31";
-    charToNum['ю'] = "32";
-    charToNum['я'] = "33";
+
 
 }
 Dictionary::~Dictionary(){
-    //добавление слов из newWords в словари компьютера
-    //слово на ё й добавлем в словари е и (это предусмотрено в charToNum)
-
-    for(unsigned i = 0; i < newWords.size(); ++i){
-        const std::string newWord = newWords[i];
-        const std::string fileName = ("dict//" + charToNum[ newWord[0] ]).c_str();
-
-        std::ofstream f(fileName.c_str(), std::ios::app);
-        f << ("\n"+newWord).c_str();
-        f.close();
-    }
-
+    //При завершении программы - добавим слова игрока в словарь на диске
+    saveNewWords();
     //DEBUG
     //std::ofstream file("newWords.txt");
     //std::ostream_iterator<std::string> beg(file, "\n");
@@ -155,6 +112,9 @@ bool Dictionary::isNewWord(std::string playerWord){
 
 }
 
+bool Dictionary::addNewWord(std::string playerWord){
+    newWords.push_back(playerWord);
+}
 
 bool Dictionary::isInDictionary(std::string playerWord){
     for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
@@ -165,8 +125,97 @@ bool Dictionary::isInDictionary(std::string playerWord){
     return false;
 }
 
-bool Dictionary::addNewWord(std::string playerWord){
-    newWords.push_back(playerWord);
+
+void Dictionary::saveNewWords(){
+
+    //добавление слов из newWords в словари компьютера
+    //слово на ё й добавлем в словари е и (это предусмотрено в getFileName)
+
+    for(unsigned i = 0; i < newWords.size(); ++i){
+        const std::string newWord = newWords[i];
+        const std::string fileName = getFileName(newWords[i]).c_str();
+
+        std::ofstream f(fileName.c_str(), std::ios::app);
+        f << ("\n"+newWord).c_str();
+        f.close();
+    }
+
+}
+
+
+std::string Dictionary::getFileName(std::string newWord){
+    std::string fileName;
+    switch (newWord[0]){
+    case'а':
+        fileName = "1";break;
+    case'б':
+        fileName = "2";break;
+    case'в':
+        fileName = "3";break;
+    case'г':
+        fileName = "4";break;
+    case'д':
+        fileName = "5";break;
+    case'е':
+        fileName = "6";break;
+    case'ё':
+        fileName = "6";break;//Слова на ё сохраняем в словарь е
+    case'ж':
+        fileName = "8";break;
+    case'з':
+        fileName = "9";break;
+    case'и':
+        fileName = "10";break;
+    case'й':
+        fileName = "10";break;//Слова на й сохраняем в словарь и
+    case'к':
+        fileName = "12";break;
+    case'л':
+        fileName = "13";break;
+    case'м':
+        fileName = "14";break;
+    case'н':
+        fileName = "15";break;
+    case'о':
+        fileName = "16";break;
+    case'п':
+        fileName = "17";break;
+    case'р':
+        fileName = "18";break;
+    case'с':
+        fileName = "19";break;
+    case'т':
+        fileName = "20";break;
+    case'у':
+        fileName = "21";break;
+    case'ф':
+        fileName = "22";break;
+    case'х':
+        fileName = "23";break;
+    case'ц':
+        fileName = "24";break;
+    case'ч':
+        fileName = "25";break;
+    case'ш':
+        fileName = "26";break;
+    case'щ':
+        fileName = "27";break;
+    case'ъ':
+        fileName = "28";break;
+    case'ы':
+        fileName = "29";break;
+    case'ь':
+        fileName = "30";break;
+    case'э':
+        fileName = "31";break;
+    case'ю':
+        fileName = "32";break;
+    case'я':
+        fileName = "33";break;
+    }
+
+    fileName = ("dict//" + fileName);
+    return fileName;
 }
 
 

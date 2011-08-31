@@ -40,6 +40,12 @@ private:
     //загружает словари из файликов  в map - dictionary
     void loadDicts();
 
+    //Сохраняет новые слова в Словарь на жестком диске
+    void saveNewWords();
+
+    //Воозвращает путь к файлу в который нужно сохранить это слово
+    std::string getFileName(std::string newWord);
+
     //Возвращает true если слово есть в словаре
     bool isInDictionary(std::string playerWord);
 
