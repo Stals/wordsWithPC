@@ -15,7 +15,6 @@ class Dictionary
 public:
     Dictionary();
 
-    //добавл€ет новые слова из newWords в словари на диске
     ~Dictionary();
 
     //ищет случайное слово в словар€х
@@ -33,15 +32,12 @@ public:
     //¬озвращает true если этого слова нет в словар€х
     bool isNewWord(std::string playerWord);
 
-    //ƒобавл€ет новое слово в словар newWords , а
+    //ƒобавл€ет новое слово в словарь на диске
     void addNewWord(std::string playerWord);
 
 private:
     //загружает словари из файликов  в map - dictionary
     void loadDicts();
-
-    //—охран€ет новые слова в —ловарь на жестком диске
-    void saveNewWords();
 
     //¬оозвращает путь к файлу в который нужно сохранить это слово
     std::string getFileName(std::string newWord);
@@ -54,9 +50,6 @@ private:
 
     //вектор уже использованных слов
     std::vector<std::string> usedWords;
-
-    //вектор новых слов ,которые при завершении программы дабав€тс€ в словари компьютера
-    std::vector<std::string> newWords;
 
     //map который позвол€ет пон€ть номер буквы в русском алфавите
     std::map<char,std::string> charToNum; //TODO инициализировать не в конструкоторе

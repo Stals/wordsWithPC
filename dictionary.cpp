@@ -7,19 +7,12 @@
 
 #include <iterator>
 Dictionary::Dictionary(){
-    //Загружаем словари
+    //Загружаем словарь
     loadDicts();
 }
 
 
 Dictionary::~Dictionary(){
-    //При завершении программы - добавим слова игрока в словарь на диске
-    saveNewWords();
-    //DEBUG
-    //std::ofstream file("newWords.txt");
-    //std::ostream_iterator<std::string> beg(file, "\n");
-    //std::copy(newWords.begin(), newWords.end(), beg);
-    //END OF DEBUG
 }
 
 
@@ -116,7 +109,14 @@ bool Dictionary::isNewWord(std::string playerWord){
 }
 
 void Dictionary::addNewWord(std::string playerWord){
-    newWords.push_back(playerWord);
+    //добавление слова в словари компьютера
+    //слово на ё й добавлем в словари е и (это предусмотрено в getFileName)
+
+    const std::string fileName = getFileName(playerWord).c_str();
+
+    std::ofstream f(fileName.c_str(), std::ios::app);
+    f << ("\n"+playerWord).c_str();
+    f.close();
 }
 
 
@@ -129,22 +129,6 @@ bool Dictionary::isInDictionary(std::string playerWord){
     return false;
 }
 
-
-void Dictionary::saveNewWords(){
-
-    //добавление слов из newWords в словари компьютера
-    //слово на ё й добавлем в словари е и (это предусмотрено в getFileName)
-
-    for(unsigned i = 0; i < newWords.size(); ++i){
-        const std::string newWord = newWords[i];
-        const std::string fileName = getFileName(newWords[i]).c_str();
-
-        std::ofstream f(fileName.c_str(), std::ios::app);
-        f << ("\n"+newWord).c_str();
-        f.close();
-    }
-
-}
 
 
 std::string Dictionary::getFileName(std::string newWord){

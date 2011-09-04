@@ -62,10 +62,12 @@ bool MainWindow::addNewWord(std::string playerWord){
 
     switch  (result)  {
     case QMessageBox::Yes:
+        //Еслм Да - тогда сохраним слово на диске
         dictionary.addNewWord(playerWord);
         return true;
         break;
     case QMessageBox::No:
+        //Если Нет - попросим пользователся ввести другое слово
         validator.notNewWord();
         return false;
         break;
