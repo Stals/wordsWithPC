@@ -68,7 +68,7 @@ bool MainWindow::addNewWord(std::string playerWord){
         break;
     case QMessageBox::No:
         //Если Нет - попросим пользователся ввести другое слово
-        validator.notNewWord();
+        validator.setCurrentStatus(Status::NotNewWord);
         return false;
         break;
     default:
@@ -117,7 +117,7 @@ void MainWindow::on_pushButton_clicked(){
         pcWord = dictionary.findRandomWord( playerLastLetter );
     }
     //выводим статус проверки пользователю
-    showValidationStatus( validator.getStatus() );
+    showValidationStatus( validator.getCurrentStatus() );
 
     ui->playerWordForm->setFocus();
     updateLabels();

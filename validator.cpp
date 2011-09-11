@@ -31,7 +31,7 @@ bool Validator::isWordValid( const std::string &playerWord,
 }
 
 
-std::string Validator::getStatus(){
+std::string Validator::getCurrentStatus(){
     switch (currentStatus){
     case Status::OK:
         return "Правильный ввод";
@@ -149,6 +149,7 @@ bool Validator::hasSpaces(std::string playerWord){
     return false;
 }
 
-void Validator::notNewWord(){
-    currentStatus = Status::NotNewWord;
+
+void Validator::setCurrentStatus(Status::Value status){
+    currentStatus = status;
 }
