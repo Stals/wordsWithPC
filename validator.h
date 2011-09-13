@@ -6,7 +6,7 @@
 #include "dictionary.h"
 
 struct Status{
-//Статус введонного слова
+    //Статус введонного слова
     enum Value{
         OK,              //Ввод нормальный
         WrongFirstLetter,//Неправильный первый символ
@@ -18,6 +18,44 @@ struct Status{
         SpaceInWord,     //В слове есть пробел
         NotNewWord       //Пользователь не захотел добавить слово в словарь
     };
+
+
+    //Возращет стутус в виде строки
+    //TODO может переименовать в getStatusAsString?
+    static std::string convertStatusToString(Status::Value status){
+
+        switch (status){
+        case Status::OK:
+            return "Правильный ввод";
+            break;
+        case Status::WrongFirstLetter:
+            return "Неправильный первый символ";
+            break;
+        case Status::UsedWord:
+            return "Это слово уже использовалось";
+            break;
+        case Status::NotRusWord:
+            return "В слове должны быть только русские буквы";
+            break;
+        case Status::TooShortWord:
+            return "Слишком короткое слово";
+            break;
+        case Status::NoWord:
+            return "Сначала введите что-нибудь";
+            break;
+        case Status::WrongEnd:
+            return "Неправильное окончание";
+            break;
+        case Status::SpaceInWord:
+            return "В слове не должно быть пробелов";
+            break;
+        case Status::NotNewWord:
+            return "Введите другое слово";
+        default:
+            return "Ошибка";
+        }
+
+    }
 };
 
 //Этот класс занимается проверкой слова введенной пользователем на правильность

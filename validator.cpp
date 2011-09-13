@@ -32,36 +32,7 @@ bool Validator::isWordValid( const std::string &playerWord,
 
 
 std::string Validator::getCurrentStatus(){
-    switch (currentStatus){
-    case Status::OK:
-        return "Правильный ввод";
-        break;
-    case Status::WrongFirstLetter:
-        return "Неправильный первый символ";
-        break;
-    case Status::UsedWord:
-        return "Это слово уже использовалось";
-        break;
-    case Status::NotRusWord://TODO может переписать на "В слове должны быть только русские буквы"
-        return "Не русское слово";
-        break;
-    case Status::TooShortWord:
-        return "Слишком короткое слово";
-        break;
-    case Status::NoWord:
-        return "Сначала введите что-нибудь";
-        break;
-    case Status::WrongEnd:
-        return "Неправильное окончание";
-        break;
-    case Status::SpaceInWord:
-        return "В слове не должно быть пробелов";
-        break;
-    case Status::NotNewWord:
-        return "Введите другое слово";
-    default:
-        return "Ошибка";
-    }
+    return Status::convertStatusToString(currentStatus);
 }
 
 
