@@ -19,7 +19,6 @@ struct Status{
         NotNewWord       //Пользователь не захотел добавить слово в словарь
     };
 
-
     //Возращет стутус в виде строки
     //TODO может переименовать в getStatusAsString?
     static std::string convertStatusToString(Status::Value status){
@@ -54,7 +53,6 @@ struct Status{
         default:
             return "Ошибка";
         }
-
     }
 };
 
