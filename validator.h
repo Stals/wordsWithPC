@@ -1,8 +1,8 @@
 #ifndef CHECK_H
 #define CHECK_H
 #include <string>
-#include "cases.h"
-#include "charFuncs.h"
+#include "utils\cases.h"
+#include "utils\charFuncs.h"
 #include "dictionary.h"
 
 struct Status{

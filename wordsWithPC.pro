@@ -12,5 +12,7 @@ HEADERS += mainwindow.h \
     cases.h \
     charFuncs.h \
     dictionary.h \
-    validator.h
+    validator.h \
+    utils/charFuncs.h \
+    utils/cases.h
 FORMS += mainwindow.ui

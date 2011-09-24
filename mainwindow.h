@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 #include <list>
-#include "cases.h"
+#include "utils\cases.h"
 #include "dictionary.h"
 #include "validator.h"
 

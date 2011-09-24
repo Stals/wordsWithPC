@@ -2,8 +2,8 @@
 #include "ui_mainwindow.h"
 
 #include <windows.h>
-#include "cases.h"
-#include "charFuncs.h"
+#include "utils\cases.h"
+#include "utils\charFuncs.h"
 #include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

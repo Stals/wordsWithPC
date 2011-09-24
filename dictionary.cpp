@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <windows.h>
-#include "charFuncs.h"
+#include "utils\charFuncs.h"
 
 #include <iterator>
 Dictionary::Dictionary(){
