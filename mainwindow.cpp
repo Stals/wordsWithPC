@@ -78,6 +78,8 @@ bool MainWindow::addNewWord(std::string playerWord){
     return false; //чтобы узбавиться от warning'a
 
 }
+
+
 void MainWindow::on_pushButton_clicked(){
 
     //Если компьютер не смог найти слова - вы выйграли
