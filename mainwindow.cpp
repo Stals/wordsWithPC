@@ -87,16 +87,13 @@ void MainWindow::on_pushButton_clicked(){
 
     updateLabels();
 
-    //Получаем слово пользователя
     playerWord = getPlayerWord();
-
-    //Приводим слово к нижнему регистру
     cases::toLowerCase( playerWord );
 
     //Получим символ на который компьютер будет искать слово
     char playerLastLetter = charFuncs::getLastLetter( playerWord );
 
-    //Получим необходимые символы для Validator'a
+    //Получим необходимый символ для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
     //Если слово проходит проверку И
@@ -105,10 +102,10 @@ void MainWindow::on_pushButton_clicked(){
       ( !dictionary.isNewWord(playerWord) || (dictionary.isNewWord(playerWord) && addNewWord(playerWord)) )){
 
         //добавим слово в список использованных чтобы потом его не мог повторить игрок
-        dictionary.addUsedWord(playerWord);
+        dictionary.addUsedWord( playerWord );
 
         //убирем слово введенное пользователем из словаря чтобы потом его не повторить компьютер
-        dictionary.removeWord(playerWord);
+        dictionary.removeWord( playerWord );
 
         //Увеличиваем количество удачно введенных пользователем слов
         ++wordsCount;
