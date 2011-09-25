@@ -4,15 +4,14 @@
 RC_FILE = wordsWithPC.rc
 TARGET = wordsWithPC
 TEMPLATE = app
-SOURCES += main.cpp \
-    mainwindow.cpp \
-    dictionary.cpp \
-    validator.cpp
-HEADERS += mainwindow.h \
-    cases.h \
-    charFuncs.h \
-    dictionary.h \
-    validator.h \
-    utils/charFuncs.h \
-    utils/cases.h
-FORMS += mainwindow.ui
+SOURCES += src/validator.cpp \
+    src/mainwindow.cpp \
+    src/main.cpp \
+    src/dictionary.cpp
+HEADERS += src/validator.h \
+    src/mainwindow.h \
+    src/dictionary.h \
+    src/utils/charFuncs.h \
+    src/utils/cases.h \
+    ui_mainwindow.h
+FORMS +=  src/mainwindow.ui
