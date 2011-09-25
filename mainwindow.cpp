@@ -83,9 +83,8 @@ bool MainWindow::addNewWord(std::string playerWord){
 void MainWindow::on_pushButton_clicked(){
 
     //Если компьютер не смог найти слова - вы выйграли
-    if(pcWord == "YOU WIN"){
+    if(pcWord == "YOU WIN")
         exit(0);
-    }
 
     updateLabels();
 

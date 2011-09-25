@@ -62,7 +62,7 @@ class Validator
 public:
     Validator();
     //проводит проверки и возвращает true , если слово игрока подходит
-    bool isWordValid(const std::string& isWordValid,const char& pcLastLetter,Dictionary& dictionary);
+    bool isWordValid(const std::string& isWordValid, const char& pcLastLetter, Dictionary& dictionary);
 
     //Меняет статус на status
     void setCurrentStatus(Status::Value status);
@@ -79,7 +79,7 @@ private:
     bool hasWrongLength(std::string);                //Проверят длинну слова
     bool isNotRusWord(std::string);                  //Провреряет является ли слово Русским
     bool isUsedWord(std::string, Dictionary&);       //Проверяет было ли использованно слово
-    bool hasWrongFirstLast(char,char);               //Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
+    bool hasWrongFirstLast(char, char);               //Проверяет эквивалентен ли первый символ слова игрока последнему в слове компьютера
     bool hasWrongLastLetters(std::string);           //Проверяет чтобы оба последних символа небыли ъ ь ы (абвъы)
     bool hasSpaces(std::string);                     //Проверяет чтобы в строке не было пробела
 };

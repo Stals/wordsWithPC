@@ -3,8 +3,10 @@
 #define CHARFUNCS
 #include <string>
 #include <string.h>
+
 namespace charFuncs{
-//Возвращает последний символ, при этом возвращает предпоследний если последний ь ъ ы
+
+//Возвращает последний символ, при этом возвращает предпоследний если последний - ь ъ ы
 inline char getLastLetter(const std::string str){
     if(str == "") return ' ';
 
@@ -29,7 +31,7 @@ inline void changeChar(char &letter){
 }
 
 
-//return true ,если буква русская
+//return true ,если буква русская , иначе false
 inline bool isRusLetter(char letter){
     if(strchr("абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ",letter))
         return true;

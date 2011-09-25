@@ -27,11 +27,10 @@ private:
     Validator validator;
     Dictionary dictionary;
 
+    std::string pcWord; //Слово компьютера
+    std::string playerWord; //Слово игрока
 
-    std::string pcWord;//Слово компьютера
-    std::string playerWord;//Слово игрока
-
-    int wordsCount; //Счётчик слов введённых пользователем
+    int wordsCount; //Счётчик удачно введённых пользователм слов
 
     //Обновляет Лейблы на форме
     void updateLabels();
