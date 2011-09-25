@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <windows.h>
+
 #include "utils\charFuncs.h"
 
 #include <iterator>

@@ -4,9 +4,11 @@
 #include <QMainWindow>
 #include <QEvent>
 #include <QPushButton>
+
 #include <string>
 #include <iostream>
 #include <list>
+
 #include "utils\cases.h"
 #include "dictionary.h"
 #include "validator.h"

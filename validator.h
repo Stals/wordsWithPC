@@ -1,6 +1,7 @@
 #ifndef CHECK_H
 #define CHECK_H
 #include <string>
+
 #include "utils\cases.h"
 #include "utils\charFuncs.h"
 #include "dictionary.h"

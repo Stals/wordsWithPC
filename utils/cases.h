@@ -2,6 +2,7 @@
 #define CASES_H
 #include <string>
 #include <locale>
+
 namespace cases{
 
 //ѕриводит все буквы в слове к нижнему регистру
