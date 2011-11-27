@@ -23,7 +23,7 @@ void Dictionary::loadDicts(){
     std::vector< std::string > files;
     char buf[3];
 
-    for( int i=1; i<34; ++i ){
+    for(int i = 1; i < 34; ++i){
         std::string str="dict//";
         itoa( i, buf, 10 );
         str.append( buf );
@@ -31,7 +31,7 @@ void Dictionary::loadDicts(){
     }
 
     // Добавляем содержимое каждого из файлов в dictionary
-    for( std::vector< std::string >::iterator fileNameIter = files.begin(); fileNameIter != files.end(); ++fileNameIter){
+    for(std::vector< std::string >::iterator fileNameIter = files.begin(); fileNameIter != files.end(); ++fileNameIter){
 
         //хранит список слов начинающихся на одну букву
         std::list<std::string> singleDict;
