@@ -54,5 +54,5 @@ private:
 };
 //(*mapIter).first; -это буква на которую в словаре начинаются слова
 //(*mapIter).second; - это список слов, при этом к отдельному нужно обращаться итератором
-inline bool compareStr(const std::string &str1, const std::string &str2);
+
 #endif // FINDWORD_H
