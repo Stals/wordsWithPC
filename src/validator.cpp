@@ -15,11 +15,11 @@ bool Validator::isWordValid( const std::string &playerWord,
 
     //Каждая из функций возвращает true ,если нашлось несоответсвие + меняет currentStatus
     // Если хоть одно из условий вернёт true - значит в слово не прошло проверку
-    if( hasWrongFirstLast( playerFirstLetter, pcLastLetter )||
-        hasWrongLength( playerWord )||
-        hasWrongLastLetters( playerWord )||
-        hasSpaces( playerWord )||
+    if( hasSpaces( playerWord )||
         isNotRusWord( playerWord )||
+        hasWrongLength( playerWord )||
+        hasWrongFirstLast( playerFirstLetter, pcLastLetter )||
+        hasWrongLastLetters( playerWord )||              
         isUsedWord( playerWord, dictionary )
         ){
             return false;
