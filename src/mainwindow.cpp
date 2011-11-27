@@ -77,7 +77,7 @@ bool MainWindow::addNewWord(std::string playerWord){
         return false;
         break;
     }
-    return false; //чтобы узбавиться от warning'a
+    return false;
 
 }
 
@@ -99,10 +99,13 @@ void MainWindow::on_pushButton_clicked(){
     //Получим необходимый символ для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
 
+
+    bool isWordValid = validator.isWordValid( playerWord, pcLastLetter, dictionary );
+    bool isNewWord = dictionary.isNewWord(playerWord);
     //Если слово проходит проверку И
     //( (это не новое слово) ИЛИ (если является новым словом И мы добавляем его в словарь) )
-    if( validator.isWordValid( playerWord, pcLastLetter, dictionary ) == true &&
-      ( !dictionary.isNewWord(playerWord) || (dictionary.isNewWord(playerWord) && addNewWord(playerWord)) )){
+    if( isWordValid && ( !isNewWord || ( isNewWord && addNewWord(playerWord) ) ) ){
+
 
         //добавим слово в список использованных чтобы потом его не мог повторить игрок
         dictionary.addUsedWord( playerWord );
