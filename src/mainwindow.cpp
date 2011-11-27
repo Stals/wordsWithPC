@@ -106,7 +106,6 @@ void MainWindow::on_pushButton_clicked(){
     //( (это не новое слово) »Ћ» (если €вл€етс€ новым словом » мы добавл€ем его в словарь) )
     if( isWordValid && ( !isNewWord || ( isNewWord && addNewWord(playerWord) ) ) ){
 
-
         //добавим слово в список использованных чтобы потом его не мог повторить игрок
         dictionary.addUsedWord( playerWord );
 
@@ -123,7 +122,7 @@ void MainWindow::on_pushButton_clicked(){
     showValidationStatus( validator.getCurrentStatus() );
 
     ui->playerWordForm->setFocus();
-    updateLabels();
     ui->playerWordForm->clear();
+    updateLabels();    
 
 }
