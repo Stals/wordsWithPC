@@ -1,5 +1,5 @@
-#ifndef FINDWORD_H
-#define FINDWORD_H
+#ifndef DICTIONARY_H
+#define DICTIONARY_H
 #include <string>
 #include <iostream>
 #include <list>
@@ -55,4 +55,4 @@ private:
 //(*mapIter).first; -это буква на которую в словаре начинаются слова
 //(*mapIter).second; - это список слов, при этом к отдельному нужно обращаться итератором
 
-#endif // FINDWORD_H
+#endif // DICTIONRY_H

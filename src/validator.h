@@ -1,5 +1,5 @@
-#ifndef CHECK_H
-#define CHECK_H
+#ifndef VALIDATOR_H
+#define VALIDATOR_H
 #include <string>
 
 #include "utils\cases.h"
@@ -85,4 +85,4 @@ private:
     bool hasSpaces(std::string);                     //ѕровер€ет чтобы в строке не было пробела
 };
 
-#endif // CHECK_H
+#endif // VALIDATOR_H
