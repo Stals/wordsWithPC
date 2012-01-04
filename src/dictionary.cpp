@@ -5,6 +5,7 @@
 #include <windows.h>
 
 #include "utils\charFuncs.h"
+#include "utils\inttostr.h"
 
 #include <iterator>
 Dictionary::Dictionary(){
@@ -131,79 +132,22 @@ bool Dictionary::isInDictionary(std::string playerWord){
 }
 
 
-
 std::string Dictionary::getFileName(std::string newWord){
     std::string fileName;
     switch (newWord[0]){
-    case'а':
-        fileName = "1";break;
-    case'б':
-        fileName = "2";break;
-    case'в':
-        fileName = "3";break;
-    case'г':
-        fileName = "4";break;
-    case'д':
-        fileName = "5";break;
-    case'е':
-        fileName = "6";break;
-    case'ё':
-        fileName = "6";break;//Слова на ё сохраняем в словарь е
-    case'ж':
-        fileName = "8";break;
-    case'з':
-        fileName = "9";break;
-    case'и':
-        fileName = "10";break;
-    case'й':
-        fileName = "10";break;//Слова на й сохраняем в словарь и
-    case'к':
-        fileName = "12";break;
-    case'л':
-        fileName = "13";break;
-    case'м':
-        fileName = "14";break;
-    case'н':
-        fileName = "15";break;
-    case'о':
-        fileName = "16";break;
-    case'п':
-        fileName = "17";break;
-    case'р':
-        fileName = "18";break;
-    case'с':
-        fileName = "19";break;
-    case'т':
-        fileName = "20";break;
-    case'у':
-        fileName = "21";break;
-    case'ф':
-        fileName = "22";break;
-    case'х':
-        fileName = "23";break;
-    case'ц':
-        fileName = "24";break;
-    case'ч':
-        fileName = "25";break;
-    case'ш':
-        fileName = "26";break;
-    case'щ':
-        fileName = "27";break;
-    case'ъ':
-        fileName = "28";break;
-    case'ы':
-        fileName = "29";break;
-    case'ь':
-        fileName = "30";break;
-    case'э':
-        fileName = "31";break;
-    case'ю':
-        fileName = "32";break;
-    case'я':
-        fileName = "33";break;
+    case 'ё':
+        fileName = "6"; // Слова на ё сохраняем в словарь е
+        break;
+    case 'й':
+        fileName = "10"; // Слова на й сохраняем в словарь и
+        break;
+    default:
+        std::string letters = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя";
+        fileName = inttostr( letters.find( newWord[0] ) + 1 );
     }
-
     fileName = ("dict//" + fileName);
     return fileName;
 }
+
+
 
