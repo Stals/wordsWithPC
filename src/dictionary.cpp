@@ -63,8 +63,7 @@ void Dictionary::removeWord(std::string word){
 }
 
 
-std::string Dictionary::findRandomWord(char lastLetter){
-    srand(time(NULL));
+std::string Dictionary::getRandomWord(char lastLetter){
 
     //ё->е й->и так как они считаются одним и темже
     charFuncs::changeChar( lastLetter );

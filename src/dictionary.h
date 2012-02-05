@@ -14,13 +14,11 @@ class Dictionary
 {
 public:
     Dictionary();
-
     ~Dictionary();
 
-    //ищет случайное слово в словарях
-    std::string findRandomWord(char lastLetter);
+    // Возвращает случайное слово начинающееся ан lastLetter и удаляет его из dictionary
+    std::string getRandomWord(char lastLetter);
 
-    //Добавляет слово в usedWords и убирает его из dictionary ,если оно там есть
     void addUsedWord(std::string word);
 
     //Убирает слово из словаря если оно там есть

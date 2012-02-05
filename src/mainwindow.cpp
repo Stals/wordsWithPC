@@ -120,7 +120,7 @@ void MainWindow::on_pushButton_clicked(){
         ++wordsCount;
 
         //Получаем случайное слово компьютера
-        pcWord = dictionary.findRandomWord( playerLastLetter );
+        pcWord = dictionary.getRandomWord( playerLastLetter );
     }
     //выводим статус проверки пользователю
     showValidationStatus( validator.getCurrentStatus() );
