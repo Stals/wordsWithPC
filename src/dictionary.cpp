@@ -32,7 +32,8 @@ void Dictionary::loadDicts(){
     }
 
     // Добавляем содержимое каждого из файлов в dictionary
-    for(std::vector< std::string >::iterator fileNameIter = files.begin(); fileNameIter != files.end(); ++fileNameIter){
+    std::vector< std::string >::iterator fileNameIter = files.begin();
+    for(; fileNameIter != files.end(); ++fileNameIter){
 
         //хранит список слов начинающихся на одну букву
         std::list<std::string> singleDict;
