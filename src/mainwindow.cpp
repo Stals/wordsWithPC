@@ -37,10 +37,14 @@ void MainWindow::updateLabels(){
 }
 
 
-//Получим слово введенное пользователем на форме
+// Получим слово введенное пользователем на форме
+// Сразу приведем его к нижнему регистру и поменяем 'ё' и 'й' на 'е' и 'и'
 std::string MainWindow::getPlayerWord(){
-    QString test=ui->playerWordForm->text().toLocal8Bit();
-    return test.toStdString();
+    QString qplayerWord = ui->playerWordForm->text().toLocal8Bit();
+    std::string playerWord = qplayerWord.toStdString();
+    cases::toLowerCase( playerWord );
+    charFuncs::changeString(playerWord);
+    return playerWord;
 }
 
 

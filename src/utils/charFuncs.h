@@ -30,6 +30,12 @@ inline void changeChar(char &letter){
     }
 }
 
+// меняет ё на е , й на и для всего слова
+inline void changeString(std::string &str){
+    for(size_t i = 0; i < str.size(); ++i){
+        changeChar(str[i]);
+    }
+}
 
 //return true ,если буква русская , иначе false
 inline bool isRusLetter(char letter){
