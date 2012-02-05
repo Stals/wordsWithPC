@@ -14,6 +14,8 @@ HEADERS += src/validator.h \
     src/utils/charFuncs.h \
     src/utils/cases.h \
     ui_mainwindow.h \
-    src/utils/inttostr.h
+    src/utils/inttostr.h \
+    src/utils/randomVector.h
 FORMS +=  src/mainwindow.ui
+
 
