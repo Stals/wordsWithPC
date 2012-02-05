@@ -59,8 +59,9 @@ T randomVector<T>::getRandomAndDelete(){
         return randomElement;
 }
 
-// Удаляет Элемент из Ветора
+// Удаляет Элемент из Вектора
 // Возвращает true если элемент был в векторе ,а иначе false
+// Note: Лучше использовать deleteById() , так как он удаляет за O(1), а этот метод за O(n)
 template <class T>
 bool randomVector<T>::remove(T element){
         if(this->size() > 0){
