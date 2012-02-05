@@ -3,11 +3,12 @@
 #include <cstdlib>
 #include <string.h>
 #include <windows.h>
+#include <iterator>
 
 #include "utils\charFuncs.h"
 #include "utils\inttostr.h"
 
-#include <iterator>
+
 Dictionary::Dictionary(){
     //«агружаем словарь
     loadDicts();
@@ -36,7 +37,7 @@ void Dictionary::loadDicts(){
     for(; fileNameIter != files.end(); ++fileNameIter){
 
         //хранит список слов начинающихс€ на одну букву
-        std::list<std::string> singleDict;
+        randomVector<std::string> singleDict;
 
         //читаем и копируем слова из файла
         std::ifstream file((*fileNameIter).c_str());
@@ -44,9 +45,9 @@ void Dictionary::loadDicts(){
         std::copy(beg, end, std::back_inserter(singleDict));
 
         //ƒобавл€ем получившийс€ словарь на одну букву - в общий словарь
-        std::list<std::string>::iterator firstWord = singleDict.begin();
+        randomVector<std::string>::iterator firstWord = singleDict.begin();
         char firstLetter = (*firstWord)[0];
-        dictionary.insert (std::pair<char,std::list<std::string> >(firstLetter,singleDict));
+        dictionary.insert (std::pair<char,randomVector<std::string> >(firstLetter,singleDict));
         singleDict.clear();
     }
 }
@@ -68,22 +69,14 @@ std::string Dictionary::getRandomWord(char lastLetter){
     //Є->е й->и так как они считаютс€ одним и темже
     charFuncs::changeChar( lastLetter );
 
-    //сразу устанавливаем итератор на нужный нам словарь
-    std::list<std::string>::iterator it = dictionary[lastLetter].begin();
-
     if( dictionary[lastLetter].size() != 0 ){
-        unsigned int randomWordIndex = rand() % dictionary[lastLetter].size();
-        //Ќаходим это слово перебором
-        for( unsigned int i = 0; i < randomWordIndex; ++i ){
-            ++it;
-        }
+        // ѕолучим случайное слово из словар€ и удалим его оттуда
+        std::string randomWord = dictionary[lastLetter].getRandomAndDelete();
+
         //ƒобавл€ем только что найденное слово в использованные
-        addUsedWord(*it);
-        //» уберем его из словарей
-        removeWord(*it);
+        addUsedWord(randomWord);
 
-        return (*it);
-
+        return randomWord;
     }else{
         return "YOU WIN";
     }
@@ -123,8 +116,11 @@ void Dictionary::addNewWord(std::string playerWord){
 
 
 bool Dictionary::isInDictionary(std::string playerWord){
-    for( std::map<char, std::list<std::string> >::iterator it=dictionary.begin();it!=dictionary.end(); ++it){
-        if(std::find((*it).second.begin(), (*it).second.end(), playerWord)!=(*it).second.end()){ //≈сли слово было найдено в словаре
+    std::map<char, randomVector<std::string> >::iterator it = dictionary.begin();
+
+    for(; it != dictionary.end(); ++it){
+        bool wordFound = std::find(it->second.begin(), it->second.end(), playerWord) != it->second.end();
+        if(wordFound){
             return true;
         }
     }

@@ -6,8 +6,9 @@
 #include <map>
 #include <fstream>
 #include <vector>
-#include <time.h>//for random
 #include <stdlib.h>
+
+#include "utils/randomVector.h"
 
 //Класс хранит словарь которым пользвется компьютер а текже предоставляет набор функций для работы со словарём
 class Dictionary
@@ -44,7 +45,7 @@ private:
     bool isInDictionary(std::string playerWord);
 
     //хранит все возможные варианты ответа компьютера
-    std::map<char, std::list<std::string> > dictionary;
+    std::map<char, randomVector<std::string> > dictionary;
 
     //вектор уже использованных слов
     std::vector<std::string> usedWords;
