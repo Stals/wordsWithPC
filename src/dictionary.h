@@ -20,9 +20,10 @@ public:
     // ¬озвращает случайное слово начинающеес€ ан lastLetter и удал€ет его из dictionary
     std::string getRandomWord(char lastLetter);
 
+    //ƒобавл€ет слово в usedWords
     void addUsedWord(std::string word);
 
-    //”бирает слово из словар€ если оно там есть
+    //”бирает слово из dictionary если оно там есть
     void removeWord(std::string word);
 
     //¬озвращает true если это слово уже использовалось (компьютером или пользователем)
@@ -47,11 +48,11 @@ private:
     //хранит все возможные варианты ответа компьютера
     std::map<char, randomVector<std::string> > dictionary;
 
-    //вектор уже использованных слов
+    //—лова сказанные компьютером или игроком
     std::vector<std::string> usedWords;
 
 };
-//(*mapIter).first; -это буква на которую в словаре начинаютс€ слова
-//(*mapIter).second; - это список слов, при этом к отдельному нужно обращатьс€ итератором
+//dictIter->first; -это буква на которую в словаре начинаютс€ слова
+//dictIter->second; - это список слов, при этом к отдельному нужно обращатьс€ итератором
 
 #endif // DICTIONRY_H

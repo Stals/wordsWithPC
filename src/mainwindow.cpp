@@ -95,14 +95,11 @@ void MainWindow::on_pushButton_clicked(){
     updateLabels();
 
     playerWord = getPlayerWord();
-    cases::toLowerCase( playerWord );
 
-    //Получим символ на который компьютер будет искать слово
+
+
     char playerLastLetter = charFuncs::getLastLetter( playerWord );
-
-    //Получим необходимый символ для Validator'a
     char pcLastLetter = charFuncs::getLastLetter( pcWord );
-
 
     bool isWordValid = validator.isWordValid( playerWord, pcLastLetter, dictionary );
     bool isNewWord = dictionary.isNewWord(playerWord);
