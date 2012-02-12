@@ -46,7 +46,7 @@ private:
     bool isInDictionary(std::string playerWord);
 
     //хранит все возможные варианты ответа компьютера
-    std::map<char, randomVector<std::string> > dictionary;
+    std::map<char, std::vector<std::string> > dictionary;
 
     //Слова сказанные компьютером или игроком
     std::vector<std::string> usedWords;

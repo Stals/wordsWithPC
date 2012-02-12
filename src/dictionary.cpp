@@ -37,7 +37,7 @@ void Dictionary::loadDicts(){
     for(; fileNameIter != files.end(); ++fileNameIter){
 
         //хранит список слов начинающихс€ на одну букву
-        randomVector<std::string> singleDict;
+        std::vector<std::string> singleDict;
 
         //читаем и копируем слова из файла
         std::ifstream file((*fileNameIter).c_str());
@@ -45,9 +45,9 @@ void Dictionary::loadDicts(){
         std::copy(beg, end, std::back_inserter(singleDict));
 
         //ƒобавл€ем получившийс€ словарь на одну букву - в общий словарь
-        randomVector<std::string>::iterator firstWord = singleDict.begin();
+        std::vector<std::string>::iterator firstWord = singleDict.begin();
         char firstLetter = (*firstWord)[0];
-        dictionary.insert (std::pair<char,randomVector<std::string> >(firstLetter,singleDict));
+        dictionary.insert (std::pair<char,std::vector<std::string> >(firstLetter,singleDict));
         singleDict.clear();
     }
 }
@@ -60,7 +60,7 @@ void Dictionary::addUsedWord(std::string word){
 
 
 void Dictionary::removeWord(std::string word){
-    dictionary[word[0]].remove( word );
+    randomVector::remove(dictionary[word[0]], word);
 }
 
 
@@ -71,7 +71,7 @@ std::string Dictionary::getRandomWord(char lastLetter){
 
     if( dictionary[lastLetter].size() != 0 ){
         // ѕолучим случайное слово из словар€ и удалим его оттуда
-        std::string randomWord = dictionary[lastLetter].getRandomAndDelete();
+        std::string randomWord = randomVector::getRandomAndRemove(dictionary[lastLetter]);
 
         //ƒобавл€ем только что найденное слово в использованные
         addUsedWord(randomWord);
@@ -116,7 +116,7 @@ void Dictionary::addNewWord(std::string playerWord){
 
 
 bool Dictionary::isInDictionary(std::string playerWord){
-    std::map<char, randomVector<std::string> >::iterator it = dictionary.begin();
+    std::map<char, std::vector<std::string> >::iterator it = dictionary.begin();
 
     for(; it != dictionary.end(); ++it){
         bool wordFound = std::find(it->second.begin(), it->second.end(), playerWord) != it->second.end();
