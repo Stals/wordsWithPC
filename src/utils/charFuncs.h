@@ -39,7 +39,7 @@ inline void changeString(std::string &str){
 
 //return true ,åñëè áóêâà ğóññêàÿ , èíà÷å false
 inline bool isRusLetter(char letter){
-    if(strchr("àáâãäå¸æçèéêëìíîïğñòóôõö÷øùüûúışÿÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÜÛÚİŞß",letter))
+    if(strchr("îàåèíòğñëâêïìóäÿûüçáãé÷şõæøöùôıú¸", letter))
         return true;
     else
         return false;
