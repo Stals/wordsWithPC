@@ -39,8 +39,7 @@ inline void changeString(std::string &str){
 
 //return true ,если буква русская , иначе false
 inline bool isRusLetter(char letter){
-// Частотность взята отсуда: http://dict.ruslang.ru/freq.php?act=show&dic=freq_letters&title=%D7%E0%F1%F2%EE%F2%ED%EE%F1%F2%FC%20%E1%F3%EA%E2%20%F0%F3%F1%F1%EA%EE%E3%EE%20%E0%EB%F4%E0%E2%E8%F2%E0
-    if(strchr("оеаинтсрвлкмдпуяыьгзбчйхжшюцщэфъё", letter))
+    if(strchr("аоеиртнклсвпдмубгзьяцжчфшхыйщюэъё", letter))
         return true;
     else
         return false;
